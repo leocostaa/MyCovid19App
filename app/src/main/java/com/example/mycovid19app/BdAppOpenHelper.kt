@@ -9,7 +9,7 @@ class BdAppOpenHelper (context : Context?)  :
 
     override fun onCreate(db: SQLiteDatabase?) {
         if (db != null) {
-            //TabelaPaciente(db).cria()
+            TabelaPaciente(db).cria()
 
         }
     }
