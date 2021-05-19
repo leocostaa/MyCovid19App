@@ -5,7 +5,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.provider.BaseColumns
 
-class TabelaPaciente (db: SQLiteDatabase) {
+class TabelaVacinação (db : SQLiteDatabase){
     private val db : SQLiteDatabase = db
 
     fun cria() {
