@@ -5,7 +5,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.provider.BaseColumns
 
-class TabelaVacinação (db : SQLiteDatabase){
+class TabelaVacinacao (db : SQLiteDatabase){
     private val db : SQLiteDatabase = db
 
     fun cria() {
@@ -37,8 +37,8 @@ class TabelaVacinação (db : SQLiteDatabase){
     }
 
     companion object{
-        const val NOME_TABELA = "Vacinação"
-        const val CAMPO_DATAVAC = "DataVacinação"
+        const val NOME_TABELA = "Vacinacao"
+        const val CAMPO_DATAVAC = "DataVacinacao"
 
     }
 }
