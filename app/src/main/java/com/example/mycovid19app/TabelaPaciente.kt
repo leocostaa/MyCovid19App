@@ -9,7 +9,7 @@ class TabelaPaciente (db: SQLiteDatabase) {
     private val db : SQLiteDatabase = db
 
     fun cria() {
-        db.execSQL("CREATE TABLE  $NOME_TABELA (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT, $CAMPO_NOME TEXT NOT NULL, $CAMPO_DATANASCIMENTO INTEGER NOT NULL, $CAMPO_SEXO TEXT NOT NULL, $CAMPO_INFECAO TEXT NOT NULL)")
+        db.execSQL("CREATE TABLE  $NOME_TABELA (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT, $CAMPO_NOME TEXT NOT NULL, $CAMPO_DATANASCIMENTO TEXT NOT NULL, $CAMPO_SEXO TEXT NOT NULL, $CAMPO_INFECAO INTEGER NOT NULL)")
 
     }
 
@@ -27,11 +27,11 @@ class TabelaPaciente (db: SQLiteDatabase) {
 
     fun query(
         columns: Array<String>,
-        selection: String,
-        selectionArgs: Array<String>,
-        groupBy: String,
-        having: String,
-        orderBy: String
+        selection: String?,
+        selectionArgs: Array<String>?,
+        groupBy: String?,
+        having: String?,
+        orderBy: String?
     ): Cursor? {
         return db.query(NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy)
     }
@@ -42,5 +42,6 @@ class TabelaPaciente (db: SQLiteDatabase) {
         const val CAMPO_DATANASCIMENTO = "DataNascimento"
         const val CAMPO_SEXO = "sexo"
         const val CAMPO_INFECAO = "infecao"
+        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_NOME, CAMPO_DATANASCIMENTO, CAMPO_SEXO, CAMPO_INFECAO)
     }
 }
