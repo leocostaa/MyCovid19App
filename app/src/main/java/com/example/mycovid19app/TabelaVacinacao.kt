@@ -9,7 +9,7 @@ class TabelaVacinacao (db : SQLiteDatabase){
     private val db : SQLiteDatabase = db
 
     fun cria() {
-        db.execSQL("CREATE TABLE  $NOME_TABELA (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT, $CAMPO_DATAVAC TEXT NOT NULL)")
+        db.execSQL("CREATE TABLE  $NOME_TABELA (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT, $CAMPO_DATAVAC TEXT NOT NULL,FOREIGN KEY (${BaseColumns._ID}) REFERENCES ${TabelaPaciente.NOME_TABELA},FOREIGN KEY (${BaseColumns._ID}) REFERENCES ${TabelaVacina.NOME_TABELA})")
 
     }
 
