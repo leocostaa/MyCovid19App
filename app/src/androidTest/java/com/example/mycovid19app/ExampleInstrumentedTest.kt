@@ -27,6 +27,12 @@ class ExampleInstrumentedTest {
         return id
 
     }
+    private fun insereVacina(tabela: TabelaVacina, vacina: Vacina): Long {
+        val id = tabela.insert(vacina.toContentValues())
+        assertNotEquals(-1, id)
+        return id
+
+    }
 
 
 
@@ -122,4 +128,81 @@ class ExampleInstrumentedTest {
         db.close()
     }
 
+    @Test
+    fun consegueInserirVacinas() {
+        //linhas para ler a base de dados
+        val db = GetbdAppOpenHelper().writableDatabase
+        val tabelaVacina = TabelaVacina(db)
+
+        val vacina = Vacina(origem = "Pfizer", quantidade = 100, validade = "22/01/2022")
+        vacina.id = insereVacina(tabelaVacina, vacina)
+        db.close()
+    }
+
+    @Test
+    fun consegueAlterarVacinas() {
+        val db = GetbdAppOpenHelper().writableDatabase
+        val tabelaVacina = TabelaVacina(db)
+
+        val vacina = Vacina(origem = "Pfizer", quantidade = 100, validade = "22/01/2022")
+        vacina.id = insereVacina(tabelaVacina, vacina)
+        vacina.quantidade = 99
+
+        val registosAlterados = tabelaVacina.update(
+            vacina.toContentValues(),
+            "_id=?",
+            arrayOf(vacina.id.toString())
+        )
+
+        assertEquals(1, registosAlterados)
+        db.close()
+    }
+
+    @Test
+    fun consegueEliminarVacina(){
+        val db = GetbdAppOpenHelper().writableDatabase
+        val tabelaVacina = TabelaVacina(db)
+
+        val vacina = Vacina(origem = "Moderna", quantidade = 200, validade = "15/01/2023")
+        vacina.id = insereVacina(tabelaVacina, vacina)
+
+        val registosEliminados = tabelaVacina.delete(
+            "${BaseColumns._ID}=?",
+            arrayOf(vacina.id.toString())
+        )
+        db.close()
+    }
+
+    @Test
+    fun consegueLerVacinas() {
+        val db = GetbdAppOpenHelper().writableDatabase
+        val tabelaVacina = TabelaVacina(db)
+
+        val vacina = Vacina(origem = "Moderna", quantidade = 200, validade = "15/01/2023")
+        vacina.id = insereVacina(tabelaVacina, vacina)
+
+        val cursor = tabelaVacina.query(
+            TabelaVacina.TODAS_COLUNAS,
+            "${BaseColumns._ID}=?",
+            arrayOf(vacina.id.toString()),
+            null,
+            null,
+            null
+
+        )
+        assertNotNull(cursor)
+        assert(cursor!!.moveToNext())
+
+        val vacinaBd = Vacina.fromCursor(cursor)
+        assertEquals(vacina, vacinaBd)
+
+        //cursor permite navegar pelos registos
+        //exemplo
+        //->
+        // 1 Drama
+        // 2 Ficção
+        // 3 Aventura
+
+        db.close()
+    }
 }
