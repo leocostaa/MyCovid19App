@@ -245,5 +245,97 @@ class ExampleInstrumentedTest {
         db.close()
     }
 
-    
+    @Test
+    fun consegueInserirVacinacao() {
+
+        val db = GetbdAppOpenHelper().writableDatabase
+
+        val tabelaVacina = TabelaVacina(db)
+        val vacina = Vacina(origem = "Moderna", quantidade = 200, validade = "15/01/2023")
+        vacina.id= insereVacina(tabelaVacina,vacina)
+
+        val tabelaVacinacao = TabelaVacinacao(db)
+        val vacinacao = Vacinacao(data_vac = "22/08/2021 11:30:00",local_vac = "sala 2",idVacina = vacina.id )
+        vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
+
+
+        db.close()
+    }
+    fun consegueAlterarVacinacao() {
+        val db = GetbdAppOpenHelper().writableDatabase
+
+        val tabelaVacina = TabelaVacina(db)
+        val vacina = Vacina(origem = "Pfizer", quantidade = 200, validade = "12/02/2023")
+        vacina.id= insereVacina(tabelaVacina,vacina)
+
+
+        val tabelaVacinacao = TabelaVacinacao(db)
+        val vacinacao = Vacinacao(data_vac = "22/09/2021 11:30:00",local_vac = "sala 2",idVacina = vacina.id)
+        vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
+        vacinacao.local_vac= "sala 3"
+
+
+        val registosAlterados = tabelaVacinacao.update(
+            vacinacao.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf(vacinacao.id.toString())
+        )
+
+        assertEquals(1, registosAlterados)
+
+        db.close()
+    }
+
+    @Test
+    fun consegueEliminarVacinacao(){
+        val db = GetbdAppOpenHelper().writableDatabase
+
+        val tabelaVacina = TabelaVacina(db)
+        val vacina = Vacina(origem = "AstraZenca", quantidade = 200, validade = "12/02/2023")
+        vacina.id= insereVacina(tabelaVacina,vacina)
+
+
+        val tabelaVacinacao = TabelaVacinacao(db)
+        val vacinacao = Vacinacao(data_vac = "23/09/2021 11:30:00",local_vac = "sala 2",idVacina = vacina.id)
+        vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
+
+        val registosEliminados = tabelaVacinacao.delete(
+            "${BaseColumns._ID}=?",
+            arrayOf(vacinacao.id.toString())
+        )
+        assertEquals(1,registosEliminados)
+        db.close()
+
+    }
+
+    @Test
+    fun consegueLerVacinacao(){
+        val db = GetbdAppOpenHelper().writableDatabase
+
+        val tabelaVacina = TabelaVacina(db)
+        val vacina = Vacina(origem = "Johnson", quantidade = 100, validade = "12/02/2023")
+        vacina.id= insereVacina(tabelaVacina,vacina)
+
+
+        val tabelaVacinacao = TabelaVacinacao(db)
+        val vacinacao = Vacinacao(data_vac = "23/09/2021 11:30:00",local_vac = "sala 2",idVacina = vacina.id)
+        vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
+
+        val cursor = tabelaVacinacao.query(
+            TabelaVacinacao.TODAS_COLUNAS,
+            "${BaseColumns._ID}=?",
+            arrayOf(vacinacao.id.toString()),
+            null,
+            null,
+            null
+
+        )
+        assertNotNull(cursor)
+        assert(cursor!!.moveToNext())
+
+        val vacinacaoBd = Vacinacao.fromCursor(cursor)
+        assertEquals(vacinacao, vacinacaoBd)
+
+        db.close()
+    }
 }
