@@ -9,7 +9,7 @@ class TabelaVacinacao (db : SQLiteDatabase){
     private val db : SQLiteDatabase = db
 
     fun cria() {
-        db.execSQL("CREATE TABLE  $NOME_TABELA (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT, $CAMPO_DATAVAC TEXT NOT NULL,FOREIGN KEY (${BaseColumns._ID}) REFERENCES ${TabelaPaciente.NOME_TABELA},FOREIGN KEY (${BaseColumns._ID}) REFERENCES ${TabelaVacina.NOME_TABELA})")
+        db.execSQL("CREATE TABLE  $NOME_TABELA (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT, $CAMPO_DATAVAC TEXT NOT NULL,$CAMPO_LOCAL TEXT NOT NULL,$CAMPO_ID_VACINA INTEGER NOT NULL,FOREIGN KEY ($CAMPO_ID_VACINA) REFERENCES ${TabelaVacina.NOME_TABELA})")
 
     }
 
@@ -27,11 +27,11 @@ class TabelaVacinacao (db : SQLiteDatabase){
 
     fun query(
         columns: Array<String>,
-        selection: String,
-        selectionArgs: Array<String>,
-        groupBy: String,
-        having: String,
-        orderBy: String
+        selection: String?,
+        selectionArgs: Array<String>?,
+        groupBy: String?,
+        having: String?,
+        orderBy: String?
     ): Cursor? {
         return db.query(NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy)
     }
@@ -39,6 +39,8 @@ class TabelaVacinacao (db : SQLiteDatabase){
     companion object{
         const val NOME_TABELA = "Vacinacao"
         const val CAMPO_DATAVAC = "DataVacinacao"
-
+        const val CAMPO_LOCAL ="Local"
+        const val CAMPO_ID_VACINA = "id_vacina"
+        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_DATAVAC, CAMPO_LOCAL, CAMPO_ID_VACINA)
     }
 }

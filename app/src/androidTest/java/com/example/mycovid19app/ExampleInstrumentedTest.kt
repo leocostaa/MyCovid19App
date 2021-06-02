@@ -33,8 +33,51 @@ class ExampleInstrumentedTest {
         return id
 
     }
+    private fun insereVacinacao(tabela: TabelaVacinacao, vacinacao: Vacinacao): Long {
+        val id = tabela.insert(vacinacao.toContentValues())
+        assertNotEquals(-1, id)
+        return id
 
+    }
+    /*private fun getPacienteBaseDados(tabela: TabelaPaciente, id: Long): Paciente {
+        val cursor = tabela.query(
+            TabelaPaciente.TODAS_COLUNAS,
+            "${BaseColumns._ID}=?",
+            arrayOf(id.toString()),
+            null, null, null
+        )
 
+        assertNotNull(cursor)
+        assert(cursor!!.moveToNext())
+
+        return Paciente.fromCursor(cursor)
+    }
+    private fun getVacinaBaseDados(tabela: TabelaVacina, id: Long): Vacina {
+        val cursor = tabela.query(
+            TabelaVacina.TODAS_COLUNAS,
+            "${BaseColumns._ID}=?",
+            arrayOf(id.toString()),
+            null, null, null
+        )
+
+        assertNotNull(cursor)
+        assert(cursor!!.moveToNext())
+
+        return Vacina.fromCursor(cursor)
+    }
+    private fun getVacinacaoBaseDados(tabela: TabelaVacinacao, id: Long): Vacinacao {
+        val cursor = tabela.query(
+            TabelaVacinacao.TODAS_COLUNAS,
+            "${BaseColumns._ID}=?",
+            arrayOf(id.toString()),
+            null, null, null
+        )
+
+        assertNotNull(cursor)
+        assert(cursor!!.moveToNext())
+
+        return Vacinacao.fromCursor(cursor)
+    }*/
 
     @Before
     fun apagarBaseDados(){
@@ -92,6 +135,7 @@ class ExampleInstrumentedTest {
             "${BaseColumns._ID}=?",
             arrayOf(paciente.id.toString())
         )
+        assertEquals(1,registosEliminados)
         db.close()
     }
 
@@ -144,7 +188,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaVacina = TabelaVacina(db)
 
-        val vacina = Vacina(origem = "Pfizer", quantidade = 100, validade = "22/01/2022")
+        val vacina = Vacina(origem = "Johnson", quantidade = 100, validade = "22/01/2022")
         vacina.id = insereVacina(tabelaVacina, vacina)
         vacina.quantidade = 99
 
@@ -163,13 +207,14 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaVacina = TabelaVacina(db)
 
-        val vacina = Vacina(origem = "Moderna", quantidade = 200, validade = "15/01/2023")
+        val vacina = Vacina(origem = "AstraZenca", quantidade = 200, validade = "15/01/2023")
         vacina.id = insereVacina(tabelaVacina, vacina)
 
         val registosEliminados = tabelaVacina.delete(
             "${BaseColumns._ID}=?",
             arrayOf(vacina.id.toString())
         )
+        assertEquals(1,registosEliminados)
         db.close()
     }
 
@@ -196,13 +241,9 @@ class ExampleInstrumentedTest {
         val vacinaBd = Vacina.fromCursor(cursor)
         assertEquals(vacina, vacinaBd)
 
-        //cursor permite navegar pelos registos
-        //exemplo
-        //->
-        // 1 Drama
-        // 2 Ficção
-        // 3 Aventura
 
         db.close()
     }
+
+    
 }
