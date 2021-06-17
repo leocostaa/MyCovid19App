@@ -2,7 +2,7 @@
     <string name="app_name">MyCovid19App</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
+    <string name="first_fragment_label">Pacientes</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
@@ -12,4 +12,7 @@
     <string name="covid_19_vaccination_app">Covid 19 Vaccination App</string>
     <string name="start">Start</string>
     <string name="todo">TODO</string>
+    <string name="nome_paciente">Nome</string>
+    <string name="data_de_nascimento_paciente">Data de Nascimento</string>
+    <string name="sexo_paciente">Sexo</string>
 </resources>

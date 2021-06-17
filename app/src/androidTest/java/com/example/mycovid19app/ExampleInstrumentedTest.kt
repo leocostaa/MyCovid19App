@@ -89,7 +89,7 @@ class ExampleInstrumentedTest {
 
     @Before
     fun apagarBaseDados(){
-        getAppContext().deleteDatabase((BdAppOpenHelper.NOME_BASE_DADOS))
+     // getAppContext().deleteDatabase((BdAppOpenHelper.NOME_BASE_DADOS))
 
     }
 

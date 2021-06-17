@@ -7,6 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class AdapterPacientes(val fragment:FragmentPacientes,var cursor: Cursor? = null) : RecyclerView.Adapter<AdapterPacientes.ViewHolderPacientes>(){
+
+
     class ViewHolderPacientes(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val textViewNome = itemView.findViewById<TextView>(R.id.textViewNome)
         private val textViewDataNascimento = itemView.findViewById<TextView>(R.id.textViewDataNascimento)
