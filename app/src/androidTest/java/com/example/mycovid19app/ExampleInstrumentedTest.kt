@@ -9,6 +9,7 @@ import org.junit.runner.RunWith
 
 import org.junit.Assert.*
 import org.junit.Before
+import java.util.*
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -20,6 +21,7 @@ class ExampleInstrumentedTest {
 
     private fun getAppContext() = InstrumentationRegistry.getInstrumentation().targetContext
     private fun GetbdAppOpenHelper() = BdAppOpenHelper(getAppContext())
+    private fun Data(ano :Int, mes:Int, dia:Int) = Date (ano-1900, mes-1,dia)
 
     private fun inserePaciente(tabela: TabelaPaciente, paciente: Paciente): Long {
         val id = tabela.insert(paciente.toContentValues())
@@ -105,7 +107,8 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaPaciente = TabelaPaciente(db)
 
-        val paciente = Paciente(nome = "Joana Sousa", DataNascimento = "22/12/1999", sexo = "F")
+
+        val paciente = Paciente(nome = "Joana Sousa", DataNascimento = Data(1990,8,12), sexo = "F")
         paciente.id = inserePaciente(tabelaPaciente, paciente)
         db.close()
     }
@@ -115,7 +118,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaPaciente = TabelaPaciente(db)
 
-        val paciente = Paciente(nome = "Mariana Nunes", DataNascimento = "12/08/1990", sexo = "F")
+        val paciente = Paciente(nome = "Mariana Nunes", DataNascimento = Data(1990,8,12), sexo = "F")
         paciente.id = inserePaciente(tabelaPaciente, paciente)
         paciente.nome = "Maria Nunes"
 
@@ -134,7 +137,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaPaciente = TabelaPaciente(db)
 
-        val paciente = Paciente(nome = "Pedro Marques", DataNascimento = "10/08/1989", sexo = "M")
+        val paciente = Paciente(nome = "Pedro Marques", DataNascimento = Data(1990,8,12), sexo = "M")
         paciente.id = inserePaciente(tabelaPaciente, paciente)
 
         val registosEliminados = tabelaPaciente.delete(
@@ -150,7 +153,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaPaciente = TabelaPaciente(db)
 
-        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = "18/04/1979", sexo = "M")
+        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = Data(1990,8,12), sexo = "M")
         paciente.id = inserePaciente(tabelaPaciente, paciente)
 
         val cursor = tabelaPaciente.query(
@@ -261,7 +264,7 @@ class ExampleInstrumentedTest {
         vacina.id= insereVacina(tabelaVacina,vacina)
 
         val tabelaPaciente = TabelaPaciente(db)
-        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = "18/04/1979", sexo = "M")
+        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = Data(1979,4,18), sexo = "M")
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
         val tabelaLocal = TabelaLocal(db)
@@ -269,7 +272,7 @@ class ExampleInstrumentedTest {
         local.id = insereLocal(tabelaLocal,local)
 
         val tabelaVacinacao = TabelaVacinacao(db)
-        val vacinacao = Vacinacao(data_vac = "22/08/2021 11:30:00",idVacina = vacina.id ,idPaciente = paciente.id,idLocal = local.id)
+        val vacinacao = Vacinacao(data_vac = Data(2021,9,23),idVacina = vacina.id ,idPaciente = paciente.id,idLocal = local.id)
         vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
 
 
@@ -283,7 +286,7 @@ class ExampleInstrumentedTest {
         vacina.id= insereVacina(tabelaVacina,vacina)
 
         val tabelaPaciente = TabelaPaciente(db)
-        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = "18/04/1979", sexo = "M")
+        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = Data(1990,8,12), sexo = "M")
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
         val tabelaLocal = TabelaLocal(db)
@@ -291,9 +294,9 @@ class ExampleInstrumentedTest {
         local.id = insereLocal(tabelaLocal,local)
 
         val tabelaVacinacao = TabelaVacinacao(db)
-        val vacinacao = Vacinacao(data_vac = "22/09/2021 11:30:00",idVacina = vacina.id, idPaciente = paciente.id, idLocal = local.id)
+        val vacinacao = Vacinacao(data_vac = Data(2021,9,23),idVacina = vacina.id, idPaciente = paciente.id, idLocal = local.id)
         vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
-        vacinacao.data_vac= "23/09/2021"
+        vacinacao.data_vac= Data(2021,9,24)
 
 
         val registosAlterados = tabelaVacinacao.update(
@@ -316,7 +319,7 @@ class ExampleInstrumentedTest {
         vacina.id= insereVacina(tabelaVacina,vacina)
 
         val tabelaPaciente = TabelaPaciente(db)
-        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = "18/04/1979", sexo = "M")
+        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = Data(1990,8,12), sexo = "M")
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
         val tabelaLocal = TabelaLocal(db)
@@ -325,7 +328,7 @@ class ExampleInstrumentedTest {
 
 
         val tabelaVacinacao = TabelaVacinacao(db)
-        val vacinacao = Vacinacao(data_vac = "23/09/2021 11:30:00",idVacina = vacina.id,idPaciente = paciente.id, idLocal = local.id)
+        val vacinacao = Vacinacao(data_vac = Data(2021,9,25),idVacina = vacina.id,idPaciente = paciente.id, idLocal = local.id)
         vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
 
         val registosEliminados = tabelaVacinacao.delete(
@@ -346,7 +349,7 @@ class ExampleInstrumentedTest {
         vacina.id= insereVacina(tabelaVacina,vacina)
 
         val tabelaPaciente = TabelaPaciente(db)
-        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = "18/04/1979", sexo = "M")
+        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = Data(1990,8,12), sexo = "M")
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
         val tabelaLocal = TabelaLocal(db)
@@ -355,7 +358,7 @@ class ExampleInstrumentedTest {
 
 
         val tabelaVacinacao = TabelaVacinacao(db)
-        val vacinacao = Vacinacao(data_vac = "23/09/2021 11:30:00",idVacina = vacina.id,idPaciente = paciente.id, idLocal = local.id)
+        val vacinacao = Vacinacao(data_vac = Data(2021,9,26),idVacina = vacina.id,idPaciente = paciente.id, idLocal = local.id)
         vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
 
         val cursor = tabelaVacinacao.query(

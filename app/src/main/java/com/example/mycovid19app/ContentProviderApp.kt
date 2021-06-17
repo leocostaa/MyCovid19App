@@ -79,6 +79,23 @@ class ContentProviderApp: ContentProvider() {
                 null,
                 null
             )
+            URI_LOCAL -> TabelaLocal(bd).query(
+                projection as Array<String>,
+                selection,
+                selectionArgs as Array<String>?,
+                null,
+                null,
+                sortOrder
+            )
+
+            URI_LOCAL_ESPECIFICA -> TabelaLocal(bd).query(
+                projection as Array<String>,
+                "${BaseColumns._ID}=?",
+                arrayOf(uri.lastPathSegment!!),
+                null,
+                null,
+                null
+            )
             else -> null
         }
     }
@@ -91,6 +108,8 @@ class ContentProviderApp: ContentProvider() {
             URI_VACINA_ESPECIFICA -> "$UNICO_ITEM/$VACINA"
             URI_VACINACAO -> "$MULTIPLOS_ITEMS/$VACINACAO"
             URI_VACINACAO_ESPECIFICA -> "$UNICO_ITEM/$VACINACAO"
+            URI_LOCAL -> "$MULTIPLOS_ITEMS/$LOCAL"
+            URI_LOCAL_ESPECIFICA -> "$UNICO_ITEM/$LOCAL"
             else -> null
         }
     }
@@ -102,6 +121,7 @@ class ContentProviderApp: ContentProvider() {
             URI_PACIENTE -> TabelaPaciente(bd).insert(values!!)
             URI_VACINA -> TabelaVacina(bd).insert(values!!)
             URI_VACINACAO -> TabelaVacinacao(bd).insert(values!!)
+            URI_LOCAL -> TabelaLocal(bd).insert(values!!)
             else -> -1L
         }
 
@@ -125,6 +145,10 @@ class ContentProviderApp: ContentProvider() {
             )
 
             URI_VACINACAO_ESPECIFICA -> TabelaVacinacao(bd).delete(
+                "${BaseColumns._ID}=?",
+                arrayOf(uri.lastPathSegment!!)
+            )
+            URI_LOCAL_ESPECIFICA -> TabelaLocal(bd).delete(
                 "${BaseColumns._ID}=?",
                 arrayOf(uri.lastPathSegment!!)
             )
@@ -159,6 +183,11 @@ class ContentProviderApp: ContentProvider() {
                 "${BaseColumns._ID}=?",
                 arrayOf(uri.lastPathSegment!!)
             )
+            URI_LOCAL_ESPECIFICA -> TabelaLocal(bd).update(
+                values!!,
+                "${BaseColumns._ID}=?",
+                arrayOf(uri.lastPathSegment!!)
+            )
 
             else -> 0
         }
@@ -170,6 +199,7 @@ class ContentProviderApp: ContentProvider() {
         private const val PACIENTE = "paciente"
         private const val VACINA = "vacina"
         private const val VACINACAO = "vacinacao"
+        private const val LOCAL = "local"
 
 
         private const val URI_PACIENTE = 100
@@ -178,6 +208,9 @@ class ContentProviderApp: ContentProvider() {
         private const val URI_VACINA_ESPECIFICA = 201
         private const val URI_VACINACAO = 300
         private const val URI_VACINACAO_ESPECIFICA = 301
+        private const val URI_LOCAL = 400
+        private const val URI_LOCAL_ESPECIFICA = 401
+
 
         private const val MULTIPLOS_ITEMS = "vnd.android.cursor.dir"
         private const val UNICO_ITEM = "vnd.android.cursor.item"
@@ -191,7 +224,8 @@ class ContentProviderApp: ContentProvider() {
             uriMatcher.addURI(AUTHORITY, "$VACINA/#", URI_VACINA_ESPECIFICA)
             uriMatcher.addURI(AUTHORITY, VACINACAO, URI_VACINACAO)
             uriMatcher.addURI(AUTHORITY, "$VACINACAO/#", URI_VACINACAO_ESPECIFICA)
-
+            uriMatcher.addURI(AUTHORITY, LOCAL, URI_LOCAL)
+            uriMatcher.addURI(AUTHORITY, "$LOCAL/#", URI_LOCAL_ESPECIFICA)
 
 
             return uriMatcher
