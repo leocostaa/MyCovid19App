@@ -5,11 +5,11 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.provider.BaseColumns
 
-class TabelaVacinacao (db : SQLiteDatabase){
+class TabelaLocal(db: SQLiteDatabase) {
     private val db : SQLiteDatabase = db
 
     fun cria() {
-        db.execSQL("CREATE TABLE  $NOME_TABELA (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT, $CAMPO_DATAVAC TEXT NOT NULL,$CAMPO_ID_VACINA INTEGER NOT NULL,$CAMPO_ID_PACIENTE INTEGER NOT NULL, FOREIGN KEY ($CAMPO_ID_VACINA) REFERENCES ${TabelaVacina.NOME_TABELA}, FOREIGN KEY ($CAMPO_ID_PACIENTE) REFERENCES ${TabelaPaciente.NOME_TABELA})")
+        db.execSQL("CREATE TABLE  $NOME_TABELA (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT ,$CAMPO_CIDADE TEXT NOT NULL, $CAMPO_HOSPITAL TEXT NOT NULL, $CAMPO_SALA TEXT NOT NULL )")
 
     }
 
@@ -37,11 +37,11 @@ class TabelaVacinacao (db : SQLiteDatabase){
     }
 
     companion object{
-        const val NOME_TABELA = "Vacinacao"
-        const val CAMPO_DATAVAC = "DataVacinacao"
-        const val CAMPO_ID_VACINA = "id_vacina"
-        const val CAMPO_ID_PACIENTE = "id_paciente"
+        const val NOME_TABELA = "Local"
+        const val CAMPO_CIDADE = "cidade"
+        const val CAMPO_HOSPITAL = "hospital"
+        const val CAMPO_SALA = "sala"
 
-        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_DATAVAC, CAMPO_ID_VACINA, CAMPO_ID_PACIENTE)
+        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_CIDADE, CAMPO_HOSPITAL, CAMPO_SALA)
     }
 }

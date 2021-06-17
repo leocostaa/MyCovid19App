@@ -39,6 +39,12 @@ class ExampleInstrumentedTest {
         return id
 
     }
+    private fun insereLocal(tabela: TabelaLocal, local: Local): Long {
+        val id = tabela.insert(local.toContentValues())
+        assertNotEquals(-1, id)
+        return id
+
+    }
     /*private fun getPacienteBaseDados(tabela: TabelaPaciente, id: Long): Paciente {
         val cursor = tabela.query(
             TabelaPaciente.TODAS_COLUNAS,
@@ -99,7 +105,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaPaciente = TabelaPaciente(db)
 
-        val paciente = Paciente(nome = "Joana Sousa", DataNascimento = "22/12/1999", sexo = "F", infecao = 0)
+        val paciente = Paciente(nome = "Joana Sousa", DataNascimento = "22/12/1999", sexo = "F")
         paciente.id = inserePaciente(tabelaPaciente, paciente)
         db.close()
     }
@@ -109,7 +115,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaPaciente = TabelaPaciente(db)
 
-        val paciente = Paciente(nome = "Mariana Nunes", DataNascimento = "12/08/1990", sexo = "F", infecao = 0)
+        val paciente = Paciente(nome = "Mariana Nunes", DataNascimento = "12/08/1990", sexo = "F")
         paciente.id = inserePaciente(tabelaPaciente, paciente)
         paciente.nome = "Maria Nunes"
 
@@ -128,7 +134,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaPaciente = TabelaPaciente(db)
 
-        val paciente = Paciente(nome = "Pedro Marques", DataNascimento = "10/08/1989", sexo = "M", infecao = 1)
+        val paciente = Paciente(nome = "Pedro Marques", DataNascimento = "10/08/1989", sexo = "M")
         paciente.id = inserePaciente(tabelaPaciente, paciente)
 
         val registosEliminados = tabelaPaciente.delete(
@@ -144,7 +150,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaPaciente = TabelaPaciente(db)
 
-        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = "18/04/1979", sexo = "M", infecao = 0)
+        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = "18/04/1979", sexo = "M")
         paciente.id = inserePaciente(tabelaPaciente, paciente)
 
         val cursor = tabelaPaciente.query(
@@ -254,8 +260,12 @@ class ExampleInstrumentedTest {
         val vacina = Vacina(origem = "Moderna", quantidade = 200, validade = "15/01/2023")
         vacina.id= insereVacina(tabelaVacina,vacina)
 
+        val tabelaPaciente = TabelaPaciente(db)
+        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = "18/04/1979", sexo = "M")
+        paciente.id = inserePaciente(tabelaPaciente,paciente)
+
         val tabelaVacinacao = TabelaVacinacao(db)
-        val vacinacao = Vacinacao(data_vac = "22/08/2021 11:30:00",local_vac = "sala 2",idVacina = vacina.id )
+        val vacinacao = Vacinacao(data_vac = "22/08/2021 11:30:00",idVacina = vacina.id ,idPaciente = paciente.id)
         vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
 
 
@@ -268,11 +278,14 @@ class ExampleInstrumentedTest {
         val vacina = Vacina(origem = "Pfizer", quantidade = 200, validade = "12/02/2023")
         vacina.id= insereVacina(tabelaVacina,vacina)
 
+        val tabelaPaciente = TabelaPaciente(db)
+        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = "18/04/1979", sexo = "M")
+        paciente.id = inserePaciente(tabelaPaciente,paciente)
 
         val tabelaVacinacao = TabelaVacinacao(db)
-        val vacinacao = Vacinacao(data_vac = "22/09/2021 11:30:00",local_vac = "sala 2",idVacina = vacina.id)
+        val vacinacao = Vacinacao(data_vac = "22/09/2021 11:30:00",idVacina = vacina.id, idPaciente = paciente.id)
         vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
-        vacinacao.local_vac= "sala 3"
+        vacinacao.data_vac= "23/09/2021"
 
 
         val registosAlterados = tabelaVacinacao.update(
@@ -294,9 +307,13 @@ class ExampleInstrumentedTest {
         val vacina = Vacina(origem = "AstraZenca", quantidade = 200, validade = "12/02/2023")
         vacina.id= insereVacina(tabelaVacina,vacina)
 
+        val tabelaPaciente = TabelaPaciente(db)
+        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = "18/04/1979", sexo = "M")
+        paciente.id = inserePaciente(tabelaPaciente,paciente)
+
 
         val tabelaVacinacao = TabelaVacinacao(db)
-        val vacinacao = Vacinacao(data_vac = "23/09/2021 11:30:00",local_vac = "sala 2",idVacina = vacina.id)
+        val vacinacao = Vacinacao(data_vac = "23/09/2021 11:30:00",idVacina = vacina.id,idPaciente = paciente.id)
         vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
 
         val registosEliminados = tabelaVacinacao.delete(
@@ -316,9 +333,13 @@ class ExampleInstrumentedTest {
         val vacina = Vacina(origem = "Johnson", quantidade = 100, validade = "12/02/2023")
         vacina.id= insereVacina(tabelaVacina,vacina)
 
+        val tabelaPaciente = TabelaPaciente(db)
+        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = "18/04/1979", sexo = "M")
+        paciente.id = inserePaciente(tabelaPaciente,paciente)
+
 
         val tabelaVacinacao = TabelaVacinacao(db)
-        val vacinacao = Vacinacao(data_vac = "23/09/2021 11:30:00",local_vac = "sala 2",idVacina = vacina.id)
+        val vacinacao = Vacinacao(data_vac = "23/09/2021 11:30:00",idVacina = vacina.id,idPaciente = paciente.id)
         vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
 
         val cursor = tabelaVacinacao.query(
@@ -335,6 +356,85 @@ class ExampleInstrumentedTest {
 
         val vacinacaoBd = Vacinacao.fromCursor(cursor)
         assertEquals(vacinacao, vacinacaoBd)
+
+        db.close()
+    }
+
+    @Test
+    fun consegueInserirLocal() {
+        //linhas para ler a base de dados
+        val db = GetbdAppOpenHelper().writableDatabase
+        val tabelaLocal = TabelaLocal(db)
+
+        val local = Local(cidade = "Porto",hospital = "Hospital da Luz",sala = "3")
+        local.id = insereLocal(tabelaLocal, local)
+        db.close()
+    }
+
+    @Test
+    fun consegueAlterarLocal() {
+        val db = GetbdAppOpenHelper().writableDatabase
+        val tabelaLocal = TabelaLocal(db)
+
+        val local = Local(cidade = "Porto",hospital = "Hospital da Luz",sala = "3")
+        local.id = insereLocal(tabelaLocal, local)
+        local.sala = "4"
+
+        val registosAlterados = tabelaLocal.update(
+            local.toContentValues(),
+            "_id=?",
+            arrayOf(local.id.toString())
+        )
+
+        assertEquals(1, registosAlterados)
+        db.close()
+    }
+
+    @Test
+    fun consegueEliminarLocal(){
+        val db = GetbdAppOpenHelper().writableDatabase
+        val tabelaLocal = TabelaLocal(db)
+
+        val local = Local(cidade = "Porto",hospital = "Hospital da Luz",sala = "3")
+        local.id = insereLocal(tabelaLocal, local)
+
+        val registosEliminados = tabelaLocal.delete(
+            "${BaseColumns._ID}=?",
+            arrayOf(local.id.toString())
+        )
+        assertEquals(1,registosEliminados)
+        db.close()
+    }
+
+    @Test
+    fun consegueLerLocal() {
+        val db = GetbdAppOpenHelper().writableDatabase
+        val tabelaLocal = TabelaLocal(db)
+
+        val local = Local(cidade = "Porto",hospital = "Hospital da Luz",sala = "3")
+        local.id = insereLocal(tabelaLocal, local)
+
+        val cursor = tabelaLocal.query(
+            TabelaLocal.TODAS_COLUNAS,
+            "${BaseColumns._ID}=?",
+            arrayOf(local.id.toString()),
+            null,
+            null,
+            null
+
+        )
+        assertNotNull(cursor)
+        assert(cursor!!.moveToNext())
+
+        val localBd = Local.fromCursor(cursor)
+        assertEquals(local, localBd)
+
+        //cursor permite navegar pelos registos
+        //exemplo
+        //->
+        // 1 Drama
+        // 2 Ficção
+        // 3 Aventura
 
         db.close()
     }

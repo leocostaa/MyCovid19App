@@ -12,6 +12,7 @@ class BdAppOpenHelper (context : Context?)  :
             TabelaPaciente(db).cria()
             TabelaVacina(db).cria()
             TabelaVacinacao(db).cria()
+            TabelaLocal(db).cria()
 
         }
     }
