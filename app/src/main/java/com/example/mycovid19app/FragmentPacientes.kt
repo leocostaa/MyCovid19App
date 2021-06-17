@@ -10,6 +10,7 @@ import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mycovid19app.databinding.FragmentPacientesBinding
 
 /**
@@ -39,6 +40,8 @@ class FragmentPacientes : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
         LoaderManager.getInstance(this)
             .initLoader(ID_LOADER_MANAGER_PACIENTES, null, this)
 
+        val recyclerViewPacientes = view.findViewById<RecyclerView>(R.id.recyclerViewPacientes)
+        //recyclerViewPacientes.adapter
     }
 
     override fun onDestroyView() {
