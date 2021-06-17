@@ -10,6 +10,7 @@ import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mycovid19app.databinding.FragmentPacientesBinding
 
@@ -19,6 +20,7 @@ import com.example.mycovid19app.databinding.FragmentPacientesBinding
 class FragmentPacientes : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
 
     private var _binding: FragmentPacientesBinding? = null
+    private var adapterPacientes: AdapterPacientes? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -42,6 +44,9 @@ class FragmentPacientes : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
 
         val recyclerViewPacientes = view.findViewById<RecyclerView>(R.id.recyclerViewPacientes)
         //recyclerViewPacientes.adapter
+        adapterPacientes = AdapterPacientes()
+        recyclerViewPacientes.adapter = adapterPacientes
+        recyclerViewPacientes.layoutManager= LinearLayoutManager(requireContext())
     }
 
     override fun onDestroyView() {
@@ -60,11 +65,11 @@ class FragmentPacientes : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
     }
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
-        TODO("Not yet implemented")
+        adapterPacientes!!.cursor = data
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        TODO("Not yet implemented")
+        adapterPacientes!!.cursor = null
     }
     companion object{
         const val ID_LOADER_MANAGER_PACIENTES = 0
