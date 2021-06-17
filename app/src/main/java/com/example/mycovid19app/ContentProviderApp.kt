@@ -171,6 +171,7 @@ class ContentProviderApp: ContentProvider() {
         private const val VACINA = "vacina"
         private const val VACINACAO = "vacinacao"
 
+
         private const val URI_PACIENTE = 100
         private const val URI_PACIENTE_ESPECIFICO = 101
         private const val URI_VACINA = 200
@@ -190,6 +191,7 @@ class ContentProviderApp: ContentProvider() {
             uriMatcher.addURI(AUTHORITY, "$VACINA/#", URI_VACINA_ESPECIFICA)
             uriMatcher.addURI(AUTHORITY, VACINACAO, URI_VACINACAO)
             uriMatcher.addURI(AUTHORITY, "$VACINACAO/#", URI_VACINACAO_ESPECIFICA)
+
 
 
             return uriMatcher

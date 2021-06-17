@@ -264,8 +264,12 @@ class ExampleInstrumentedTest {
         val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = "18/04/1979", sexo = "M")
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
+        val tabelaLocal = TabelaLocal(db)
+        val local = Local(cidade = "Guimarães",hospital = "Hospital da Senhora da Oliveira", sala = "5")
+        local.id = insereLocal(tabelaLocal,local)
+
         val tabelaVacinacao = TabelaVacinacao(db)
-        val vacinacao = Vacinacao(data_vac = "22/08/2021 11:30:00",idVacina = vacina.id ,idPaciente = paciente.id)
+        val vacinacao = Vacinacao(data_vac = "22/08/2021 11:30:00",idVacina = vacina.id ,idPaciente = paciente.id,idLocal = local.id)
         vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
 
 
@@ -282,8 +286,12 @@ class ExampleInstrumentedTest {
         val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = "18/04/1979", sexo = "M")
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
+        val tabelaLocal = TabelaLocal(db)
+        val local = Local(cidade = "Famalicão",hospital = "Unidade Hospitalar de Famalicão ", sala = "2")
+        local.id = insereLocal(tabelaLocal,local)
+
         val tabelaVacinacao = TabelaVacinacao(db)
-        val vacinacao = Vacinacao(data_vac = "22/09/2021 11:30:00",idVacina = vacina.id, idPaciente = paciente.id)
+        val vacinacao = Vacinacao(data_vac = "22/09/2021 11:30:00",idVacina = vacina.id, idPaciente = paciente.id, idLocal = local.id)
         vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
         vacinacao.data_vac= "23/09/2021"
 
@@ -311,9 +319,13 @@ class ExampleInstrumentedTest {
         val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = "18/04/1979", sexo = "M")
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
+        val tabelaLocal = TabelaLocal(db)
+        val local = Local(cidade = "Guimarães",hospital = "Hospital da Senhora da Oliveira", sala = "5")
+        local.id = insereLocal(tabelaLocal,local)
+
 
         val tabelaVacinacao = TabelaVacinacao(db)
-        val vacinacao = Vacinacao(data_vac = "23/09/2021 11:30:00",idVacina = vacina.id,idPaciente = paciente.id)
+        val vacinacao = Vacinacao(data_vac = "23/09/2021 11:30:00",idVacina = vacina.id,idPaciente = paciente.id, idLocal = local.id)
         vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
 
         val registosEliminados = tabelaVacinacao.delete(
@@ -337,9 +349,13 @@ class ExampleInstrumentedTest {
         val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = "18/04/1979", sexo = "M")
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
+        val tabelaLocal = TabelaLocal(db)
+        val local = Local(cidade = "Guimarães",hospital = "Hospital da Senhora da Oliveira", sala = "5")
+        local.id = insereLocal(tabelaLocal,local)
+
 
         val tabelaVacinacao = TabelaVacinacao(db)
-        val vacinacao = Vacinacao(data_vac = "23/09/2021 11:30:00",idVacina = vacina.id,idPaciente = paciente.id)
+        val vacinacao = Vacinacao(data_vac = "23/09/2021 11:30:00",idVacina = vacina.id,idPaciente = paciente.id, idLocal = local.id)
         vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
 
         val cursor = tabelaVacinacao.query(
@@ -366,7 +382,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaLocal = TabelaLocal(db)
 
-        val local = Local(cidade = "Porto",hospital = "Hospital da Luz",sala = "3")
+        val local = Local(cidade = "Porto",hospital = "Hospital da Luz 4",sala = "3")
         local.id = insereLocal(tabelaLocal, local)
         db.close()
     }
@@ -376,7 +392,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaLocal = TabelaLocal(db)
 
-        val local = Local(cidade = "Porto",hospital = "Hospital da Luz",sala = "3")
+        val local = Local(cidade = "Porto",hospital = "Hospital da Luz 3",sala = "3")
         local.id = insereLocal(tabelaLocal, local)
         local.sala = "4"
 
@@ -411,7 +427,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaLocal = TabelaLocal(db)
 
-        val local = Local(cidade = "Porto",hospital = "Hospital da Luz",sala = "3")
+        val local = Local(cidade = "Porto",hospital = "Hospital da Luz 2",sala = "3")
         local.id = insereLocal(tabelaLocal, local)
 
         val cursor = tabelaLocal.query(
