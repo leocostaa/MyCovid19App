@@ -211,6 +211,14 @@ class ContentProviderApp: ContentProvider() {
         private const val URI_LOCAL = 400
         private const val URI_LOCAL_ESPECIFICA = 401
 
+        private val ENDERECO_BASE = Uri.parse("content://$AUTHORITY")
+        public val ENDERECO_PACIENTE = Uri.withAppendedPath(ENDERECO_BASE, PACIENTE)
+        public val ENDERECO_VACINA = Uri.withAppendedPath(ENDERECO_BASE, VACINA)
+        public val ENDERECO_VACINACAO = Uri.withAppendedPath(ENDERECO_BASE, VACINACAO)
+        public val ENDERECO_LOCAL = Uri.withAppendedPath(ENDERECO_BASE, LOCAL)
+
+
+
 
         private const val MULTIPLOS_ITEMS = "vnd.android.cursor.dir"
         private const val UNICO_ITEM = "vnd.android.cursor.item"
