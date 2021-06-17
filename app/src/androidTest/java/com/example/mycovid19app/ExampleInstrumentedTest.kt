@@ -108,7 +108,7 @@ class ExampleInstrumentedTest {
         val tabelaPaciente = TabelaPaciente(db)
 
 
-        val paciente = Paciente(nome = "Joana Sousa", DataNascimento = Data(1990,8,12), sexo = "F")
+        val paciente = Paciente(nome = "Joana Sousa", DataNascimento = Data(1990,8,12), sexo = "Feminino")
         paciente.id = inserePaciente(tabelaPaciente, paciente)
         db.close()
     }
@@ -118,7 +118,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaPaciente = TabelaPaciente(db)
 
-        val paciente = Paciente(nome = "Mariana Nunes", DataNascimento = Data(1990,8,12), sexo = "F")
+        val paciente = Paciente(nome = "Mariana Nunes", DataNascimento = Data(1990,8,12), sexo = "Feminino")
         paciente.id = inserePaciente(tabelaPaciente, paciente)
         paciente.nome = "Maria Nunes"
 
@@ -137,7 +137,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaPaciente = TabelaPaciente(db)
 
-        val paciente = Paciente(nome = "Pedro Marques", DataNascimento = Data(1990,8,12), sexo = "M")
+        val paciente = Paciente(nome = "Pedro Marques", DataNascimento = Data(1990,8,12), sexo = "Masculino")
         paciente.id = inserePaciente(tabelaPaciente, paciente)
 
         val registosEliminados = tabelaPaciente.delete(
@@ -153,7 +153,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaPaciente = TabelaPaciente(db)
 
-        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = Data(1990,8,12), sexo = "M")
+        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = Data(1990,8,12), sexo = "Masculino")
         paciente.id = inserePaciente(tabelaPaciente, paciente)
 
         val cursor = tabelaPaciente.query(
@@ -264,7 +264,7 @@ class ExampleInstrumentedTest {
         vacina.id= insereVacina(tabelaVacina,vacina)
 
         val tabelaPaciente = TabelaPaciente(db)
-        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = Data(1979,4,18), sexo = "M")
+        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = Data(1979,4,18), sexo = "Masculino")
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
         val tabelaLocal = TabelaLocal(db)
@@ -286,7 +286,7 @@ class ExampleInstrumentedTest {
         vacina.id= insereVacina(tabelaVacina,vacina)
 
         val tabelaPaciente = TabelaPaciente(db)
-        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = Data(1990,8,12), sexo = "M")
+        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = Data(1990,8,12), sexo = "Masculino")
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
         val tabelaLocal = TabelaLocal(db)
@@ -319,7 +319,7 @@ class ExampleInstrumentedTest {
         vacina.id= insereVacina(tabelaVacina,vacina)
 
         val tabelaPaciente = TabelaPaciente(db)
-        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = Data(1990,8,12), sexo = "M")
+        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = Data(1990,8,12), sexo = "Masculino")
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
         val tabelaLocal = TabelaLocal(db)
@@ -349,7 +349,7 @@ class ExampleInstrumentedTest {
         vacina.id= insereVacina(tabelaVacina,vacina)
 
         val tabelaPaciente = TabelaPaciente(db)
-        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = Data(1990,8,12), sexo = "M")
+        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = Data(1990,8,12), sexo = "Masculino")
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
         val tabelaLocal = TabelaLocal(db)

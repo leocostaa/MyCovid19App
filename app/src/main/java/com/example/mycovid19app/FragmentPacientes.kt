@@ -43,8 +43,8 @@ class FragmentPacientes : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
             .initLoader(ID_LOADER_MANAGER_PACIENTES, null, this)
 
         val recyclerViewPacientes = view.findViewById<RecyclerView>(R.id.recyclerViewPacientes)
-        //recyclerViewPacientes.adapter
-        adapterPacientes = AdapterPacientes()
+
+        adapterPacientes = AdapterPacientes(this)
         recyclerViewPacientes.adapter = adapterPacientes
         recyclerViewPacientes.layoutManager= LinearLayoutManager(requireContext())
     }
