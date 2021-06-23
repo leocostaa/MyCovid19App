@@ -15,4 +15,8 @@
     <string name="nome_paciente">Nome</string>
     <string name="data_de_nascimento_paciente">Data de Nascimento</string>
     <string name="sexo_paciente">Sexo</string>
+    <string name="data_da_vacina_o">Data da Vacinação :</string>
+    <string name="laborat_rio_de_origem">Laboratório de origem :</string>
+    <string name="nome_do_paciente">Nome do Paciente :</string>
+    <string name="local_de_administra_o">Local de Administração :</string>
 </resources>

@@ -268,7 +268,7 @@ class ExampleInstrumentedTest {
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
         val tabelaLocal = TabelaLocal(db)
-        val local = Local(cidade = "Guimarães",hospital = "Hospital da Senhora da Oliveira", sala = "ala covid 5")
+        val local = Local(cidade = "Guimarães",localadm = "Hospital da Senhora da Oliveira", sala = "ala covid 5")
         local.id = insereLocal(tabelaLocal,local)
 
         val tabelaVacinacao = TabelaVacinacao(db)
@@ -290,7 +290,7 @@ class ExampleInstrumentedTest {
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
         val tabelaLocal = TabelaLocal(db)
-        val local = Local(cidade = "Famalicão",hospital = "Unidade Hospitalar de Famalicão ", sala = "ala covid 2")
+        val local = Local(cidade = "Famalicão",localadm = "Unidade Hospitalar de Famalicão ", sala = "ala covid 2")
         local.id = insereLocal(tabelaLocal,local)
 
         val tabelaVacinacao = TabelaVacinacao(db)
@@ -323,7 +323,7 @@ class ExampleInstrumentedTest {
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
         val tabelaLocal = TabelaLocal(db)
-        val local = Local(cidade = "Guimarães",hospital = "Hospital da Senhora da Oliveira", sala = "ala covid 5")
+        val local = Local(cidade = "Guimarães",localadm = "Hospital da Senhora da Oliveira", sala = "ala covid 5")
         local.id = insereLocal(tabelaLocal,local)
 
 
@@ -353,7 +353,7 @@ class ExampleInstrumentedTest {
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
         val tabelaLocal = TabelaLocal(db)
-        val local = Local(cidade = "Guimarães",hospital = "Hospital da Senhora da Oliveira", sala = "ala covid 5")
+        val local = Local(cidade = "Guimarães",localadm = "Hospital da Senhora da Oliveira", sala = "ala covid 5")
         local.id = insereLocal(tabelaLocal,local)
 
 
@@ -385,7 +385,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaLocal = TabelaLocal(db)
 
-        val local = Local(cidade = "Porto",hospital = "Hospital da Luz 4",sala = "3")
+        val local = Local(cidade = "Porto",localadm = "Hospital da Luz 4",sala = "3")
         local.id = insereLocal(tabelaLocal, local)
         db.close()
     }
@@ -395,7 +395,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaLocal = TabelaLocal(db)
 
-        val local = Local(cidade = "Porto",hospital = "Hospital da Luz 3",sala = "3")
+        val local = Local(cidade = "Porto",localadm = "Hospital da Luz 3",sala = "3")
         local.id = insereLocal(tabelaLocal, local)
         local.sala = "4"
 
@@ -414,7 +414,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaLocal = TabelaLocal(db)
 
-        val local = Local(cidade = "Porto",hospital = "Hospital da Luz",sala = "3")
+        val local = Local(cidade = "Porto",localadm = "Hospital da Luz",sala = "3")
         local.id = insereLocal(tabelaLocal, local)
 
         val registosEliminados = tabelaLocal.delete(
@@ -430,7 +430,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaLocal = TabelaLocal(db)
 
-        val local = Local(cidade = "Porto",hospital = "Hospital da Luz 2",sala = "3")
+        val local = Local(cidade = "Porto",localadm = "Hospital da Luz 2",sala = "3")
         local.id = insereLocal(tabelaLocal, local)
 
         val cursor = tabelaLocal.query(

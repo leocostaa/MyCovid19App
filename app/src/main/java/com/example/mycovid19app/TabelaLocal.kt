@@ -9,7 +9,7 @@ class TabelaLocal(db: SQLiteDatabase) {
     private val db : SQLiteDatabase = db
 
     fun cria() {
-        db.execSQL("CREATE TABLE  $NOME_TABELA (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT ,$CAMPO_CIDADE TEXT NOT NULL, $CAMPO_HOSPITAL TEXT NOT NULL, $CAMPO_SALA TEXT NOT NULL )")
+        db.execSQL("CREATE TABLE  $NOME_TABELA (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT ,$CAMPO_CIDADE TEXT NOT NULL, $CAMPO_LOCALADM TEXT NOT NULL, $CAMPO_SALA TEXT NOT NULL )")
 
     }
 
@@ -39,9 +39,9 @@ class TabelaLocal(db: SQLiteDatabase) {
     companion object{
         const val NOME_TABELA = "Local"
         const val CAMPO_CIDADE = "cidade"
-        const val CAMPO_HOSPITAL = "hospital"
+        const val CAMPO_LOCALADM = "local_administracao"
         const val CAMPO_SALA = "sala"
 
-        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_CIDADE, CAMPO_HOSPITAL, CAMPO_SALA)
+        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_CIDADE, CAMPO_LOCALADM, CAMPO_SALA)
     }
 }
