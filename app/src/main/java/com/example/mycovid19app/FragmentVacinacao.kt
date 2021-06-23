@@ -21,6 +21,7 @@ class FragmentVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     private var _binding: FragmentVacinacaoBinding? = null
     private var adapterVacinacao : AdapterVacinacao? = null
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -63,11 +64,11 @@ class FragmentVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
-        TODO("Not yet implemented")
+        adapterVacinacao!!.cursor = data
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-
+        adapterVacinacao!!.cursor = null
     }
 
     companion object{

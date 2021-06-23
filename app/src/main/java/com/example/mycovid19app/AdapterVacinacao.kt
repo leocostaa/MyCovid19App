@@ -1,10 +1,11 @@
 package com.example.mycovid19app
 
+import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class AdapterVacinacao : RecyclerView.Adapter<AdapterVacinacao.ViewHolderVacinacao>(){
+class AdapterVacinacao(var cursor: Cursor? = null) : RecyclerView.Adapter<AdapterVacinacao.ViewHolderVacinacao>(){
 
     class ViewHolderVacinacao(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
