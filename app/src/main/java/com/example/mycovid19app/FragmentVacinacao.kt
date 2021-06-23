@@ -10,6 +10,7 @@ import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mycovid19app.databinding.FragmentVacinacaoBinding
 
@@ -19,7 +20,7 @@ import com.example.mycovid19app.databinding.FragmentVacinacaoBinding
 class FragmentVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     private var _binding: FragmentVacinacaoBinding? = null
-
+    private var adapterVacinacao : AdapterVacinacao? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -38,7 +39,9 @@ class FragmentVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         super.onViewCreated(view, savedInstanceState)
 
         val recyclerViewVacinacao = view.findViewById<RecyclerView>(R.id.recyclerViewVacinacao)
-        //recyclerViewLivros.adapter
+        adapterVacinacao = AdapterVacinacao()
+        recyclerViewVacinacao.adapter = adapterVacinacao
+        recyclerViewVacinacao.layoutManager = LinearLayoutManager(requireContext())
 
         LoaderManager.getInstance(this)
             .initLoader(ID_LOADER_MANAGER_VACINACAO, null, this)
