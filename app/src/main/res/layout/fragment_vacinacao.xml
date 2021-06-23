@@ -7,7 +7,7 @@
     tools:context=".FragmentVacinacao">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecyclerViewVacinacao"
+        android:id="@+id/recyclerViewVacinacao"
         android:layout_width="409dp"
         android:layout_height="729dp"
         android:padding="8dp"

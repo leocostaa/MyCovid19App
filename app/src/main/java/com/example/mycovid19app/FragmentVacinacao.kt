@@ -10,6 +10,7 @@ import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mycovid19app.databinding.FragmentVacinacaoBinding
 
 /**
@@ -35,6 +36,9 @@ class FragmentVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val recyclerViewVacinacao = view.findViewById<RecyclerView>(R.id.recyclerViewVacinacao)
+        //recyclerViewLivros.adapter
 
         LoaderManager.getInstance(this)
             .initLoader(ID_LOADER_MANAGER_VACINACAO, null, this)
