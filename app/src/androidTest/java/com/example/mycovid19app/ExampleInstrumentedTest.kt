@@ -89,7 +89,7 @@ class ExampleInstrumentedTest {
 
     @Before
     fun apagarBaseDados(){
-     // getAppContext().deleteDatabase((BdAppOpenHelper.NOME_BASE_DADOS))
+      //getAppContext().deleteDatabase((BdAppOpenHelper.NOME_BASE_DADOS))
 
     }
 
@@ -268,7 +268,7 @@ class ExampleInstrumentedTest {
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
         val tabelaLocal = TabelaLocal(db)
-        val local = Local(cidade = "Guimarães",hospital = "Hospital da Senhora da Oliveira", sala = "5")
+        val local = Local(cidade = "Guimarães",hospital = "Hospital da Senhora da Oliveira", sala = "ala covid 5")
         local.id = insereLocal(tabelaLocal,local)
 
         val tabelaVacinacao = TabelaVacinacao(db)
@@ -290,7 +290,7 @@ class ExampleInstrumentedTest {
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
         val tabelaLocal = TabelaLocal(db)
-        val local = Local(cidade = "Famalicão",hospital = "Unidade Hospitalar de Famalicão ", sala = "2")
+        val local = Local(cidade = "Famalicão",hospital = "Unidade Hospitalar de Famalicão ", sala = "ala covid 2")
         local.id = insereLocal(tabelaLocal,local)
 
         val tabelaVacinacao = TabelaVacinacao(db)
@@ -323,7 +323,7 @@ class ExampleInstrumentedTest {
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
         val tabelaLocal = TabelaLocal(db)
-        val local = Local(cidade = "Guimarães",hospital = "Hospital da Senhora da Oliveira", sala = "5")
+        val local = Local(cidade = "Guimarães",hospital = "Hospital da Senhora da Oliveira", sala = "ala covid 5")
         local.id = insereLocal(tabelaLocal,local)
 
 
@@ -353,7 +353,7 @@ class ExampleInstrumentedTest {
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
         val tabelaLocal = TabelaLocal(db)
-        val local = Local(cidade = "Guimarães",hospital = "Hospital da Senhora da Oliveira", sala = "5")
+        val local = Local(cidade = "Guimarães",hospital = "Hospital da Senhora da Oliveira", sala = "ala covid 5")
         local.id = insereLocal(tabelaLocal,local)
 
 
