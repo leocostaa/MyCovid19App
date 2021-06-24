@@ -35,7 +35,7 @@ class FragmentLocal : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         super.onViewCreated(view, savedInstanceState)
 
         val recyclerViewLocal = view.findViewById<RecyclerView>(R.id.recyclerViewLocal)
-        adapterLocais = AdapterLocais()
+        adapterLocais = AdapterLocais(this)
         recyclerViewLocal.adapter = adapterLocais
         recyclerViewLocal.layoutManager = LinearLayoutManager(requireContext())
 
