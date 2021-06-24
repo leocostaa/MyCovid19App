@@ -46,6 +46,8 @@ class FragmentVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
         LoaderManager.getInstance(this)
             .initLoader(ID_LOADER_MANAGER_VACINACAO, null, this)
+
+
     }
 
     override fun onDestroyView() {

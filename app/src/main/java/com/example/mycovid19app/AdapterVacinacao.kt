@@ -14,7 +14,7 @@ class AdapterVacinacao(val fragment: FragmentVacinacao) : RecyclerView.Adapter<A
             field = value
             notifyDataSetChanged()
         }
-    
+
     class ViewHolderVacinacao(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val textViewDataVac = itemView.findViewById<TextView>(R.id.textViewDataVac)
 

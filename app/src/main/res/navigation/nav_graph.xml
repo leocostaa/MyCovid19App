@@ -3,26 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/FragmentVacinacao">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/FragmentPaciente"
         android:name="com.example.mycovid19app.FragmentPacientes"
-        android:label="@string/first_fragment_label"
+        android:label="Fragmento Paciente"
         tools:layout="@layout/fragment_pacientes">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_FragmentPacietes_to_FragmentVacinacao"
+            app:destination="@id/FragmentVacinacao" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/FragmentVacinacao"
         android:name="com.example.mycovid19app.FragmentVacinacao"
-        android:label="@string/second_fragment_label"
+        android:label="Fragmento Vacinacao"
         tools:layout="@layout/fragment_vacinacao">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_FragmentVacinacao_to_FragmentPaciente"
+            app:destination="@id/FragmentPaciente" />
+    </fragment>
+    <fragment
+        android:id="@+id/FragmentLocal"
+        android:name="com.example.mycovid19app.FragmentLocal"
+        android:label="Fragmento Local"
+        tools:layout="@layout/fragment_local">
+
+        <action
+            android:id="@+id/action_FragmentPacietes_to_FragmentLocal"
+            app:destination="@id/FragmentLocal" />
     </fragment>
 </navigation>

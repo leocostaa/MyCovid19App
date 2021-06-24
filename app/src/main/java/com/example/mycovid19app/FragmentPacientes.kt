@@ -47,6 +47,8 @@ class FragmentPacientes : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
         adapterPacientes = AdapterPacientes(this)
         recyclerViewPacientes.adapter = adapterPacientes
         recyclerViewPacientes.layoutManager= LinearLayoutManager(requireContext())
+
+
     }
 
     override fun onDestroyView() {
