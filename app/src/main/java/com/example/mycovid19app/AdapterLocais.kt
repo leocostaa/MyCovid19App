@@ -6,8 +6,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class AdapterLocais (val fragment: FragmentLocal,var cursor: Cursor? = null): RecyclerView.Adapter<AdapterLocais.ViewHolderLocal>() {
-    
+class AdapterLocais (val fragment: FragmentLocal): RecyclerView.Adapter<AdapterLocais.ViewHolderLocal>() {
+    public var cursor: Cursor? = null
+        get() = field
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
 
     class ViewHolderLocal(itemView: View) : RecyclerView.ViewHolder(itemView) {
