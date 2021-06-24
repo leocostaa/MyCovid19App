@@ -21,4 +21,7 @@
     <string name="local_de_administra_o">Local de Administração :</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cidade">Cidade</string>
+    <string name="local_de_administra_o_Table">Local de Administração</string>
+    <string name="sala_da_vacina_o">Sala da vacinação</string>
 </resources>
