@@ -1,14 +1,18 @@
 package com.example.mycovid19app
 
+import android.database.Cursor
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.loader.app.LoaderManager
+import androidx.loader.content.CursorLoader
+import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import com.example.mycovid19app.databinding.FragmentLocalBinding
 
-class FragmentLocal : Fragment() {
+class FragmentLocal : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     private var _binding: FragmentLocalBinding? = null
 
@@ -27,11 +31,36 @@ class FragmentLocal : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        LoaderManager.getInstance(this)
+            .initLoader(ID_LOADER_MANAGER_LOCAIS, null, this)
+
 
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
+        return CursorLoader(
+            requireContext(),
+            ContentProviderApp.ENDERECO_LOCAL,
+            TabelaLocal.TODAS_COLUNAS,
+            null, null,
+            TabelaLocal.CAMPO_CIDADE
+        )
+    }
+
+    override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onLoaderReset(loader: Loader<Cursor>) {
+        TODO("Not yet implemented")
+    }
+
+    companion object {
+        const val ID_LOADER_MANAGER_LOCAIS = 0
     }
 }

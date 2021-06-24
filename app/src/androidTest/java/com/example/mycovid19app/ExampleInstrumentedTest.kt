@@ -187,7 +187,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaVacina = TabelaVacina(db)
 
-        val vacina = Vacina(origem = "Pfizer", quantidade = 100, validade = "22/01/2022")
+        val vacina = Vacina(origem = "Pfizer", quantidade = 100, validade = Data(2023,8,13))
         vacina.id = insereVacina(tabelaVacina, vacina)
         db.close()
     }
@@ -197,7 +197,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaVacina = TabelaVacina(db)
 
-        val vacina = Vacina(origem = "Johnson", quantidade = 100, validade = "22/01/2022")
+        val vacina = Vacina(origem = "Johnson", quantidade = 100, validade = Data(2022,3,19))
         vacina.id = insereVacina(tabelaVacina, vacina)
         vacina.quantidade = 99
 
@@ -216,7 +216,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaVacina = TabelaVacina(db)
 
-        val vacina = Vacina(origem = "AstraZenca", quantidade = 200, validade = "15/01/2023")
+        val vacina = Vacina(origem = "AstraZenca", quantidade = 200, validade = Data(2024,1,6))
         vacina.id = insereVacina(tabelaVacina, vacina)
 
         val registosEliminados = tabelaVacina.delete(
@@ -232,7 +232,7 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaVacina = TabelaVacina(db)
 
-        val vacina = Vacina(origem = "Moderna", quantidade = 200, validade = "15/01/2023")
+        val vacina = Vacina(origem = "Moderna", quantidade = 200, validade = Data(2023,6,23))
         vacina.id = insereVacina(tabelaVacina, vacina)
 
         val cursor = tabelaVacina.query(
@@ -260,11 +260,11 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
 
         val tabelaVacina = TabelaVacina(db)
-        val vacina = Vacina(origem = "Moderna", quantidade = 200, validade = "15/01/2023")
+        val vacina = Vacina(origem = "Moderna", quantidade = 200, validade = Data(2023,3,23))
         vacina.id= insereVacina(tabelaVacina,vacina)
 
         val tabelaPaciente = TabelaPaciente(db)
-        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = Data(1979,4,18), sexo = "Masculino")
+        val paciente = Paciente(nome = "Ester Maria", DataNascimento = Data(1979,4,18), sexo = "Masculino")
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
         val tabelaLocal = TabelaLocal(db)
@@ -282,11 +282,11 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
 
         val tabelaVacina = TabelaVacina(db)
-        val vacina = Vacina(origem = "Pfizer", quantidade = 200, validade = "12/02/2023")
+        val vacina = Vacina(origem = "Pfizer", quantidade = 200, validade = Data(2023,2,8))
         vacina.id= insereVacina(tabelaVacina,vacina)
 
         val tabelaPaciente = TabelaPaciente(db)
-        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = Data(1990,8,12), sexo = "Masculino")
+        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = Data(1960,8,12), sexo = "Masculino")
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
         val tabelaLocal = TabelaLocal(db)
@@ -294,14 +294,14 @@ class ExampleInstrumentedTest {
         local.id = insereLocal(tabelaLocal,local)
 
         val tabelaVacinacao = TabelaVacinacao(db)
-        val vacinacao = Vacinacao(data_vac = Data(2021,9,23),idVacina = vacina.id, idPaciente = paciente.id, idLocal = local.id)
+        val vacinacao = Vacinacao(data_vac = Data(2021,10,23),idVacina = vacina.id, idPaciente = paciente.id, idLocal = local.id)
         vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
-        vacinacao.data_vac= Data(2021,9,24)
+        vacinacao.data_vac= Data(2021,10,24)
 
 
         val registosAlterados = tabelaVacinacao.update(
             vacinacao.toContentValues(),
-            "${BaseColumns._ID}=?",
+            "_id=?",
             arrayOf(vacinacao.id.toString())
         )
 
@@ -315,11 +315,11 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
 
         val tabelaVacina = TabelaVacina(db)
-        val vacina = Vacina(origem = "AstraZenca", quantidade = 200, validade = "12/02/2023")
+        val vacina = Vacina(origem = "AstraZenca", quantidade = 200, validade = Data(2023,4,13))
         vacina.id= insereVacina(tabelaVacina,vacina)
 
         val tabelaPaciente = TabelaPaciente(db)
-        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = Data(1990,8,12), sexo = "Masculino")
+        val paciente = Paciente(nome = "Afonso Paiva", DataNascimento = Data(1965,4,12), sexo = "Masculino")
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
         val tabelaLocal = TabelaLocal(db)
@@ -345,15 +345,15 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
 
         val tabelaVacina = TabelaVacina(db)
-        val vacina = Vacina(origem = "Johnson", quantidade = 100, validade = "12/02/2023")
+        val vacina = Vacina(origem = "Johnson", quantidade = 100, validade = Data(2023,5,13))
         vacina.id= insereVacina(tabelaVacina,vacina)
 
         val tabelaPaciente = TabelaPaciente(db)
-        val paciente = Paciente(nome = "Fernando Mendes", DataNascimento = Data(1990,8,12), sexo = "Masculino")
+        val paciente = Paciente(nome = "Benedita Castro", DataNascimento = Data(1969,8,16), sexo = "Masculino")
         paciente.id = inserePaciente(tabelaPaciente,paciente)
 
         val tabelaLocal = TabelaLocal(db)
-        val local = Local(cidade = "Guimarães",localadm = "Hospital da Senhora da Oliveira", sala = "ala covid 5")
+        val local = Local(cidade = "Felgueiras",localadm = "Hospital da Senhora da Oliveira", sala = "ala covid 4")
         local.id = insereLocal(tabelaLocal,local)
 
 

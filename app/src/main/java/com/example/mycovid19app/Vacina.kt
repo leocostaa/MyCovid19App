@@ -3,14 +3,15 @@ package com.example.mycovid19app
 import android.content.ContentValues
 import android.database.Cursor
 import android.provider.BaseColumns
+import java.util.*
 
-data class Vacina(var id: Long= -1,var origem: String, var quantidade: Int, var validade: String) {
+data class Vacina(var id: Long= -1,var origem: String, var quantidade: Int, var validade: Date) {
 
     fun toContentValues(): ContentValues {
         val valores = ContentValues().apply {
             put(TabelaVacina.CAMPO_ORIGEM,origem)
             put(TabelaVacina.CAMPO_QUANTIDADE,quantidade)
-            put(TabelaVacina.CAMPO_VALIDADE,validade)
+            put(TabelaVacina.CAMPO_VALIDADE,validade.time)
 
         }
         return valores
@@ -26,7 +27,7 @@ data class Vacina(var id: Long= -1,var origem: String, var quantidade: Int, var 
             val id = cursor.getLong(colunaId)
             val origem = cursor.getString(colunaOrigem)
             val quantidade = cursor.getInt(colunaQuantidade)
-            val validade = cursor.getString(colunaValidade)
+            val validade = Date(cursor.getLong(colunaValidade))
 
 
             return Vacina(id, origem, quantidade, validade)
