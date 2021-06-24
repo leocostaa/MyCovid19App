@@ -1,10 +1,11 @@
 package com.example.mycovid19app
 
+import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class AdapterLocais : RecyclerView.Adapter<AdapterLocais.ViewHolderLivro>() {
+class AdapterLocais (var cursor: Cursor? = null): RecyclerView.Adapter<AdapterLocais.ViewHolderLivro>() {
     class ViewHolderLivro(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     }

@@ -35,7 +35,7 @@ class FragmentLocal : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         super.onViewCreated(view, savedInstanceState)
 
         val recyclerViewLocal = view.findViewById<RecyclerView>(R.id.recyclerViewLocal)
-        adapterLocais = AdapterLocais() 
+        adapterLocais = AdapterLocais()
         recyclerViewLocal.adapter = adapterLocais
         recyclerViewLocal.layoutManager = LinearLayoutManager(requireContext())
 
@@ -62,11 +62,11 @@ class FragmentLocal : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
-        TODO("Not yet implemented")
+        adapterLocais!!.cursor = data
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        TODO("Not yet implemented")
+        adapterLocais!!.cursor = null
     }
 
     companion object {
