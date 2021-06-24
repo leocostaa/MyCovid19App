@@ -10,6 +10,7 @@ import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mycovid19app.databinding.FragmentLocalBinding
 
 class FragmentLocal : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
@@ -30,6 +31,9 @@ class FragmentLocal : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val recyclerViewLocais = view.findViewById<RecyclerView>(R.id.recyclerViewLocal)
+        //recyclerViewLivros.adapter
 
         LoaderManager.getInstance(this)
             .initLoader(ID_LOADER_MANAGER_LOCAIS, null, this)

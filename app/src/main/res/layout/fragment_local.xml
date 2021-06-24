@@ -7,6 +7,7 @@
     tools:context=".FragmentLocal">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewLocal"
         android:layout_width="409dp"
         android:layout_height="729dp"
         android:padding="8dp"
