@@ -45,7 +45,7 @@ class FragmentVacina : Fragment(),LoaderManager.LoaderCallbacks<Cursor>{
         recyclerViewVacinas.layoutManager = LinearLayoutManager(requireContext())
 
 
- 
+
         LoaderManager.getInstance(this)
             .initLoader(ID_LOADER_MANAGER_VACINAS, null, this)
 //            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
@@ -67,11 +67,11 @@ class FragmentVacina : Fragment(),LoaderManager.LoaderCallbacks<Cursor>{
     }
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
-        TODO("Not yet implemented")
+        adapterVacinas!!.cursor = data
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        TODO("Not yet implemented")
+        adapterVacinas!!.cursor = null
     }
 
     companion object{
