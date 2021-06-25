@@ -24,4 +24,6 @@
     <string name="cidade">Cidade</string>
     <string name="local_de_administra_o_Table">Local de Administração</string>
     <string name="sala_da_vacina_o">Sala da vacinação</string>
+    <string name="v_lido_at">Válido até</string>
+    <string name="quantidade">Quantidade :</string>
 </resources>
