@@ -35,4 +35,9 @@
             android:id="@+id/action_FragmentPacietes_to_FragmentLocal"
             app:destination="@id/FragmentLocal" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentVacina"
+        android:name="com.example.mycovid19app.FragmentVacina"
+        android:label="fragment_vacina"
+        tools:layout="@layout/fragment_vacina" />
 </navigation>
