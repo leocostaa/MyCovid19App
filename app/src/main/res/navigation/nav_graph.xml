@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FragmentLocal">
+    app:startDestination="@id/fragmentVacina">
 
     <fragment
         android:id="@+id/FragmentPaciente"
@@ -38,6 +38,6 @@
     <fragment
         android:id="@+id/fragmentVacina"
         android:name="com.example.mycovid19app.FragmentVacina"
-        android:label="fragment_vacina"
+        android:label="Vacinas"
         tools:layout="@layout/fragment_vacina" />
 </navigation>
