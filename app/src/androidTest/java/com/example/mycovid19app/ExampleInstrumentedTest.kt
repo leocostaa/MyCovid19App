@@ -47,10 +47,10 @@ class ExampleInstrumentedTest {
         return id
 
     }
-    /*private fun getPacienteBaseDados(tabela: TabelaPaciente, id: Long): Paciente {
+    private fun getPacienteBaseDados(tabela: TabelaPaciente, id: Long): Paciente {
         val cursor = tabela.query(
             TabelaPaciente.TODAS_COLUNAS,
-            "${BaseColumns._ID}=?",
+            "${TabelaPaciente.NOME_TABELA}.${BaseColumns._ID}=?",
             arrayOf(id.toString()),
             null, null, null
         )
@@ -63,7 +63,7 @@ class ExampleInstrumentedTest {
     private fun getVacinaBaseDados(tabela: TabelaVacina, id: Long): Vacina {
         val cursor = tabela.query(
             TabelaVacina.TODAS_COLUNAS,
-            "${BaseColumns._ID}=?",
+            "${TabelaVacina.NOME_TABELA}.${BaseColumns._ID}=?",
             arrayOf(id.toString()),
             null, null, null
         )
@@ -76,7 +76,7 @@ class ExampleInstrumentedTest {
     private fun getVacinacaoBaseDados(tabela: TabelaVacinacao, id: Long): Vacinacao {
         val cursor = tabela.query(
             TabelaVacinacao.TODAS_COLUNAS,
-            "${BaseColumns._ID}=?",
+            "${TabelaVacinacao.NOME_TABELA}.${BaseColumns._ID}=?",
             arrayOf(id.toString()),
             null, null, null
         )
@@ -85,7 +85,20 @@ class ExampleInstrumentedTest {
         assert(cursor!!.moveToNext())
 
         return Vacinacao.fromCursor(cursor)
-    }*/
+    }
+    private fun getLocalBaseDados(tabela: TabelaLocal, id: Long): Local {
+        val cursor = tabela.query(
+            TabelaLocal.TODAS_COLUNAS,
+            "${BaseColumns._ID}=?",
+            arrayOf(id.toString()),
+            null, null, null
+        )
+
+        assertNotNull(cursor)
+        assert(cursor!!.moveToNext())
+
+        return Local.fromCursor(cursor)
+    }
 
     @Before
     fun apagarBaseDados(){
@@ -197,9 +210,11 @@ class ExampleInstrumentedTest {
         val db = GetbdAppOpenHelper().writableDatabase
         val tabelaVacina = TabelaVacina(db)
 
-        val vacina = Vacina(origem = "Johnson", quantidade = 100, validade = Data(2022,3,19))
+        val vacina = Vacina(origem = "?", quantidade = 100, validade = Data(2030,3,3))
         vacina.id = insereVacina(tabelaVacina, vacina)
+        vacina.origem = "Johnson"
         vacina.quantidade = 99
+        vacina.validade = Data(2022,3,19)
 
         val registosAlterados = tabelaVacina.update(
             vacina.toContentValues(),
@@ -272,9 +287,10 @@ class ExampleInstrumentedTest {
         local.id = insereLocal(tabelaLocal,local)
 
         val tabelaVacinacao = TabelaVacinacao(db)
-        val vacinacao = Vacinacao(data_vac = Data(2021,9,23),idVacina = vacina.id ,idPaciente = paciente.id,idLocal = local.id)
+        val vacinacao = Vacinacao(data_vac = Data(2021,9,23),idVacina = vacina.id ,idPaciente = paciente.id,idLocal = local.id, nomePaciente = paciente.nome)
         vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
 
+        assertEquals(vacinacao, getVacinacaoBaseDados(tabelaVacinacao, vacinacao.id))
 
         db.close()
     }
@@ -294,9 +310,10 @@ class ExampleInstrumentedTest {
         local.id = insereLocal(tabelaLocal,local)
 
         val tabelaVacinacao = TabelaVacinacao(db)
-        val vacinacao = Vacinacao(data_vac = Data(2021,10,23),idVacina = vacina.id, idPaciente = paciente.id, idLocal = local.id)
+        val vacinacao = Vacinacao(data_vac = Data(2021,10,23),idVacina = vacina.id, idPaciente = paciente.id, idLocal = local.id, nomePaciente = paciente.nome)
         vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
         vacinacao.data_vac= Data(2021,10,24)
+        vacinacao.nomePaciente = "MIMIMI"
 
 
         val registosAlterados = tabelaVacinacao.update(
@@ -307,6 +324,7 @@ class ExampleInstrumentedTest {
 
         assertEquals(1, registosAlterados)
 
+        assertEquals(vacinacao, getVacinacaoBaseDados(tabelaVacinacao, vacinacao.id))
         db.close()
     }
 
@@ -328,7 +346,7 @@ class ExampleInstrumentedTest {
 
 
         val tabelaVacinacao = TabelaVacinacao(db)
-        val vacinacao = Vacinacao(data_vac = Data(2021,9,25),idVacina = vacina.id,idPaciente = paciente.id, idLocal = local.id)
+        val vacinacao = Vacinacao(data_vac = Data(2021,9,25),idVacina = vacina.id,idPaciente = paciente.id, idLocal = local.id, nomePaciente = paciente.nome)
         vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
 
         val registosEliminados = tabelaVacinacao.delete(
@@ -336,6 +354,7 @@ class ExampleInstrumentedTest {
             arrayOf(vacinacao.id.toString())
         )
         assertEquals(1,registosEliminados)
+
         db.close()
 
     }
@@ -358,7 +377,7 @@ class ExampleInstrumentedTest {
 
 
         val tabelaVacinacao = TabelaVacinacao(db)
-        val vacinacao = Vacinacao(data_vac = Data(2021,9,26),idVacina = vacina.id,idPaciente = paciente.id, idLocal = local.id)
+        val vacinacao = Vacinacao(data_vac = Data(2021,9,26),idVacina = vacina.id,idPaciente = paciente.id, idLocal = local.id, nomePaciente = paciente.nome)
         vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
 
         val cursor = tabelaVacinacao.query(
@@ -375,6 +394,8 @@ class ExampleInstrumentedTest {
 
         val vacinacaoBd = Vacinacao.fromCursor(cursor)
         assertEquals(vacinacao, vacinacaoBd)
+
+        assertEquals(vacinacao, getVacinacaoBaseDados(tabelaVacinacao, vacinacao.id))
 
         db.close()
     }
