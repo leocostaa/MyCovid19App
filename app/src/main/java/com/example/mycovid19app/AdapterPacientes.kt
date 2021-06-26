@@ -14,15 +14,37 @@ class AdapterPacientes(val fragment:FragmentPacientes) : RecyclerView.Adapter<Ad
             notifyDataSetChanged()
         }
 
-    class ViewHolderPacientes(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolderPacientes(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         private val textViewNome = itemView.findViewById<TextView>(R.id.textViewNome)
         private val textViewDataNascimento = itemView.findViewById<TextView>(R.id.textViewDataNascimento)
         private val textViewSexo = itemView.findViewById<TextView>(R.id.textViewSexo)
+
+        init {
+            itemView.setOnClickListener(this)
+        }
 
         fun atualizaPaciente(paciente: Paciente){
             textViewNome.text = paciente.nome
             textViewDataNascimento.text = paciente.DataNascimento.toString()
             textViewSexo.text = paciente.sexo
+        }
+
+        override fun onClick(v: View?) {
+            selecionado?.desSeleciona()
+            seleciona()
+        }
+        private fun seleciona() {
+            selecionado = this
+            itemView.setBackgroundResource(R.color.cor_selecao)
+        }
+
+        private fun desSeleciona() {
+            selecionado = null
+            itemView.setBackgroundResource(android.R.color.white)
+        }
+
+        companion object {
+            var selecionado : ViewHolderPacientes? = null
         }
     }
 
@@ -39,5 +61,9 @@ class AdapterPacientes(val fragment:FragmentPacientes) : RecyclerView.Adapter<Ad
 
     override fun getItemCount(): Int {
         return cursor?.count ?: 0
+
+    }
+    companion object{
+        var selecionado : ViewHolderPacientes? = null
     }
 }

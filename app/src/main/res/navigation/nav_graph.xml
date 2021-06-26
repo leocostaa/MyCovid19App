@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/FragmentPaciente"
         android:name="com.example.mycovid19app.FragmentPacientes"
-        android:label="Fragmento Paciente"
+        android:label="Paciente"
         tools:layout="@layout/fragment_pacientes">
 
         <action

@@ -73,6 +73,12 @@ class TabelaVacinacao (db : SQLiteDatabase){
 
         return db.rawQuery(sql, selectionArgs)
 
+
+
+
+
+
+
     }
 
     companion object{
@@ -82,6 +88,8 @@ class TabelaVacinacao (db : SQLiteDatabase){
         const val CAMPO_ID_PACIENTE = "id_paciente"
         const val CAMPO_ID_LOCAL = "id_local"
         const val CAMPO_EXTERNO_NOME_PACIENTE = "nome_paciente"
+
+
 
         val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_DATAVAC, CAMPO_ID_VACINA, CAMPO_ID_PACIENTE, CAMPO_ID_LOCAL,
             CAMPO_EXTERNO_NOME_PACIENTE)

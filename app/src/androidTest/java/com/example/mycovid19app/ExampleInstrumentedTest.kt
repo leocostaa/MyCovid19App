@@ -89,7 +89,7 @@ class ExampleInstrumentedTest {
     private fun getLocalBaseDados(tabela: TabelaLocal, id: Long): Local {
         val cursor = tabela.query(
             TabelaLocal.TODAS_COLUNAS,
-            "${BaseColumns._ID}=?",
+            "${TabelaLocal.NOME_TABELA}.${BaseColumns._ID}=?",
             arrayOf(id.toString()),
             null, null, null
         )

@@ -26,4 +26,7 @@
     <string name="sala_da_vacina_o">Sala da vacinação</string>
     <string name="v_lido_at">Válido até</string>
     <string name="quantidade">Quantidade :</string>
+    <string name="alterar_paciente">Alterar Paciente</string>
+    <string name="novo_paciente">Novo Paciente</string>
+    <string name="eliminar_paciente">Eliminar Paciente</string>
 </resources>

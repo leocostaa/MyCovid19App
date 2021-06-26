@@ -14,6 +14,7 @@ data class Vacinacao(var id: Long =-1, var data_vac: Date, var idVacina: Long, v
             put(TabelaVacinacao.CAMPO_ID_LOCAL,idLocal)
             put(TabelaVacinacao.CAMPO_EXTERNO_NOME_PACIENTE,nomePaciente)
 
+
         }
 
         // valores.put(TabelaLivros.CAMPO_AUTOR,autor)
@@ -31,12 +32,14 @@ data class Vacinacao(var id: Long =-1, var data_vac: Date, var idVacina: Long, v
             val colunaIdLocal = cursor.getColumnIndex(TabelaVacinacao.CAMPO_ID_LOCAL)
             val colNomePaciente = cursor.getColumnIndex(TabelaVacinacao.CAMPO_EXTERNO_NOME_PACIENTE)
 
+
             val id = cursor.getLong(colunaId)
             val dataVac = Date(cursor.getLong(colunaDataVac))
             val idVacina = cursor.getLong(colunaIdVacina)
             val idPaciente = cursor.getLong(colunaIdPaciente)
             val idLocal = cursor.getLong(colunaIdLocal)
             val nomePaciente = if (colNomePaciente != -1) cursor.getString(colNomePaciente) else null
+
 
             return Vacinacao(id, dataVac, idVacina, idPaciente, idLocal, nomePaciente )
         }
