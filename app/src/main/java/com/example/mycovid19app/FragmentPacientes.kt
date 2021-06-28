@@ -4,6 +4,7 @@ import android.database.Cursor
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.loader.app.LoaderManager
@@ -30,11 +31,13 @@ class FragmentPacientes : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+         DadosApp.FragmentPacientes = this
 
         _binding = FragmentPacientesBinding.inflate(inflater, container, false)
         return binding.root
 
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -49,6 +52,27 @@ class FragmentPacientes : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
         recyclerViewPacientes.layoutManager= LinearLayoutManager(requireContext())
 
 
+    }
+    fun navegaNovoPaciente() {
+        findNavController().navigate(R.id.action_FragmentPaciente_to_FragmentNovoPaciente)
+    }
+    fun navegaAlterarPaciente() {
+        //todo: navegar para o fragmento da edição de um livro
+    }
+
+    fun navegaEliminarPaciente() {
+        //todo: navegar para o fragmento para confirmar eliminação de um livro
+    }
+
+    fun processaOpcaoMenu(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_novo_paciente -> navegaNovoPaciente()
+            R.id.action_alterar_paciente-> navegaAlterarPaciente()
+            R.id.action_eliminar_paciente -> navegaEliminarPaciente()
+            else -> return false
+        }
+
+        return true
     }
 
     override fun onDestroyView() {

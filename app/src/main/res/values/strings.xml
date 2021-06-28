@@ -14,7 +14,7 @@
     <string name="todo">TODO</string>
     <string name="nome_paciente">Nome</string>
     <string name="data_de_nascimento_paciente">Data de Nascimento</string>
-    <string name="sexo_paciente">Sexo</string>
+    <string name="sexo_paciente">Sexo :</string>
     <string name="data_da_vacina_o">Data da Vacinação :</string>
     <string name="laborat_rio_de_origem">Laboratório de origem :</string>
     <string name="nome_do_paciente">Nome do Paciente :</string>
@@ -29,4 +29,5 @@
     <string name="alterar_paciente">Alterar Paciente</string>
     <string name="novo_paciente">Novo Paciente</string>
     <string name="eliminar_paciente">Eliminar Paciente</string>
+    <string name="sexo">Sexo :</string>
 </resources>
