@@ -32,6 +32,7 @@ class FragmentPacientes : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
         savedInstanceState: Bundle?
     ): View? {
          DadosApp.FragmentPacientes = this
+        (activity as MainActivity).menuAtual = R.menu.menu_pacientes
 
         _binding = FragmentPacientesBinding.inflate(inflater, container, false)
         return binding.root

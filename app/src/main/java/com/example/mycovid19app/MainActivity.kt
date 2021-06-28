@@ -1,5 +1,6 @@
 package com.example.mycovid19app
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import com.example.mycovid19app.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,6 +18,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var menu: Menu
+
+    var menuAtual = R.menu.menu_pacientes
+        set(value) {
+            field = value
+            invalidateOptionsMenu()
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,11 +43,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_pacientes, menu)
-
-
+        menuInflater.inflate(menuAtual, menu)
         this.menu = menu
-        atualizaMenuPacientes(false)
+
+        if (menuAtual == R.menu.menu_pacientes) {
+            atualizaMenuPacientes(false)
+        }
+
         return true
     }
 
@@ -48,13 +58,14 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> {
-                if (DadosApp.FragmentPacientes.processaOpcaoMenu(item)) {
-                    return true
-                } else {
-                    return super.onOptionsItemSelected(item)
-                }
+            R.id.action_settings -> {
+                Toast.makeText(this, R.string.versao, Toast.LENGTH_LONG).show()
+                true
+            }
+            else -> when(menuAtual) {
+                R.menu.menu_pacientes -> DadosApp.FragmentPacientes!!.processaOpcaoMenu(item)
+                R.menu.menu_novo_paciente -> DadosApp.FragmentNovoPaciente!!.processaOpcaoMenu(item)
+                else -> false
             }
         }
     }

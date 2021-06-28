@@ -30,4 +30,7 @@
     <string name="novo_paciente">Novo Paciente</string>
     <string name="eliminar_paciente">Eliminar Paciente</string>
     <string name="sexo">Sexo :</string>
+    <string name="cancelar">cancelar</string>
+    <string name="guardar">guardar</string>
+    <string name="versao">MyCovid19App v. 1.0</string>
 </resources>
