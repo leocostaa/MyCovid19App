@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.Spinner
 import androidx.navigation.fragment.findNavController
 import com.example.mycovid19app.databinding.FragmentNovoPacienteBinding
 
@@ -20,11 +22,15 @@ class FragmentNovoPaciente : Fragment() {
 
     private var _binding: FragmentNovoPacienteBinding? = null
 
+    private lateinit var editTextNome: EditText
+    private lateinit var editTextData: EditText
+    private lateinit var spinnerSexo: Spinner
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
 
-
+ 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +45,10 @@ class FragmentNovoPaciente : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        editTextNome = view.findViewById(R.id.editTextNome)
+        editTextData = view.findViewById(R.id.editTextDataNascimento)
+        spinnerSexo = view.findViewById(R.id.spinnerSexo)
 
     }
 
