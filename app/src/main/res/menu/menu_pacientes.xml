@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         tools:context="com.example.mycovid19app.MainActivity">
     <item
-        android:icon="@android:drawable/ic_input_add"
+        android:icon="@drawable/ic_baseline_add"
         android:title="@string/novo_paciente"
         app:showAsAction="always" />
         <item
