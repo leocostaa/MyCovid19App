@@ -47,7 +47,7 @@ class FragmentNovoPaciente : Fragment() {
         _binding = null
     }
     fun navegaListaLivros() {
-        // todo: navegar para a lista de livros
+        findNavController().navigate(R.id.action_FragmentNovoPaciente_to_FragmentPaciente)
     }
 
     fun guardar() {

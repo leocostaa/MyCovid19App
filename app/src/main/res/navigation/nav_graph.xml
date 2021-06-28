@@ -41,7 +41,7 @@
         tools:layout="@layout/fragment_novo_paciente">
 
         <action
-            android:id="@+id/action_FragmentPaciente_to_FragmentNovoPaciente"
+            android:id="@+id/action_FragmentNovoPaciente_to_FragmentPaciente"
             app:destination="@id/FragmentPaciente" />
     </fragment>
 </navigation>
