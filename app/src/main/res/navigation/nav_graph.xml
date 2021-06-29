@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FragmentPaciente">
+    app:startDestination="@id/fragmentInicioPage">
 
     <fragment
         android:id="@+id/FragmentPaciente"
@@ -43,5 +43,23 @@
         <action
             android:id="@+id/action_FragmentNovoPaciente_to_FragmentPaciente"
             app:destination="@id/FragmentPaciente" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentInicioPage"
+        android:name="com.example.mycovid19app.FragmentInicioPage"
+        android:label="Home"
+        tools:layout="@layout/fragment_inicio_page" >
+        <action
+            android:id="@+id/action_FragmentInicio_to_FragmentPaciente"
+            app:destination="@id/FragmentPaciente" />
+        <action
+            android:id="@+id/action_FragmentInicio_to_FragmentLocal"
+            app:destination="@id/FragmentLocal" />
+        <action
+            android:id="@+id/action_FragmentInicio_to_FragmentVacinacao"
+            app:destination="@id/FragmentVacinacao" />
+        <action
+            android:id="@+id/action_FragmentInicio_to_FragmentVacina"
+            app:destination="@id/fragmentVacina" />
     </fragment>
 </navigation>

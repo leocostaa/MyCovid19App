@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
+
             R.id.action_settings -> {
                 Toast.makeText(this, R.string.versao, Toast.LENGTH_LONG).show()
                 true
@@ -65,6 +66,7 @@ class MainActivity : AppCompatActivity() {
             else -> when(menuAtual) {
                 R.menu.menu_pacientes -> DadosApp.FragmentPacientes!!.processaOpcaoMenu(item)
                 R.menu.menu_novo_paciente -> DadosApp.FragmentNovoPaciente!!.processaOpcaoMenu(item)
+
                 else -> false
             }
         }
