@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_FragmentLocal_to_fragmentEditaLocal"
             app:destination="@id/fragmentEditaLocal" />
+        <action
+            android:id="@+id/action_FragmentLocal_to_fragmentEliminaLocal"
+            app:destination="@id/fragmentEliminaLocal" />
     </fragment>
     <fragment
         android:id="@+id/FragmentVacina"
@@ -96,6 +99,15 @@
         tools:layout="@layout/fragment_edita_local" >
         <action
             android:id="@+id/action_fragmentEditaLocal_to_FragmentLocal"
+            app:destination="@id/FragmentLocal" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentEliminaLocal"
+        android:name="com.example.mycovid19app.FragmentEliminaLocal"
+        android:label="fragment_elimina_local"
+        tools:layout="@layout/fragment_elimina_local" >
+        <action
+            android:id="@+id/action_fragmentEliminaLocal_to_FragmentLocal"
             app:destination="@id/FragmentLocal" />
     </fragment>
 </navigation>

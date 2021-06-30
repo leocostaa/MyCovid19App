@@ -58,7 +58,7 @@ class FragmentLocal : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     fun navegaEliminarLocal() {
-        //todo: navegar para o fragmento para confirmar eliminação de um livro
+        findNavController().navigate(R.id.action_FragmentLocal_to_fragmentEliminaLocal)
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
