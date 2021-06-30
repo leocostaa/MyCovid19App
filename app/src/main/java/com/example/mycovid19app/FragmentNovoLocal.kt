@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.Spinner
 import androidx.navigation.fragment.findNavController
 import com.example.mycovid19app.databinding.FragmentNovoLocalBinding
 
@@ -18,6 +20,9 @@ class FragmentNovoLocal : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private lateinit var editTextCidade: EditText
+    private lateinit var editTextLocalAdm: EditText
+    private lateinit var editTextSala: EditText
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +38,9 @@ class FragmentNovoLocal : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        editTextCidade = view.findViewById(R.id.editTextCidade)
+        editTextLocalAdm = view.findViewById(R.id.editTextLocalAdm)
+        editTextSala = view.findViewById(R.id.editTextSala)
 
     }
     override fun onDestroyView() {
