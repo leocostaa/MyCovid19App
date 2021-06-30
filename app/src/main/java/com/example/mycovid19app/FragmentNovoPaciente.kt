@@ -68,13 +68,13 @@ class FragmentNovoPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     fun guardar() {
-       /* val nome = editTextNome.text.toString()
+      /* val nome = editTextNome.text.toString()
         if (nome.isEmpty()) {
             editTextNome.setError("Preencha")
             return
         }
 
-        val data = editTextData.text.toString()
+        val data = editTextData.??????????
         if (data.isEmpty()) {
             editTextData.setError("Preencha")
             return

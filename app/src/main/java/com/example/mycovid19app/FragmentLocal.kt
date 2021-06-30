@@ -53,7 +53,8 @@ class FragmentLocal : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         findNavController().navigate(R.id.action_FragmentLocal_to_fragmentNovoLocal)
     }
     fun navegaAlterarLocal() {
-        //todo: navegar para o fragmento da edição de um livro
+        findNavController().navigate(R.id.action_FragmentLocal_to_fragmentEditaLocal)
+
     }
 
     fun navegaEliminarLocal() {

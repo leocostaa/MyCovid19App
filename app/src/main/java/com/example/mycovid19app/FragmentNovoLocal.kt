@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.mycovid19app.databinding.FragmentNovoLocalBinding
 import com.google.android.material.snackbar.Snackbar
@@ -89,6 +90,11 @@ class FragmentNovoLocal : Fragment() {
             ).show()
             return
         }
+        Toast.makeText(
+            requireContext(),
+            "Local gravado com sucesso",
+            Toast.LENGTH_LONG
+        ).show()
 
         navegaLocal()
     }
