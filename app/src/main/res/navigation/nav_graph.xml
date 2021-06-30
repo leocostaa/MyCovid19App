@@ -39,7 +39,7 @@
             app:destination="@id/fragmentNovoLocal" />
     </fragment>
     <fragment
-        android:id="@+id/fragmentVacina"
+        android:id="@+id/FragmentVacina"
         android:name="com.example.mycovid19app.FragmentVacina"
         android:label="Vacinas"
         tools:layout="@layout/fragment_vacina" >
@@ -78,7 +78,7 @@
             app:destination="@id/FragmentVacinacao" />
         <action
             android:id="@+id/action_FragmentInicio_to_FragmentVacina"
-            app:destination="@id/fragmentVacina" />
+            app:destination="@id/FragmentVacina" />
     </fragment>
     <fragment
         android:id="@+id/fragmentNovoLocal"

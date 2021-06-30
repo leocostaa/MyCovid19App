@@ -39,18 +39,18 @@ class FragmentNovoLocal : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-    fun navegaListaLivros() {
-        // todo: navegar para a lista de livros
+    fun navegaLocal() {
+        findNavController().navigate(R.id.action_fragmentNovoLocal_to_FragmentLocal)
     }
 
     fun guardar() {
-        // todo: guardar livro
+        // todo: guardar local
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_guardar_novo_local -> guardar()
-            R.id.action_cancelar_novo_local -> navegaListaLivros()
+            R.id.action_cancelar_novo_local -> navegaLocal()
             else -> return false
         }
 
