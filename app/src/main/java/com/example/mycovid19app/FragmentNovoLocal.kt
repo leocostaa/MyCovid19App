@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Spinner
 import androidx.navigation.fragment.findNavController
 import com.example.mycovid19app.databinding.FragmentNovoLocalBinding
+import com.google.android.material.snackbar.Snackbar
 
 
 class FragmentNovoLocal : Fragment() {
@@ -52,7 +53,41 @@ class FragmentNovoLocal : Fragment() {
     }
 
     fun guardar() {
-        // todo: guardar local
+        val Cidade = editTextCidade.text.toString()
+        if (Cidade.isEmpty()) {
+            editTextCidade.setError("Preencha este campo")
+            return
+        }
+
+        val LocalAdm = editTextLocalAdm.text.toString()
+        if (LocalAdm.isEmpty()) {
+            editTextLocalAdm.setError("Preencha este campo")
+            return
+        }
+
+        val Sala = editTextSala.text.toString()
+        if (Sala.isEmpty()) {
+            editTextSala.setError("Preencha este campo")
+            return
+        }
+
+        val local = Local(cidade = Cidade, localadm = LocalAdm, sala = Sala)
+
+        val uri = activity?.contentResolver?.insert(
+            ContentProviderApp.ENDERECO_LOCAL,
+            local.toContentValues()
+        )
+
+        if (uri == null) {
+            Snackbar.make(
+                editTextCidade,
+                ("erro ao inserir "),
+                Snackbar.LENGTH_LONG
+            ).show()
+            return
+        }
+
+        navegaLocal()
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {

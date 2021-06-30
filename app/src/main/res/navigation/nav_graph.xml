@@ -32,9 +32,6 @@
         android:label="Locais"
         tools:layout="@layout/fragment_local">
         <action
-            android:id="@+id/action_FragmentLocal_to_fragmentInicioPage"
-            app:destination="@id/fragmentInicioPage" />
-        <action
             android:id="@+id/action_FragmentLocal_to_fragmentNovoLocal"
             app:destination="@id/fragmentNovoLocal" />
     </fragment>
