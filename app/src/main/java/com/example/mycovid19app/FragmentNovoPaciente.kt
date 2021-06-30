@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.SimpleCursorAdapter
 import android.widget.Spinner
 import androidx.loader.app.LoaderManager
+import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import com.example.mycovid19app.databinding.FragmentNovoPacienteBinding
@@ -40,7 +41,7 @@ class FragmentNovoPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        DadosApp.FragmentNovoPaciente = this
+        DadosApp.fragment= this
         (activity as MainActivity).menuAtual = R.menu.menu_novo_paciente
 
         _binding = FragmentNovoPacienteBinding.inflate(inflater, container, false)
@@ -54,6 +55,9 @@ class FragmentNovoPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         editTextData = view.findViewById(R.id.editTextDataNascimento)
         spinnerSexo = view.findViewById(R.id.spinnerSexo)
 
+        LoaderManager.getInstance(this)
+            .initLoader(ID_LOADER_MANAGER_SEXO, null, this)
+
     }
 
     override fun onDestroyView() {
@@ -65,7 +69,37 @@ class FragmentNovoPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     fun guardar() {
+       /* val nome = editTextNome.text.toString()
+        if (nome.isEmpty()) {
+            editTextNome.setError("Preencha")
+            return
+        }
 
+        val data = editTextData.text.toString()
+        if (data.isEmpty()) {
+            editTextData.setError("Preencha")
+            return
+        }
+
+        val idSexo = spinnerSexo.selectedItemId
+
+        val paciente = Paciente(nome = nome, DataNascimento = data, sexo = idSexo.toString())
+
+        val uri = activity?.contentResolver?.insert(
+            ContentProviderApp.ENDERECO_PACIENTE,
+            paciente.toContentValues()
+        )
+
+        if (uri == null) {
+            Snackbar.make(
+                editTextNome,
+                ("Erro ao inserir "),
+                Snackbar.LENGTH_LONG
+            ).show()
+            return
+        }
+
+        navegaPaciente()*/
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
@@ -79,15 +113,21 @@ class FragmentNovoPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
-        TODO("Not yet implemented")
+        return CursorLoader(
+            requireContext(),
+            ContentProviderApp.ENDERECO_PACIENTE,
+            TabelaPaciente.TODAS_COLUNAS,
+            null, null,
+            TabelaPaciente.CAMPO_SEXO
+        )
     }
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
-        TODO("Not yet implemented")
+        atualizaSpinnerSexo(data)
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        TODO("Not yet implemented")
+        atualizaSpinnerSexo(null)
     }
 
     private fun atualizaSpinnerSexo(data: Cursor?) {

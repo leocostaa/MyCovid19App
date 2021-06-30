@@ -1,5 +1,6 @@
 package com.example.mycovid19app
 
+import android.annotation.SuppressLint
 import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
@@ -50,9 +51,7 @@ class AdapterPacientes(val fragment:FragmentPacientes) : RecyclerView.Adapter<Ad
             itemView.setBackgroundResource(android.R.color.white)
         }
 
-        companion object {
-            var selecionado : ViewHolderPacientes? = null
-        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderPacientes {
@@ -70,7 +69,8 @@ class AdapterPacientes(val fragment:FragmentPacientes) : RecyclerView.Adapter<Ad
         return cursor?.count ?: 0
 
     }
-    companion object{
+    companion object {
+
         var selecionado : ViewHolderPacientes? = null
     }
 }

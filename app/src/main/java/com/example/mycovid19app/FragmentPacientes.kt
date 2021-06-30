@@ -31,8 +31,9 @@ class FragmentPacientes : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-         DadosApp.FragmentPacientes = this
+         DadosApp.fragment = this
         (activity as MainActivity).menuAtual = R.menu.menu_pacientes
+
 
         _binding = FragmentPacientesBinding.inflate(inflater, container, false)
         return binding.root

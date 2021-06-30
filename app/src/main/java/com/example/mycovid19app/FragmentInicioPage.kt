@@ -3,16 +3,13 @@ package com.example.mycovid19app
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.mycovid19app.databinding.FragmentInicioPageBinding
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FragmentInicioPage.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class FragmentInicioPage : Fragment() {
 
     private var _binding: FragmentInicioPageBinding? = null
@@ -25,6 +22,9 @@ class FragmentInicioPage : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        DadosApp.fragment= this
+        (activity as MainActivity).menuAtual = R.menu.menu_inicio_page
+
         _binding = FragmentInicioPageBinding.inflate(inflater, container, false)
         return binding.root
            }
@@ -34,7 +34,6 @@ class FragmentInicioPage : Fragment() {
 
         binding.buttonPacientes.setOnClickListener {
             findNavController().navigate(R.id.action_FragmentInicio_to_FragmentPaciente)
-
         }
         binding.buttonLocais.setOnClickListener {
             findNavController().navigate(R.id.action_FragmentInicio_to_FragmentLocal)
@@ -46,6 +45,9 @@ class FragmentInicioPage : Fragment() {
             findNavController().navigate(R.id.action_FragmentInicio_to_FragmentVacina)
         }
 
+    }
+    fun processaOpcaoMenu(item: MenuItem): Boolean {
+        return false
     }
     companion object {
 

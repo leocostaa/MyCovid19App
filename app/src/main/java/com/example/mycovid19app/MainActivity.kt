@@ -46,9 +46,10 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(menuAtual, menu)
         this.menu = menu
 
-        if (menuAtual == R.menu.menu_pacientes) {
+        if (menuAtual == R.menu.menu_pacientes ) {
             atualizaMenuPacientes(false)
         }
+
 
         return true
     }
@@ -64,9 +65,9 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             else -> when(menuAtual) {
-                R.menu.menu_pacientes -> DadosApp.FragmentPacientes!!.processaOpcaoMenu(item)
-                R.menu.menu_novo_paciente -> DadosApp.FragmentNovoPaciente!!.processaOpcaoMenu(item)
-
+                R.menu.menu_pacientes -> (DadosApp.fragment as FragmentPacientes).processaOpcaoMenu(item)
+                R.menu.menu_novo_paciente -> (DadosApp.fragment as FragmentNovoPaciente).processaOpcaoMenu(item)
+                R.menu.menu_inicio_page ->(DadosApp.fragment as FragmentInicioPage).processaOpcaoMenu(item)
                 else -> false
             }
         }
