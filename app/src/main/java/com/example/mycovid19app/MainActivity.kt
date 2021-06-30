@@ -74,6 +74,7 @@ class MainActivity : AppCompatActivity() {
                 R.menu.menu_inicio_page ->(DadosApp.fragment as FragmentInicioPage).processaOpcaoMenu(item)
                 R.menu.menu_locais ->(DadosApp.fragment as FragmentLocal).processaOpcaoMenu(item)
                 R.menu.menu_novo_local->(DadosApp.fragment as FragmentNovoLocal).processaOpcaoMenu(item)
+                R.menu.menu_edita_local -> (DadosApp.fragment as FragmentEditaLocal).processaOpcaoMenu(item)
 
                 else -> false
             }

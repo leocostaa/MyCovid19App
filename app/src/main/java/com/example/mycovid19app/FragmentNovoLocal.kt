@@ -56,18 +56,21 @@ class FragmentNovoLocal : Fragment() {
         val Cidade = editTextCidade.text.toString()
         if (Cidade.isEmpty()) {
             editTextCidade.setError("Preencha este campo")
+            editTextCidade.requestFocus()
             return
         }
 
         val LocalAdm = editTextLocalAdm.text.toString()
         if (LocalAdm.isEmpty()) {
             editTextLocalAdm.setError("Preencha este campo")
+            editTextLocalAdm.requestFocus()
             return
         }
 
         val Sala = editTextSala.text.toString()
         if (Sala.isEmpty()) {
             editTextSala.setError("Preencha este campo")
+            editTextSala.requestFocus()
             return
         }
 
