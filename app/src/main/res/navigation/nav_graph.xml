@@ -83,7 +83,7 @@
     <fragment
         android:id="@+id/fragmentNovoLocal"
         android:name="com.example.mycovid19app.FragmentNovoLocal"
-        android:label="fragment_novo_local"
+        android:label="Novo"
         tools:layout="@layout/fragment_novo_local" >
         <action
             android:id="@+id/action_fragmentNovoLocal_to_FragmentLocal"

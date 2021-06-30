@@ -36,4 +36,7 @@
     <string name="eliminar_local">eliminar_local</string>
     <string name="alterar_local">alterar_local</string>
     <string name="novo_local">novo_local</string>
+    <string name="cidadenova">Cidade</string>
+    <string name="local_de_administrao_novo">Local de administração</string>
+    <string name="sala_nova">Sala</string>
 </resources>

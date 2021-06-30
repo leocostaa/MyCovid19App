@@ -49,9 +49,30 @@ class FragmentLocal : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
 
     }
-    fun processaOpcaoMenu(item: MenuItem): Boolean {
-        return false
+    fun navegaNovoLocal() {
+        findNavController().navigate(R.id.action_FragmentLocal_to_fragmentNovoLocal)
     }
+    fun navegaAlterarLocal() {
+        //todo: navegar para o fragmento da edição de um livro
+    }
+
+    fun navegaEliminarLocal() {
+        //todo: navegar para o fragmento para confirmar eliminação de um livro
+    }
+
+    fun processaOpcaoMenu(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_novo_local -> navegaNovoLocal()
+            R.id.action_alterar_local -> navegaAlterarLocal()
+            R.id.action_eliminar_local -> navegaEliminarLocal()
+            else -> return false
+        }
+
+        return true
+    }
+
+
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -66,6 +87,7 @@ class FragmentLocal : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             TabelaLocal.CAMPO_CIDADE
         )
     }
+
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
         adapterLocais!!.cursor = data

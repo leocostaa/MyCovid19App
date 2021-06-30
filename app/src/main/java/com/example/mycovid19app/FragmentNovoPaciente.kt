@@ -15,7 +15,6 @@ import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import com.example.mycovid19app.databinding.FragmentNovoPacienteBinding
-import com.google.android.material.snackbar.Snackbar
 
 
 /**
