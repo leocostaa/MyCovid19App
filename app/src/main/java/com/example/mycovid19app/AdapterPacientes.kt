@@ -50,7 +50,10 @@ class AdapterPacientes(val fragment:FragmentPacientes) : RecyclerView.Adapter<Ad
             selecionado = null
             itemView.setBackgroundResource(android.R.color.white)
         }
+        companion object {
 
+            var selecionado : ViewHolderPacientes? = null
+        }
 
     }
 
@@ -69,8 +72,5 @@ class AdapterPacientes(val fragment:FragmentPacientes) : RecyclerView.Adapter<Ad
         return cursor?.count ?: 0
 
     }
-    companion object {
 
-        var selecionado : ViewHolderPacientes? = null
-    }
 }

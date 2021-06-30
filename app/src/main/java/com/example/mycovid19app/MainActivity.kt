@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
+
         menuInflater.inflate(menuAtual, menu)
         this.menu = menu
 
@@ -68,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                 R.menu.menu_pacientes -> (DadosApp.fragment as FragmentPacientes).processaOpcaoMenu(item)
                 R.menu.menu_novo_paciente -> (DadosApp.fragment as FragmentNovoPaciente).processaOpcaoMenu(item)
                 R.menu.menu_inicio_page ->(DadosApp.fragment as FragmentInicioPage).processaOpcaoMenu(item)
-               // R.menu.menu_locais ->(DadosApp.fragment as FragmentLocal).processaOpcaoMenu(item)
+               //R.menu.menu_locais ->(DadosApp.fragment as FragmentLocal).processaOpcaoMenu(item)
                 else -> false
             }
         }
