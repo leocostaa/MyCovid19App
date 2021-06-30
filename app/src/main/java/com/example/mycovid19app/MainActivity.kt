@@ -50,6 +50,9 @@ class MainActivity : AppCompatActivity() {
         if (menuAtual == R.menu.menu_pacientes ) {
             atualizaMenuPacientes(false)
         }
+        if (menuAtual == R.menu.menu_locais ) {
+            atualizaMenuLocais(false)
+        }
 
 
         return true
@@ -69,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                 R.menu.menu_pacientes -> (DadosApp.fragment as FragmentPacientes).processaOpcaoMenu(item)
                 R.menu.menu_novo_paciente -> (DadosApp.fragment as FragmentNovoPaciente).processaOpcaoMenu(item)
                 R.menu.menu_inicio_page ->(DadosApp.fragment as FragmentInicioPage).processaOpcaoMenu(item)
-               //R.menu.menu_locais ->(DadosApp.fragment as FragmentLocal).processaOpcaoMenu(item)
+               R.menu.menu_locais ->(DadosApp.fragment as FragmentLocal).processaOpcaoMenu(item)
                 else -> false
             }
         }
@@ -84,5 +87,9 @@ class MainActivity : AppCompatActivity() {
     fun atualizaMenuPacientes(mostraBotoesAlterarEliminar : Boolean) {
         menu.findItem(R.id.action_alterar_paciente).setVisible(mostraBotoesAlterarEliminar)
         menu.findItem(R.id.action_eliminar_paciente).setVisible(mostraBotoesAlterarEliminar)
+    }
+    fun atualizaMenuLocais(mostraBotoesAlterarEliminar : Boolean) {
+        menu.findItem(R.id.action_alterar_local).setVisible(mostraBotoesAlterarEliminar)
+        menu.findItem(R.id.action_eliminar_local).setVisible(mostraBotoesAlterarEliminar)
     }
 }

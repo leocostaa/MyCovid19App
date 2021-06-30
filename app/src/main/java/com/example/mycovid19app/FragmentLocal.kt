@@ -28,6 +28,9 @@ class FragmentLocal : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        DadosApp.fragment = this
+        (activity as MainActivity).menuAtual = R.menu.menu_locais
+
         _binding = FragmentLocalBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -46,7 +49,9 @@ class FragmentLocal : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
 
     }
-
+    fun processaOpcaoMenu(item: MenuItem): Boolean {
+        return false
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

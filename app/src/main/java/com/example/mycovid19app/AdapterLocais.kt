@@ -47,6 +47,7 @@ class AdapterLocais (val fragment: FragmentLocal): RecyclerView.Adapter<AdapterL
             selecionado = this
             itemView.setBackgroundResource(R.color.cor_selecao)
             DadosApp.localSelecionado = local
+            DadosApp.activity.atualizaMenuLocais(true)
         }
 
         private fun desSeleciona() {
