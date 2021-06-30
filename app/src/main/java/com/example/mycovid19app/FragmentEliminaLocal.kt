@@ -43,7 +43,7 @@ class FragmentEliminaLocal : Fragment() {
     }
 
     fun navegaLocal() {
-        findNavController().navigate(R.id.action_fragmentEliminaLocal_to_FragmentLocal)
+        findNavController().navigate(R.id.action_fragmentEliminaLocal_to_fragmentInicioPage)
     }
 
     fun elimina() {
@@ -69,7 +69,7 @@ class FragmentEliminaLocal : Fragment() {
 
         Toast.makeText(
             requireContext(),
-            "Livro eliminado com sucesso",
+            "Local eliminado com sucesso",
             Toast.LENGTH_LONG
         ).show()
 

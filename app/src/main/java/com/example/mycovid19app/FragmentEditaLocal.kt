@@ -50,7 +50,7 @@ class FragmentEditaLocal : Fragment()  {
         editTextSalaEdita.setText(DadosApp.localSelecionado!!.sala)
     }
     fun navegaLocal() {
-        findNavController().navigate(R.id.action_fragmentEditaLocal_to_FragmentLocal)
+        findNavController().navigate(R.id.action_fragmentEditaLocal_to_fragmentInicioPage)
     }
 
     fun guardar() {

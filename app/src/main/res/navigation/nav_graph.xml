@@ -86,28 +86,28 @@
     <fragment
         android:id="@+id/fragmentNovoLocal"
         android:name="com.example.mycovid19app.FragmentNovoLocal"
-        android:label="Novo"
+        android:label="Novo!"
         tools:layout="@layout/fragment_novo_local" >
         <action
-            android:id="@+id/action_fragmentNovoLocal_to_FragmentLocal"
-            app:destination="@id/FragmentLocal" />
+            android:id="@+id/action_fragmentNovoLocal_to_fragmentInicioPage"
+            app:destination="@id/fragmentInicioPage" />
     </fragment>
     <fragment
         android:id="@+id/fragmentEditaLocal"
         android:name="com.example.mycovid19app.FragmentEditaLocal"
-        android:label="Edita"
+        android:label="Edita!"
         tools:layout="@layout/fragment_edita_local" >
         <action
-            android:id="@+id/action_fragmentEditaLocal_to_FragmentLocal"
-            app:destination="@id/FragmentLocal" />
+            android:id="@+id/action_fragmentEditaLocal_to_fragmentInicioPage"
+            app:destination="@id/fragmentInicioPage" />
     </fragment>
     <fragment
         android:id="@+id/fragmentEliminaLocal"
         android:name="com.example.mycovid19app.FragmentEliminaLocal"
-        android:label="fragment_elimina_local"
+        android:label="Eliminar?"
         tools:layout="@layout/fragment_elimina_local" >
         <action
-            android:id="@+id/action_fragmentEliminaLocal_to_FragmentLocal"
-            app:destination="@id/FragmentLocal" />
+            android:id="@+id/action_fragmentEliminaLocal_to_fragmentInicioPage"
+            app:destination="@id/fragmentInicioPage" />
     </fragment>
 </navigation>
