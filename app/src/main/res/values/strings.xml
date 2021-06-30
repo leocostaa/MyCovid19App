@@ -33,4 +33,7 @@
     <string name="cancelar">cancelar</string>
     <string name="guardar">guardar</string>
     <string name="versao">MyCovid19App v. 1.0</string>
+    <string name="eliminar_local">eliminar_local</string>
+    <string name="alterar_local">alterar_local</string>
+    <string name="novo_local">novo_local</string>
 </resources>
