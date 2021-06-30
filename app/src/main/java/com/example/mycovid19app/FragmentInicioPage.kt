@@ -34,6 +34,7 @@ class FragmentInicioPage : Fragment() {
 
         binding.buttonPacientes.setOnClickListener {
             findNavController().navigate(R.id.action_FragmentInicio_to_FragmentPaciente)
+
         }
         binding.buttonLocais.setOnClickListener {
             findNavController().navigate(R.id.action_FragmentInicio_to_FragmentLocal)

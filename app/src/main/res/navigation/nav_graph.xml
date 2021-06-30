@@ -13,22 +13,37 @@
         <action
             android:id="@+id/action_FragmentPaciente_to_FragmentNovoPaciente"
             app:destination="@id/fragmentNovoPaciente" />
+        <action
+            android:id="@+id/action_FragmentPaciente_to_fragmentInicioPage"
+            app:destination="@id/fragmentInicioPage" />
     </fragment>
     <fragment
         android:id="@+id/FragmentVacinacao"
         android:name="com.example.mycovid19app.FragmentVacinacao"
         android:label="Vacinações"
-        tools:layout="@layout/fragment_vacinacao"/>
+        tools:layout="@layout/fragment_vacinacao">
+        <action
+            android:id="@+id/action_FragmentVacinacao_to_fragmentInicioPage"
+            app:destination="@id/fragmentInicioPage" />
+    </fragment>
     <fragment
         android:id="@+id/FragmentLocal"
         android:name="com.example.mycovid19app.FragmentLocal"
         android:label="Locais"
-        tools:layout="@layout/fragment_local"/>
+        tools:layout="@layout/fragment_local">
+        <action
+            android:id="@+id/action_FragmentLocal_to_fragmentInicioPage"
+            app:destination="@id/fragmentInicioPage" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentVacina"
         android:name="com.example.mycovid19app.FragmentVacina"
         android:label="Vacinas"
-        tools:layout="@layout/fragment_vacina" />
+        tools:layout="@layout/fragment_vacina" >
+        <action
+            android:id="@+id/action_fragmentVacina_to_fragmentInicioPage"
+            app:destination="@id/fragmentInicioPage" />
+    </fragment>
     <activity
         android:id="@+id/mainActivity"
         android:name="com.example.mycovid19app.MainActivity"

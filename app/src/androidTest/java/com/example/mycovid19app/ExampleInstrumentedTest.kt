@@ -287,7 +287,7 @@ class ExampleInstrumentedTest {
         local.id = insereLocal(tabelaLocal,local)
 
         val tabelaVacinacao = TabelaVacinacao(db)
-        val vacinacao = Vacinacao(data_vac = Data(2021,9,23),idVacina = vacina.id ,idPaciente = paciente.id,idLocal = local.id, nomePaciente = paciente.nome)
+        val vacinacao = Vacinacao(data_vac = Data(2021,9,23),idVacina = vacina.id ,idPaciente = paciente.id,idLocal = local.id, nomePaciente = paciente.nome, localadm = local.localadm)
         vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
 
         assertEquals(vacinacao, getVacinacaoBaseDados(tabelaVacinacao, vacinacao.id))
@@ -310,7 +310,7 @@ class ExampleInstrumentedTest {
         local.id = insereLocal(tabelaLocal,local)
 
         val tabelaVacinacao = TabelaVacinacao(db)
-        val vacinacao = Vacinacao(data_vac = Data(2021,10,23),idVacina = vacina.id, idPaciente = paciente.id, idLocal = local.id, nomePaciente = paciente.nome)
+        val vacinacao = Vacinacao(data_vac = Data(2021,10,23),idVacina = vacina.id, idPaciente = paciente.id, idLocal = local.id, nomePaciente = paciente.nome, localadm = local.localadm)
         vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
         vacinacao.data_vac= Data(2021,10,24)
         vacinacao.nomePaciente = "MIMIMI"
@@ -346,7 +346,7 @@ class ExampleInstrumentedTest {
 
 
         val tabelaVacinacao = TabelaVacinacao(db)
-        val vacinacao = Vacinacao(data_vac = Data(2021,9,25),idVacina = vacina.id,idPaciente = paciente.id, idLocal = local.id, nomePaciente = paciente.nome)
+        val vacinacao = Vacinacao(data_vac = Data(2021,9,25),idVacina = vacina.id,idPaciente = paciente.id, idLocal = local.id, nomePaciente = paciente.nome, localadm = local.localadm)
         vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
 
         val registosEliminados = tabelaVacinacao.delete(
@@ -377,7 +377,7 @@ class ExampleInstrumentedTest {
 
 
         val tabelaVacinacao = TabelaVacinacao(db)
-        val vacinacao = Vacinacao(data_vac = Data(2021,9,26),idVacina = vacina.id,idPaciente = paciente.id, idLocal = local.id, nomePaciente = paciente.nome)
+        val vacinacao = Vacinacao(data_vac = Data(2021,9,26),idVacina = vacina.id,idPaciente = paciente.id, idLocal = local.id, nomePaciente = paciente.nome, localadm = local.localadm)
         vacinacao.id = insereVacinacao(tabelaVacinacao, vacinacao)
 
         val cursor = tabelaVacinacao.query(

@@ -5,7 +5,7 @@ import android.database.Cursor
 import android.provider.BaseColumns
 import java.util.*
 
-data class Vacinacao(var id: Long =-1, var data_vac: Date, var idVacina: Long, var idPaciente: Long, var idLocal: Long, var nomePaciente: String? = null) {
+data class Vacinacao(var id: Long =-1, var data_vac: Date, var idVacina: Long, var idPaciente: Long, var idLocal: Long, var nomePaciente: String? = null, var localadm : String? = null) {
     fun toContentValues(): ContentValues {
         val valores = ContentValues().apply {
             put(TabelaVacinacao.CAMPO_DATAVAC,data_vac.time)
@@ -31,6 +31,7 @@ data class Vacinacao(var id: Long =-1, var data_vac: Date, var idVacina: Long, v
             val colunaIdPaciente = cursor.getColumnIndex(TabelaVacinacao.CAMPO_ID_PACIENTE)
             val colunaIdLocal = cursor.getColumnIndex(TabelaVacinacao.CAMPO_ID_LOCAL)
             val colNomePaciente = cursor.getColumnIndex(TabelaVacinacao.CAMPO_EXTERNO_NOME_PACIENTE)
+            val colLocaladm = cursor.getColumnIndex(TabelaVacinacao.CAMPO_EXTERNO_NOME_LOCAL)
 
 
             val id = cursor.getLong(colunaId)
@@ -39,9 +40,10 @@ data class Vacinacao(var id: Long =-1, var data_vac: Date, var idVacina: Long, v
             val idPaciente = cursor.getLong(colunaIdPaciente)
             val idLocal = cursor.getLong(colunaIdLocal)
             val nomePaciente = if (colNomePaciente != -1) cursor.getString(colNomePaciente) else null
+            val localadm = if (colLocaladm != -1) cursor.getString(colLocaladm) else null
 
 
-            return Vacinacao(id, dataVac, idVacina, idPaciente, idLocal, nomePaciente )
+            return Vacinacao(id, dataVac, idVacina, idPaciente, idLocal, nomePaciente,localadm )
         }
     }
 

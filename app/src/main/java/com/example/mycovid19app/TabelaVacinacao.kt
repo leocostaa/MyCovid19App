@@ -35,15 +35,18 @@ class TabelaVacinacao (db : SQLiteDatabase){
     ): Cursor? {
         val ultimaColuna = columns.size - 1
 
-        var posColNomePaciente = -1 // -1 indica que a coluna não foi pedida
+        var posColNomePaciente = -1
+        var posColLocal= -1// -1 indica que a coluna não foi pedida
         for (i in 0..ultimaColuna) {
             if (columns[i] == CAMPO_EXTERNO_NOME_PACIENTE) {
                 posColNomePaciente = i
-                break
+
+            }else if(columns[i] == CAMPO_EXTERNO_NOME_LOCAL){
+                posColLocal = i
             }
         }
 
-        if (posColNomePaciente == -1) {
+        if (posColNomePaciente == -1 && posColLocal ==-1) {
             return db.query(NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy)
         }
 
@@ -53,12 +56,14 @@ class TabelaVacinacao (db : SQLiteDatabase){
 
             colunas += if (i == posColNomePaciente) {
                 "${TabelaPaciente.NOME_TABELA}.${TabelaPaciente.CAMPO_NOME} AS $CAMPO_EXTERNO_NOME_PACIENTE"
-            } else {
+            } else if (i == posColLocal) {
+                "${TabelaLocal.NOME_TABELA}.${TabelaLocal.CAMPO_LOCALADM} AS $CAMPO_EXTERNO_NOME_LOCAL"
+            }else{
                 "${NOME_TABELA}.${columns[i]}"
             }
         }
 
-        val tabelas = "$NOME_TABELA INNER JOIN ${TabelaPaciente.NOME_TABELA} ON ${TabelaPaciente.NOME_TABELA}.${BaseColumns._ID}=$CAMPO_ID_PACIENTE"
+        val tabelas = "$NOME_TABELA INNER JOIN ${TabelaPaciente.NOME_TABELA} ON ${TabelaPaciente.NOME_TABELA}.${BaseColumns._ID}=$CAMPO_ID_PACIENTE INNER JOIN ${TabelaLocal.NOME_TABELA} ON ${TabelaLocal.NOME_TABELA}.${BaseColumns._ID}=$CAMPO_ID_LOCAL"
 
         var sql = "SELECT $colunas FROM $tabelas"
 
@@ -88,10 +93,12 @@ class TabelaVacinacao (db : SQLiteDatabase){
         const val CAMPO_ID_PACIENTE = "id_paciente"
         const val CAMPO_ID_LOCAL = "id_local"
         const val CAMPO_EXTERNO_NOME_PACIENTE = "nome_paciente"
+        const val CAMPO_EXTERNO_NOME_LOCAL = "Localadm"
 
 
 
         val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_DATAVAC, CAMPO_ID_VACINA, CAMPO_ID_PACIENTE, CAMPO_ID_LOCAL,
-            CAMPO_EXTERNO_NOME_PACIENTE)
+            CAMPO_EXTERNO_NOME_PACIENTE,
+            CAMPO_EXTERNO_NOME_LOCAL)
     }
 }
