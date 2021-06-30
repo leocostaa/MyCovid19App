@@ -3,6 +3,7 @@ package com.example.mycovid19app
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
@@ -22,6 +23,9 @@ class FragmentNovoLocal : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        DadosApp.fragment = this
+        (activity as MainActivity).menuAtual = R.menu.menu_novo_local
+
         _binding = FragmentNovoLocalBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -35,5 +39,21 @@ class FragmentNovoLocal : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+    fun navegaListaLivros() {
+        // todo: navegar para a lista de livros
+    }
 
+    fun guardar() {
+        // todo: guardar livro
+    }
+
+    fun processaOpcaoMenu(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_guardar_novo_local -> guardar()
+            R.id.action_cancelar_novo_local -> navegaListaLivros()
+            else -> return false
+        }
+
+        return true
+    }
 }

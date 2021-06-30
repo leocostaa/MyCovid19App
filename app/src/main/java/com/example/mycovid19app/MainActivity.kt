@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
+        val opcaoProcessada= when (item.itemId) {
 
             R.id.action_settings -> {
                 Toast.makeText(this, R.string.versao, Toast.LENGTH_LONG).show()
@@ -73,10 +73,12 @@ class MainActivity : AppCompatActivity() {
                 R.menu.menu_novo_paciente -> (DadosApp.fragment as FragmentNovoPaciente).processaOpcaoMenu(item)
                 R.menu.menu_inicio_page ->(DadosApp.fragment as FragmentInicioPage).processaOpcaoMenu(item)
                 R.menu.menu_locais ->(DadosApp.fragment as FragmentLocal).processaOpcaoMenu(item)
+                R.menu.menu_novo_local->(DadosApp.fragment as FragmentNovoLocal).processaOpcaoMenu(item)
 
                 else -> false
             }
         }
+        return if(opcaoProcessada) true else super.onOptionsItemSelected(item)
     }
 
     override fun onSupportNavigateUp(): Boolean {
