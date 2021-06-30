@@ -8,6 +8,7 @@ class DadosApp {
         lateinit var fragment: Fragment
 
         var PacienteSelecionado : Paciente? = null
+        var localSelecionado : Local? = null
 
     }
 }

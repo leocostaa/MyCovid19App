@@ -20,11 +20,15 @@ class AdapterLocais (val fragment: FragmentLocal): RecyclerView.Adapter<AdapterL
         private val textViewLocalAdm_T = itemView.findViewById<TextView>(R.id.textViewLocalAdmi)
         private val textViewSala = itemView.findViewById<TextView>(R.id.textViewSala)
 
+        private lateinit var local: Local
+
         init {
             itemView.setOnClickListener(this)
         }
 
         fun atualizaLocal(local: Local) {
+            this.local = local
+
             textViewCidade.text = local.cidade
             textViewLocalAdm_T.text = local.localadm
             textViewSala.text = local.sala
@@ -42,6 +46,7 @@ class AdapterLocais (val fragment: FragmentLocal): RecyclerView.Adapter<AdapterL
         private fun seleciona() {
             selecionado = this
             itemView.setBackgroundResource(R.color.cor_selecao)
+            DadosApp.localSelecionado = local
         }
 
         private fun desSeleciona() {
