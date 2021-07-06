@@ -38,7 +38,8 @@ class FragmentNovoVacina : Fragment() {
         _binding = null
     }
     fun navegaInicioPage() {
-        // todo: navegar para a lista de livros
+        findNavController().navigate(R.id.action_fragmentNovoVacina_to_fragmentInicioPage)
+
     }
 
     fun guardar() {
