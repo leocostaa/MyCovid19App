@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_FragmentPaciente_to_fragmentInicioPage"
             app:destination="@id/fragmentInicioPage" />
+        <action
+            android:id="@+id/action_FragmentPaciente_to_fragmentEliminaPaciente"
+            app:destination="@id/fragmentEliminaPaciente" />
     </fragment>
     <fragment
         android:id="@+id/FragmentVacinacao"
@@ -109,5 +112,14 @@
         <action
             android:id="@+id/action_fragmentEliminaLocal_to_fragmentInicioPage"
             app:destination="@id/fragmentInicioPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentEliminaPaciente"
+        android:name="com.example.mycovid19app.FragmentEliminaPaciente"
+        android:label="fragment_elimina_paciente"
+        tools:layout="@layout/fragment_elimina_paciente" >
+        <action
+            android:id="@+id/action_fragmentEliminaPaciente_to_FragmentPaciente"
+            app:destination="@id/FragmentPaciente" />
     </fragment>
 </navigation>

@@ -355,6 +355,7 @@ class ExampleInstrumentedTest {
         )
         assertEquals(1,registosEliminados)
 
+
         db.close()
 
     }

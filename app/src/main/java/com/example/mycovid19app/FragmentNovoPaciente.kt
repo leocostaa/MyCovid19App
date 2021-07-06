@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CalendarView
 import android.widget.EditText
 import android.widget.SimpleCursorAdapter
 import android.widget.Spinner
@@ -15,6 +16,10 @@ import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import com.example.mycovid19app.databinding.FragmentNovoPacienteBinding
+import com.google.android.material.snackbar.Snackbar
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 /**
@@ -27,8 +32,9 @@ class FragmentNovoPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     private var _binding: FragmentNovoPacienteBinding? = null
 
     private lateinit var editTextNome: EditText
-    private lateinit var editTextData: EditText
+    private lateinit var editTextDate: EditText
     private lateinit var spinnerSexo: Spinner
+
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -51,7 +57,7 @@ class FragmentNovoPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         super.onViewCreated(view, savedInstanceState)
 
         editTextNome = view.findViewById(R.id.editTextNome)
-        editTextData = view.findViewById(R.id.editTextDataNascimento)
+        editTextDate = view.findViewById(R.id.editTextDate)
         spinnerSexo = view.findViewById(R.id.spinnerSexo)
 
         LoaderManager.getInstance(this)
@@ -68,21 +74,26 @@ class FragmentNovoPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     fun guardar() {
-      /* val nome = editTextNome.text.toString()
+
+        val idSexo = spinnerSexo.selectedItemId
+
+        val nome = editTextNome.text.toString()
         if (nome.isEmpty()) {
             editTextNome.setError("Preencha")
             return
         }
 
-        val data = editTextData.??????????
+        val data  =  editTextDate .text.toString()
         if (data.isEmpty()) {
-            editTextData.setError("Preencha")
+            editTextDate.setError("Preencha")
             return
         }
+        val simpleDateFormat  = SimpleDateFormat("dd/MM/yyyy")
+        val date = simpleDateFormat.parse(data)
 
-        val idSexo = spinnerSexo.selectedItemId
 
-        val paciente = Paciente(nome = nome, DataNascimento = data, sexo = idSexo.toString())
+
+        val paciente = Paciente(nome = nome, DataNascimento = date, sexo = idSexo.toString())
 
         val uri = activity?.contentResolver?.insert(
             ContentProviderApp.ENDERECO_PACIENTE,
@@ -98,7 +109,7 @@ class FragmentNovoPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             return
         }
 
-        navegaPaciente()*/
+        navegaPaciente()
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {

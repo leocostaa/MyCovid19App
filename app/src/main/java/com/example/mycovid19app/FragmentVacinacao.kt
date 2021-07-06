@@ -31,6 +31,11 @@ class FragmentVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         savedInstanceState: Bundle?
     ): View? {
 
+
+
+
+
+
         _binding = FragmentVacinacaoBinding.inflate(inflater, container, false)
         return binding.root
 
