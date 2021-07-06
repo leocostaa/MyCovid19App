@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity() {
                 R.menu.menu_elimina_local -> (DadosApp.fragment as FragmentEliminaLocal).processaOpcaoMenu(item)
                 R.menu.menu_elimina_paciente -> (DadosApp.fragment as FragmentEliminaPaciente).processaOpcaoMenu(item)
                 R.menu.menu_edita_paciente -> (DadosApp.fragment as FragmentEditaPaciente).processaOpcaoMenu(item)
+                R.menu.menu_vacinas-> (DadosApp.fragment as FragmentVacina).processaOpcaoMenu(item)
 
                 else -> false
             }

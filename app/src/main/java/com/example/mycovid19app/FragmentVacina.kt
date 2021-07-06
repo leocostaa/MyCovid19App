@@ -4,6 +4,7 @@ import android.database.Cursor
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.loader.app.LoaderManager
@@ -54,6 +55,25 @@ class FragmentVacina : Fragment(),LoaderManager.LoaderCallbacks<Cursor>{
     fun navegaNovoVacina() {
         findNavController().navigate(R.id.action_FragmentVacina_to_fragmentNovoVacina)
     }
+    fun navegaAlterarVacina() {
+        //todo: navegar para o fragmento da edição de um livro
+    }
+
+    fun navegaEliminarVacina() {
+        //todo: navegar para o fragmento para confirmar eliminação de um livro
+    }
+    fun processaOpcaoMenu(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_novo_vacina -> navegaNovoVacina()
+            R.id.action_alterar_vacina -> navegaAlterarVacina()
+            R.id.action_eliminar_vacina -> navegaEliminarVacina()
+            else -> return false
+        }
+
+        return true
+    }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
