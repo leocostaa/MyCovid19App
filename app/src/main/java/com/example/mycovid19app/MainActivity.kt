@@ -71,12 +71,15 @@ class MainActivity : AppCompatActivity() {
             else -> when(menuAtual) {
                 R.menu.menu_pacientes -> (DadosApp.fragment as FragmentPacientes).processaOpcaoMenu(item)
                 R.menu.menu_novo_paciente -> (DadosApp.fragment as FragmentNovoPaciente).processaOpcaoMenu(item)
+                R.menu.menu_elimina_paciente -> (DadosApp.fragment as FragmentEliminaPaciente).processaOpcaoMenu(item)
+                R.menu.menu_edita_paciente -> (DadosApp.fragment as FragmentEditaPaciente).processaOpcaoMenu(item)
                 R.menu.menu_inicio_page ->(DadosApp.fragment as FragmentInicioPage).processaOpcaoMenu(item)
                 R.menu.menu_locais ->(DadosApp.fragment as FragmentLocal).processaOpcaoMenu(item)
                 R.menu.menu_novo_local->(DadosApp.fragment as FragmentNovoLocal).processaOpcaoMenu(item)
                 R.menu.menu_edita_local -> (DadosApp.fragment as FragmentEditaLocal).processaOpcaoMenu(item)
                 R.menu.menu_elimina_local -> (DadosApp.fragment as FragmentEliminaLocal).processaOpcaoMenu(item)
-                R.menu.menu_elimina_paciente -> (DadosApp.fragment as FragmentEliminaPaciente).processaOpcaoMenu(item)
+
+
                 else -> false
             }
         }

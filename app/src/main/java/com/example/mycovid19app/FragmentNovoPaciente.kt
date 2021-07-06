@@ -80,12 +80,14 @@ class FragmentNovoPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         val nome = editTextNome.text.toString()
         if (nome.isEmpty()) {
             editTextNome.setError("Preencha")
+            editTextNome.requestFocus()
             return
         }
 
         val data  =  editTextDate .text.toString()
         if (data.isEmpty()) {
             editTextDate.setError("Preencha")
+            editTextDate.requestFocus()
             return
         }
         val simpleDateFormat  = SimpleDateFormat("dd/MM/yyyy")
