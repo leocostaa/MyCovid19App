@@ -7,10 +7,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CalendarView
-import android.widget.EditText
-import android.widget.SimpleCursorAdapter
-import android.widget.Spinner
+import android.widget.*
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
@@ -70,12 +67,12 @@ class FragmentNovoPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         _binding = null
     }
     fun navegaPaciente() {
-        findNavController().navigate(R.id.action_FragmentNovoPaciente_to_FragmentPaciente)
+        findNavController().navigate(R.id.action_fragmentNovoPaciente_to_fragmentInicioPage)
     }
 
     fun guardar() {
 
-        val idSexo = spinnerSexo.selectedItemId
+        val Sexo = spinnerSexo.selectedItemId
 
         val nome = editTextNome.text.toString()
         if (nome.isEmpty()) {
@@ -84,18 +81,19 @@ class FragmentNovoPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             return
         }
 
-        val data  =  editTextDate .text.toString()
+        val data  =  editTextDate.text.toString()
+        val simpleDateFormat  = SimpleDateFormat("dd/MM/yyyy")
+        val date = simpleDateFormat.parse(data)
         if (data.isEmpty()) {
             editTextDate.setError("Preencha")
             editTextDate.requestFocus()
             return
         }
-        val simpleDateFormat  = SimpleDateFormat("dd/MM/yyyy")
-        val date = simpleDateFormat.parse(data)
 
 
 
-        val paciente = Paciente(nome = nome, DataNascimento = date, sexo = idSexo.toString())
+
+        val paciente = Paciente(nome = nome, DataNascimento = date, sexo = Sexo.toString())
 
         val uri = activity?.contentResolver?.insert(
             ContentProviderApp.ENDERECO_PACIENTE,
@@ -110,7 +108,11 @@ class FragmentNovoPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             ).show()
             return
         }
-
+        Toast.makeText(
+            requireContext(),
+            "Paciente criado com sucesso",
+            Toast.LENGTH_LONG
+        ).show()
         navegaPaciente()
     }
 

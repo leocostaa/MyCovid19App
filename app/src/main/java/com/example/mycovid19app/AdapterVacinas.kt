@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class AdapterVacinas(val fragment: FragmentVacina): RecyclerView.Adapter<AdapterVacinas.ViewHolderVacina>() {
+class AdapterVacinas(val fragment: FragmentVacina): RecyclerView.Adapter<AdapterVacinas.ViewHolderVacina>()  {
 
     public var cursor: Cursor? = null
         get() = field
@@ -15,16 +15,42 @@ class AdapterVacinas(val fragment: FragmentVacina): RecyclerView.Adapter<Adapter
             notifyDataSetChanged()
         }
 
-    class ViewHolderVacina(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+
+    class ViewHolderVacina(itemView: View) : RecyclerView.ViewHolder(itemView) , View.OnClickListener{
         private val textViewOrigem = itemView.findViewById<TextView>(R.id.textViewOrigemTabela)
         private val textViewQuantidade = itemView.findViewById<TextView>(R.id.textViewQuantidade)
         private val textViewValidade = itemView.findViewById<TextView>(R.id.textViewValidade)
 
 
+        init {
+            itemView.setOnClickListener(this)
+        }
+
         fun atualizaVacina(vacina: Vacina) {
             textViewOrigem.text = vacina.origem
             textViewQuantidade.text = vacina.quantidade.toString()
             textViewValidade.text = vacina.validade.toString()
+        }
+
+
+        override fun onClick(v: View?) {
+            selecionado?.desSeleciona()
+            seleciona()
+        }
+
+        private fun seleciona() {
+            selecionado = this
+            itemView.setBackgroundResource(R.color.cor_selecao)
+        }
+
+        private fun desSeleciona() {
+            selecionado = null
+            itemView.setBackgroundResource(android.R.color.white)
+        }
+
+        companion object {
+            var selecionado : ViewHolderVacina? = null
         }
     }
 
@@ -43,6 +69,8 @@ class AdapterVacinas(val fragment: FragmentVacina): RecyclerView.Adapter<Adapter
     override fun getItemCount(): Int {
         return cursor?.count ?: 0
     }
+
+
 
 
 }

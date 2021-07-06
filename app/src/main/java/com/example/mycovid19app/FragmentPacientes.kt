@@ -59,7 +59,7 @@ class FragmentPacientes : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
         findNavController().navigate(R.id.action_FragmentPaciente_to_FragmentNovoPaciente)
     }
     fun navegaAlterarPaciente() {
-        //todo: navegar para o fragmento da edição de um livro
+        findNavController().navigate(R.id.action_FragmentPaciente_to_fragmentEditaPaciente)
     }
 
     fun navegaEliminarPaciente() {
