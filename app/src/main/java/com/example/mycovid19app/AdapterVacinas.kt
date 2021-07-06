@@ -22,12 +22,13 @@ class AdapterVacinas(val fragment: FragmentVacina): RecyclerView.Adapter<Adapter
         private val textViewQuantidade = itemView.findViewById<TextView>(R.id.textViewQuantidade)
         private val textViewValidade = itemView.findViewById<TextView>(R.id.textViewValidade)
 
-
+        private lateinit var vacina: Vacina
         init {
             itemView.setOnClickListener(this)
         }
 
         fun atualizaVacina(vacina: Vacina) {
+            this.vacina = vacina
             textViewOrigem.text = vacina.origem
             textViewQuantidade.text = vacina.quantidade.toString()
             textViewValidade.text = vacina.validade.toString()
@@ -42,6 +43,7 @@ class AdapterVacinas(val fragment: FragmentVacina): RecyclerView.Adapter<Adapter
         private fun seleciona() {
             selecionado = this
             itemView.setBackgroundResource(R.color.cor_selecao)
+            DadosApp.vacinaSelecionado = vacina
         }
 
         private fun desSeleciona() {
