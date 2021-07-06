@@ -7,8 +7,11 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.mycovid19app.databinding.FragmentNovoVacinaBinding
+import com.google.android.material.snackbar.Snackbar
+import java.text.SimpleDateFormat
 
 class FragmentNovoVacina : Fragment() {
 
@@ -53,7 +56,49 @@ class FragmentNovoVacina : Fragment() {
     }
 
     fun guardar() {
-        // todo: guardar livro
+        val origem = editTextOrigem.text.toString()
+        if (origem.isEmpty()) {
+            editTextOrigem.setError("Preencha este campo")
+            return
+        }
+
+        val validade = editTextValidade.text.toString()
+        val simpleDateFormat  = SimpleDateFormat("dd/MM/yyyy")
+        val date = simpleDateFormat.parse(validade)
+        if (validade.isEmpty()) {
+            editTextValidade.setError("Preencha este campo")
+            return
+        }
+
+        val quantidade = editTextQuantidade.text.toString()
+        val qnt = Integer.parseInt(quantidade)
+
+        if (quantidade.isEmpty()) {
+            editTextQuantidade.setError("Preencha este campo")
+            return
+        }
+
+        val vacina = Vacina(origem = origem, validade = date, quantidade = qnt)
+
+        val uri = activity?.contentResolver?.insert(
+            ContentProviderApp.ENDERECO_VACINA,
+            vacina.toContentValues()
+        )
+
+        if (uri == null) {
+            Snackbar.make(
+                editTextOrigem,
+                ("erro ao inserir "),
+                Snackbar.LENGTH_LONG
+            ).show()
+            return
+        }
+        Toast.makeText(
+            requireContext(),
+            "Guardado com sucesso",
+            Toast.LENGTH_LONG
+        ).show()
+        navegaInicioPage()
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
