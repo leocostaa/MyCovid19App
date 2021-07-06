@@ -29,7 +29,8 @@ class FragmentVacina : Fragment(),LoaderManager.LoaderCallbacks<Cursor>{
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        DadosApp.fragment = this
+        (activity as MainActivity).menuAtual = R.menu.menu_vacinas
 
         _binding = FragmentVacinaBinding.inflate(inflater, container, false)
         return binding.root

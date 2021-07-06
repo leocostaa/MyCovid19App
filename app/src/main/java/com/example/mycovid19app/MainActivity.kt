@@ -53,6 +53,9 @@ class MainActivity : AppCompatActivity() {
         if (menuAtual == R.menu.menu_locais ) {
             atualizaMenuLocais(false)
         }
+        if (menuAtual == R.menu.menu_vacinas ) {
+            atualizaMenuVacinas(false)
+        }
 
 
         return true
@@ -98,5 +101,9 @@ class MainActivity : AppCompatActivity() {
     fun atualizaMenuLocais(mostraBotoesAlterarEliminar : Boolean) {
         menu.findItem(R.id.action_alterar_local).setVisible(mostraBotoesAlterarEliminar)
         menu.findItem(R.id.action_eliminar_local).setVisible(mostraBotoesAlterarEliminar)
+    }
+    fun atualizaMenuVacinas(mostraBotoesAlterarEliminar : Boolean) {
+        menu.findItem(R.id.action_alterar_vacina).setVisible(mostraBotoesAlterarEliminar)
+        menu.findItem(R.id.action_eliminar_vacina).setVisible(mostraBotoesAlterarEliminar)
     }
 }

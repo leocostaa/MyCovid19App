@@ -44,6 +44,8 @@ class AdapterVacinas(val fragment: FragmentVacina): RecyclerView.Adapter<Adapter
             selecionado = this
             itemView.setBackgroundResource(R.color.cor_selecao)
             DadosApp.vacinaSelecionado = vacina
+            DadosApp.activity.atualizaMenuVacinas(true)
+
         }
 
         private fun desSeleciona() {

@@ -2,21 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="pt.ipg.livros.MainActivity">
+    tools:context="com.example.mycovid19app.MainActivity">
     <item
         android:id="@+id/action_novo_vacina"
         android:icon="@drawable/ic_baseline_add"
-        android:title="novo_vacina"
+        android:title="Novo Vacina"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_alterar_vacina"
         android:icon="@android:drawable/ic_menu_edit"
-        android:title="alterar_vacina"
+        android:title="Alterar Vacina"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_eliminar_vacina"
         android:icon="@android:drawable/ic_menu_delete"
-        android:title="eliminar_vacina"
+        android:title="Eliminar vacina"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_settings"
