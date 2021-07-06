@@ -121,5 +121,8 @@
         <action
             android:id="@+id/action_fragmentEliminaPaciente_to_FragmentPaciente"
             app:destination="@id/FragmentPaciente" />
+        <action
+            android:id="@+id/action_fragmentEliminaPaciente_to_fragmentInicioPage"
+            app:destination="@id/fragmentInicioPage" />
     </fragment>
 </navigation>
