@@ -31,9 +31,6 @@
         <action
             android:id="@+id/action_FragmentVacinacao_to_fragmentInicioPage"
             app:destination="@id/fragmentInicioPage" />
-        <action
-            android:id="@+id/action_FragmentVacinacao_to_fragmentNovoVacina"
-            app:destination="@id/fragmentNovoVacina" />
     </fragment>
     <fragment
         android:id="@+id/FragmentLocal"
@@ -58,6 +55,9 @@
         <action
             android:id="@+id/action_fragmentVacina_to_fragmentInicioPage"
             app:destination="@id/fragmentInicioPage" />
+        <action
+            android:id="@+id/action_FragmentVacina_to_fragmentNovoVacina"
+            app:destination="@id/fragmentNovoVacina" />
     </fragment>
     <activity
         android:id="@+id/mainActivity"
@@ -149,13 +149,13 @@
     <fragment
         android:id="@+id/fragmentNovoVacina"
         android:name="com.example.mycovid19app.FragmentNovoVacina"
-        android:label="fragment_novo_vacina"
+        android:label="Novo!"
         tools:layout="@layout/fragment_novo_vacina" >
-        <action
-            android:id="@+id/action_fragmentNovoVacina_to_FragmentVacinacao"
-            app:destination="@id/FragmentVacinacao" />
         <action
             android:id="@+id/action_fragmentNovoVacina_to_fragmentInicioPage"
             app:destination="@id/fragmentInicioPage" />
+        <action
+            android:id="@+id/action_fragmentNovoVacina_to_FragmentVacina"
+            app:destination="@id/FragmentVacina" />
     </fragment>
 </navigation>

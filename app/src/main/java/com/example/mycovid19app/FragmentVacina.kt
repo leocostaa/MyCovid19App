@@ -51,6 +51,9 @@ class FragmentVacina : Fragment(),LoaderManager.LoaderCallbacks<Cursor>{
             .initLoader(ID_LOADER_MANAGER_VACINAS, null, this)
 //            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
     }
+    fun navegaNovoVacina() {
+        findNavController().navigate(R.id.action_FragmentVacina_to_fragmentNovoVacina)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
