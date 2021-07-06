@@ -154,5 +154,8 @@
         <action
             android:id="@+id/action_fragmentNovoVacina_to_FragmentVacinacao"
             app:destination="@id/FragmentVacinacao" />
+        <action
+            android:id="@+id/action_fragmentNovoVacina_to_fragmentInicioPage"
+            app:destination="@id/fragmentInicioPage" />
     </fragment>
 </navigation>
