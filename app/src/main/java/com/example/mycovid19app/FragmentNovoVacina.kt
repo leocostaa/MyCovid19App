@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.navigation.fragment.findNavController
 import com.example.mycovid19app.databinding.FragmentNovoVacinaBinding
 
@@ -14,6 +15,11 @@ class FragmentNovoVacina : Fragment() {
     private var _binding: FragmentNovoVacinaBinding? = null
 
     private val binding get() = _binding!!
+
+    private lateinit var editTextOrigem : EditText
+    private lateinit var editTextValidade : EditText
+    private lateinit var editTextQuantidade : EditText
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +36,10 @@ class FragmentNovoVacina : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        editTextOrigem = view.findViewById(R.id.editTextLabOrigem)
+        editTextValidade = view.findViewById(R.id.editTextValidade)
+        editTextQuantidade = view.findViewById(R.id.editTextQuantidade)
+
 
 
     }
