@@ -77,13 +77,13 @@ class FragmentEditaPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
         val simpleDateFormat  = SimpleDateFormat("dd/MM/yyyy")
         val date = simpleDateFormat.parse(data)
 
-        val sexo  =  spinnerSexoEdita.selectedItemId
+        val sexo  =  spinnerSexoEdita.selectedItemId.toString()
 
 
         val paciente = DadosApp.PacienteSelecionado!!
         paciente.nome = nome
         paciente.DataNascimento = date
-        paciente.sexo = sexo.toString()
+        paciente.sexo = sexo
 
         val uriPaciente = Uri.withAppendedPath(
             ContentProviderApp.ENDERECO_PACIENTE,
