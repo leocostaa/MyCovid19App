@@ -92,14 +92,14 @@ class FragmentNovoVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
         if (uri == null) {
             Snackbar.make(
                 spinnerLOnovo,
-                "Erro ao inserir",
+                getString(R.string.vacc_ins_err),
                 Snackbar.LENGTH_LONG
             ).show()
             return
         }
         Toast.makeText(
             requireContext(),
-            "Vacinação criado com sucesso",
+            getString(R.string.vacc_ins_succ),
             Toast.LENGTH_LONG
         ).show()
 

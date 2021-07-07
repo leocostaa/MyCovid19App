@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.mycovid19app.databinding.FragmentInicioPageBinding
 
@@ -46,9 +47,22 @@ class FragmentInicioPage : Fragment() {
         }
 
     }
-    fun processaOpcaoMenu(item: MenuItem): Boolean {
-        return false
+    fun navegaInicioCancela(){
+        findNavController().navigate(R.id.action_fragmentInicioPage_to_fragmentLogin)
     }
+    fun info(){
+        Toast.makeText(requireContext(),"APP ",Toast.LENGTH_LONG)
+
+    }
+    fun processaOpcaoMenu(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_login -> navegaInicioCancela()
+            R.id.action_info -> info()
+            else -> return false
+        }
+        return true
+    }
+
     companion object {
 
     }

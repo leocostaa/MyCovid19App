@@ -59,7 +59,7 @@ class FragmentEliminaVacina : Fragment() {
         if (registos != 1) {
             Toast.makeText(
                 requireContext(),
-                "Erro Eliminar Vacina",
+                getString(R.string.vac_elim_err),
                 Toast.LENGTH_LONG
             ).show()
             return
@@ -67,7 +67,7 @@ class FragmentEliminaVacina : Fragment() {
 
         Toast.makeText(
             requireContext(),
-            "Vacina Eliminada com sucesso",
+            getString(R.string.vac_elim_succ),
             Toast.LENGTH_LONG
         ).show()
         navegaInicio()

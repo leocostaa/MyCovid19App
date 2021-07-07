@@ -56,21 +56,21 @@ class FragmentEditaLocal : Fragment()  {
     fun guardar() {
         val Cidade = editTextCidadeEdita.text.toString()
         if (Cidade.isEmpty()) {
-            editTextCidadeEdita.setError("Preenche este campo")
+            editTextCidadeEdita.setError(getString(R.string.Preencha))
             editTextCidadeEdita.requestFocus()
             return
         }
 
         val LocalAdm = editTextLocalAdmEdita.text.toString()
         if (LocalAdm.isEmpty()) {
-            editTextLocalAdmEdita.setError("Preencha este campo")
+            editTextLocalAdmEdita.setError(getString(R.string.Preencha))
             editTextLocalAdmEdita.requestFocus()
             return
         }
 
         val Sala = editTextSalaEdita.text.toString()
         if (Sala.isEmpty()) {
-            editTextSalaEdita.setError("Preencha este campo")
+            editTextSalaEdita.setError(getString(R.string.Preencha))
             editTextSalaEdita.requestFocus()
             return
         }
@@ -96,7 +96,7 @@ class FragmentEditaLocal : Fragment()  {
         if (registos != 1) {
             Toast.makeText(
                 requireContext(),
-                "Erro ao alterar",
+                getString(R.string.loc_edit_err),
                 Toast.LENGTH_LONG
             ).show()
             return
@@ -104,7 +104,7 @@ class FragmentEditaLocal : Fragment()  {
 
         Toast.makeText(
             requireContext(),
-            "Alterado com sucesso",
+            getString(R.string.loc_edit_succ),
             Toast.LENGTH_LONG
         ).show()
         navegaLocal()

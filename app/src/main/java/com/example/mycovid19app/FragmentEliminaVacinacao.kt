@@ -48,7 +48,7 @@ class FragmentEliminaVacinacao : Fragment() {
         findNavController().navigate(R.id.action_fragmentEliminaVacinacao_to_fragmentInicioPage)
         Toast.makeText(
             requireContext(),
-            "Cancelado com sucesso",
+            getString(R.string.Can_sucess) ,
             Toast.LENGTH_LONG
         ).show()
     }

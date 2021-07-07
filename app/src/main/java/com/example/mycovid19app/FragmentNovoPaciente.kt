@@ -76,7 +76,7 @@ class FragmentNovoPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
         val nome = editTextNome.text.toString()
         if (nome.isEmpty()) {
-            editTextNome.setError("Preencha")
+            editTextNome.setError(getString(R.string.Preencha))
             editTextNome.requestFocus()
             return
         }
@@ -85,7 +85,7 @@ class FragmentNovoPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         val simpleDateFormat  = SimpleDateFormat("dd/MM/yyyy")
         val date = simpleDateFormat.parse(data)
         if (data.isEmpty()) {
-            editTextDate.setError("Preencha")
+            editTextDate.setError(getString(R.string.Preencha))
             editTextDate.requestFocus()
             return
         }
@@ -103,14 +103,14 @@ class FragmentNovoPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         if (uri == null) {
             Snackbar.make(
                 editTextNome,
-                ("Erro ao inserir "),
+                (getString(R.string.pac_ins_err)),
                 Snackbar.LENGTH_LONG
             ).show()
             return
         }
         Toast.makeText(
             requireContext(),
-            "Paciente criado com sucesso",
+            getString(R.string.pac_ins_succ),
             Toast.LENGTH_LONG
         ).show()
         navegaPaciente()

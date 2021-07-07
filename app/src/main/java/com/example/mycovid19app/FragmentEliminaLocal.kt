@@ -61,7 +61,7 @@ class FragmentEliminaLocal : Fragment() {
         if (registos != 1) {
             Toast.makeText(
                 requireContext(),
-                "Erro ao eliminar local",
+                getString(R.string.loc_elm_erro),
                 Toast.LENGTH_LONG
             ).show()
             return
@@ -69,7 +69,7 @@ class FragmentEliminaLocal : Fragment() {
 
         Toast.makeText(
             requireContext(),
-            "Local eliminado com sucesso",
+            getString(R.string.loc_elm_succ),
             Toast.LENGTH_LONG
         ).show()
 

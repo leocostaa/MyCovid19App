@@ -92,7 +92,7 @@ class FragmentEditaVacinacao : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
         if (registos != 1) {
             Toast.makeText(
                 requireContext(),
-                "Erro ao editar vacinação",
+                getString(R.string.vacc_edit_err),
                 Toast.LENGTH_LONG
             ).show()
             return
@@ -100,7 +100,7 @@ class FragmentEditaVacinacao : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
 
         Toast.makeText(
             requireContext(),
-            "Vacinação guardada com sucesso",
+            getString(R.string.vacc_edit_succ),
             Toast.LENGTH_LONG
         ).show()
         navegaInicio()

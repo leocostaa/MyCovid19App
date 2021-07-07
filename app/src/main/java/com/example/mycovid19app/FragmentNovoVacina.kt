@@ -58,7 +58,7 @@ class FragmentNovoVacina : Fragment() {
     fun guardar() {
         val origem = editTextOrigem.text.toString()
         if (origem.isEmpty()) {
-            editTextOrigem.setError("Preencha este campo")
+            editTextOrigem.setError(getString(R.string.Preencha))
             editTextOrigem.requestFocus()
             return
         }
@@ -67,7 +67,7 @@ class FragmentNovoVacina : Fragment() {
         val simpleDateFormat  = SimpleDateFormat("dd/MM/yyyy")
         val date = simpleDateFormat.parse(validade)
         if (validade.isEmpty()) {
-            editTextValidade.setError("Preencha este campo")
+            editTextValidade.setError(getString(R.string.Preencha))
             editTextValidade.requestFocus()
             return
         }
@@ -76,7 +76,7 @@ class FragmentNovoVacina : Fragment() {
         val qnt = Integer.parseInt(quantidade)
 
         if (quantidade.isEmpty()) {
-            editTextQuantidade.setError("Preencha este campo")
+            editTextQuantidade.setError(getString(R.string.Preencha))
             editTextQuantidade.requestFocus()
             return
         }
@@ -91,14 +91,14 @@ class FragmentNovoVacina : Fragment() {
         if (uri == null) {
             Snackbar.make(
                 editTextOrigem,
-                ("erro ao inserir "),
+                (getString(R.string.vac_ins_err)),
                 Snackbar.LENGTH_LONG
             ).show()
             return
         }
         Toast.makeText(
             requireContext(),
-            "Guardado com sucesso",
+            getString(R.string.vac_ins_succ),
             Toast.LENGTH_LONG
         ).show()
         navegaInicioPage()

@@ -52,7 +52,17 @@ class FragmentEditaPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
     }
     fun navegaPaciente() {
         findNavController().navigate(R.id.action_fragmentEditaPaciente_to_fragmentInicioPage)
+        Toast.makeText(
+            requireContext(),
+            getString(R.string.Can_sucess) ,
+            Toast.LENGTH_LONG
+        ).show()
     }
+    fun navegaInicio() {
+        findNavController().navigate(R.id.action_fragmentEditaPaciente_to_fragmentInicioPage)
+
+    }
+
     fun guardar(){
 
 
@@ -90,7 +100,7 @@ class FragmentEditaPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
         if (registos != 1) {
             Toast.makeText(
                 requireContext(),
-                "Erro ao alterar",
+                getString(R.string.pac_edit_erro),
                 Toast.LENGTH_LONG
             ).show()
             return
@@ -98,10 +108,10 @@ class FragmentEditaPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
 
         Toast.makeText(
             requireContext(),
-            "Alterado com sucesso",
+            getString(R.string.pac_edit_succ),
             Toast.LENGTH_LONG
         ).show()
-        navegaPaciente()
+        navegaInicio()
     }
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         when (item.itemId) {

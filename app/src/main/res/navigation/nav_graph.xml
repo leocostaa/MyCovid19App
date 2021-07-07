@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragmentLogin">
+    app:startDestination="@id/fragmentInicioPage">
 
     <fragment
         android:id="@+id/FragmentPaciente"
@@ -109,6 +109,9 @@
         <action
             android:id="@+id/action_FragmentInicio_to_FragmentVacina"
             app:destination="@id/FragmentVacina" />
+        <action
+            android:id="@+id/action_fragmentInicioPage_to_fragmentLogin"
+            app:destination="@id/fragmentLogin" />
     </fragment>
     <fragment
         android:id="@+id/fragmentNovoLocal"

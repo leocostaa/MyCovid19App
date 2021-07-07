@@ -62,7 +62,7 @@ class FragmentEliminaPaciente : Fragment() {
         if (registos != 1) {
             Toast.makeText(
                 requireContext(),
-                "Erro ao eliminar paciente",
+                getString(R.string.pac_elim_err),
                 Toast.LENGTH_LONG
             ).show()
             return
@@ -70,7 +70,7 @@ class FragmentEliminaPaciente : Fragment() {
 
         Toast.makeText(
             requireContext(),
-            "Paciente eliminado com sucesso",
+            getString(R.string.pac_elim_succ),
             Toast.LENGTH_LONG
         ).show()
 

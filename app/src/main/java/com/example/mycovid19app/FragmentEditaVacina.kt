@@ -58,7 +58,7 @@ class FragmentEditaVacina : Fragment() {
         val quantidade = editTextQuantidadeEdita.text.toString()
         val qnt = Integer.parseInt(quantidade)
         if (quantidade.isEmpty()) {
-            editTextQuantidadeEdita.setError("Preencha")
+            editTextQuantidadeEdita.setError(getString(R.string.Preencha))
             editTextQuantidadeEdita.requestFocus()
             return
         }
@@ -66,7 +66,7 @@ class FragmentEditaVacina : Fragment() {
         val simpleDateFormat  = SimpleDateFormat("dd/MM/yyyy")
         val date = simpleDateFormat.parse(validade)
         if (validade.isEmpty()) {
-            editTextValidadeEdita.setError("Preencha ")
+            editTextValidadeEdita.setError(getString(R.string.Preencha))
             editTextValidadeEdita.requestFocus()
             return
         }
@@ -93,7 +93,7 @@ class FragmentEditaVacina : Fragment() {
         if (registos != 1) {
             Toast.makeText(
                 requireContext(),
-                "Erro a alterar vacina",
+                getString(R.string.vac_edit_err),
                 Toast.LENGTH_LONG
             ).show()
             return
@@ -101,7 +101,7 @@ class FragmentEditaVacina : Fragment() {
 
         Toast.makeText(
             requireContext(),
-            "Vacina guardada com sucesso",
+            getString(R.string.vac_edit_succ),
             Toast.LENGTH_LONG
         ).show()
         navegaInicio()

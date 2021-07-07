@@ -56,21 +56,21 @@ class FragmentNovoLocal : Fragment() {
     fun guardar() {
         val Cidade = editTextCidade.text.toString()
         if (Cidade.isEmpty()) {
-            editTextCidade.setError("Preencha este campo")
+            editTextCidade.setError(getString(R.string.Preencha))
             editTextCidade.requestFocus()
             return
         }
 
         val LocalAdm = editTextLocalAdm.text.toString()
         if (LocalAdm.isEmpty()) {
-            editTextLocalAdm.setError("Preencha este campo")
+            editTextLocalAdm.setError(getString(R.string.Preencha))
             editTextLocalAdm.requestFocus()
             return
         }
 
         val Sala = editTextSala.text.toString()
         if (Sala.isEmpty()) {
-            editTextSala.setError("Preencha este campo")
+            editTextSala.setError(getString(R.string.Preencha))
             editTextSala.requestFocus()
             return
         }
@@ -85,14 +85,14 @@ class FragmentNovoLocal : Fragment() {
         if (uri == null) {
             Snackbar.make(
                 editTextCidade,
-                ("erro ao inserir "),
+                (getString(R.string.loc_ins_err)),
                 Snackbar.LENGTH_LONG
             ).show()
             return
         }
         Toast.makeText(
             requireContext(),
-            "Local gravado com sucesso",
+            getString(R.string.loc_ins_succ),
             Toast.LENGTH_LONG
         ).show()
 
