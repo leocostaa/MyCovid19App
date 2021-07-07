@@ -59,6 +59,7 @@ class FragmentNovoVacina : Fragment() {
         val origem = editTextOrigem.text.toString()
         if (origem.isEmpty()) {
             editTextOrigem.setError("Preencha este campo")
+            editTextOrigem.requestFocus()
             return
         }
 
@@ -67,6 +68,7 @@ class FragmentNovoVacina : Fragment() {
         val date = simpleDateFormat.parse(validade)
         if (validade.isEmpty()) {
             editTextValidade.setError("Preencha este campo")
+            editTextValidade.requestFocus()
             return
         }
 
