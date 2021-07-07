@@ -42,11 +42,6 @@ class FragmentVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         return binding.root
 
     }
-    fun processaOpcaoMenu(item: MenuItem): Boolean {
-
-
-        return false
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -64,6 +59,25 @@ class FragmentVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     fun navegaNovoVacincao() {
         findNavController().navigate(R.id.action_FragmentVacinacao_to_fragmentNovoVacinacao)
     }
+    fun navegaAlterarVacinacao() {
+        //todo: navegar para o fragmento da edição de um livro
+    }
+
+    fun navegaEliminarVacinacao() {
+        //todo: navegar para o fragmento para confirmar eliminação de um livro
+    }
+
+    fun processaOpcaoMenu(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_novo_vacinacao -> navegaNovoVacincao()
+            R.id.action_alterar_vacinacao -> navegaAlterarVacinacao()
+            R.id.action_eliminar_vacinacao -> navegaEliminarVacinacao()
+            else -> return false
+        }
+
+        return true
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
