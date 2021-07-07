@@ -53,4 +53,6 @@
     <string name="registrar">Registrar</string>
     <string name="entrar">Entrar</string>
     <string name="e_mail">E-mail</string>
+    <string name="Vacceli">Vacinação eliminada com sucesso</string>
+    <string name="Vaccelierro">Erro ao eliminar Vacinação</string>
 </resources>

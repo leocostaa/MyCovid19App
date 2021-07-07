@@ -64,7 +64,7 @@ class FragmentVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     fun navegaEliminarVacinacao() {
-        //todo: navegar para o fragmento para confirmar eliminação de um livro
+        findNavController().navigate(R.id.action_FragmentVacinacao_to_fragmentEliminaVacinacao)
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {

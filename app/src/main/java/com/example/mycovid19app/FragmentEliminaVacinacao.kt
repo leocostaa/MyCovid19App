@@ -1,59 +1,73 @@
 package com.example.mycovid19app
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FragmentEliminaVacinacao.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FragmentEliminaVacinacao : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var textViewEliminaDV: TextView
+    private lateinit var textViewEliminaLO: TextView
+    private lateinit var textViewEliminaNP: TextView
+    private lateinit var textViewEliminaLA: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        DadosApp.fragment = this
+        (activity as MainActivity).menuAtual = R.menu.menu_elimina_vacinacoes
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_elimina_vacinacao, container, false)
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentEliminaVacinacao.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FragmentEliminaVacinacao().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        textViewEliminaDV = view.findViewById(R.id.textViewEliminaDVac)
+        textViewEliminaLO = view.findViewById(R.id.textViewEliminaLO)
+        textViewEliminaNP = view.findViewById(R.id.textViewEliminaNP)
+        textViewEliminaLA = view.findViewById(R.id.textViewEliminaLA)
+
+        val vacinacao = DadosApp.vacinacaoSelecionado !!
+        textViewEliminaDV.setText(vacinacao.data_vac.toString())
+        textViewEliminaLO.setText(vacinacao.origem)
+        textViewEliminaNP.setText(vacinacao.nomePaciente)
+        textViewEliminaLA.setText(vacinacao.localadm)
     }
+
+    fun navegaInicioCancela() {
+        findNavController().navigate(R.id.action_fragmentEliminaVacinacao_to_fragmentInicioPage)
+        Toast.makeText(
+            requireContext(),
+            "Cancelado com sucesso",
+            Toast.LENGTH_LONG
+        ).show()
+    }
+    fun navegaInicio() {
+        findNavController().navigate(R.id.action_fragmentEliminaVacinacao_to_fragmentInicioPage)
+
+    }
+
+    fun elimina() {
+       
+    }
+    fun processaOpcaoMenu(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_confirma_eliminar_vacinacoes -> elimina()
+            R.id.action_cancelar_eliminar_vacinacoes -> navegaInicioCancela()
+            else -> return false
+        }
+
+        return true
+    }
+
 }
