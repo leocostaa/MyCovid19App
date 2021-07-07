@@ -10,6 +10,7 @@ class DadosApp {
         var PacienteSelecionado : Paciente? = null
         var localSelecionado : Local? = null
         var vacinaSelecionado : Vacina? = null
+        var vacinacaoSelecionado : Vacinacao? = null
 
     }
 }

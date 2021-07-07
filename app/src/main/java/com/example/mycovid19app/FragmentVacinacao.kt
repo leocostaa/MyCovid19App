@@ -4,6 +4,7 @@ import android.database.Cursor
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.loader.app.LoaderManager
@@ -39,6 +40,11 @@ class FragmentVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         _binding = FragmentVacinacaoBinding.inflate(inflater, container, false)
         return binding.root
 
+    }
+    fun processaOpcaoMenu(item: MenuItem): Boolean {
+
+
+        return false
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

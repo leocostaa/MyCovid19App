@@ -56,6 +56,9 @@ class MainActivity : AppCompatActivity() {
         if (menuAtual == R.menu.menu_vacinas ) {
             atualizaMenuVacinas(false)
         }
+        if (menuAtual == R.menu.menu_vacinacao ) {
+            atualizaMenuVacinacao(false)
+        }
 
 
         return true
@@ -85,7 +88,7 @@ class MainActivity : AppCompatActivity() {
                 R.menu.menu_novo_vacina-> (DadosApp.fragment as FragmentNovoVacina).processaOpcaoMenu(item)
                 R.menu.menu_edita_vacina-> (DadosApp.fragment as FragmentEditaVacina).processaOpcaoMenu(item)
                 R.menu.menu_elimina_vacina-> (DadosApp.fragment as FragmentEliminaVacina).processaOpcaoMenu(item)
-
+                R.menu.menu_vacinacao-> (DadosApp.fragment as FragmentVacinacao).processaOpcaoMenu(item)
 
 
                 else -> false
@@ -111,5 +114,9 @@ class MainActivity : AppCompatActivity() {
     fun atualizaMenuVacinas(mostraBotoesAlterarEliminar : Boolean) {
         menu.findItem(R.id.action_alterar_vacina).setVisible(mostraBotoesAlterarEliminar)
         menu.findItem(R.id.action_eliminar_vacina).setVisible(mostraBotoesAlterarEliminar)
+    }
+    fun atualizaMenuVacinacao(mostraBotoesAlterarEliminar : Boolean) {
+        menu.findItem(R.id.action_alterar_vacinacao).setVisible(mostraBotoesAlterarEliminar)
+        menu.findItem(R.id.action_eliminar_vacinacao).setVisible(mostraBotoesAlterarEliminar)
     }
 }
