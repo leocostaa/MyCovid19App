@@ -3,6 +3,7 @@ package com.example.mycovid19app
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 
@@ -28,7 +29,9 @@ class FragmentEditaVacinacao : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
     }
-
+    fun processaOpcaoMenu(item: MenuItem): Boolean {
+        return false
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
