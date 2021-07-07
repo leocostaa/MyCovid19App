@@ -21,7 +21,7 @@ class FragmentLogin : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         DadosApp.fragment= this
-        //(activity as MainActivity).menuAtual = R.menu.menu_inicio_page
+        (activity as MainActivity).menuAtual = R.menu.menu_login
 
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root  }

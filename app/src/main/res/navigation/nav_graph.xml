@@ -206,7 +206,7 @@
     <fragment
         android:id="@+id/fragmentLogin"
         android:name="com.example.mycovid19app.FragmentLogin"
-        android:label="fragment_login"
+        android:label="MyAppCovid19"
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_fragmentLogin_to_fragmentInicioPage"
