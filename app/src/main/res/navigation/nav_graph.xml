@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragmentInicioPage">
+    app:startDestination="@id/fragmentLogin">
 
     <fragment
         android:id="@+id/FragmentPaciente"
@@ -201,6 +201,15 @@
             app:destination="@id/FragmentVacinacao" />
         <action
             android:id="@+id/action_fragmentNovoVacinacao_to_fragmentInicioPage"
+            app:destination="@id/fragmentInicioPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentLogin"
+        android:name="com.example.mycovid19app.FragmentLogin"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_fragmentLogin_to_fragmentInicioPage"
             app:destination="@id/fragmentInicioPage" />
     </fragment>
 </navigation>

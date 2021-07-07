@@ -49,7 +49,7 @@ class FragmentNovoVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
         spinnerNPnovo = view.findViewById(R.id.spinnerNPnovo)
         spinnerLAnovo = view.findViewById(R.id.spinnerLAnovo)
         CalendarViewDataVac = view.findViewById(R.id.calendarViewDataVac)
- 
+
         LoaderManager.getInstance(this)
             .initLoader(ID_LOADER_MANAGER_LAB, null, this)
 
@@ -111,9 +111,21 @@ class FragmentNovoVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
             0
         )
     }
-
+    /*private fun atualizaSpinnerNomePaciente(data: Cursor?) {
+        spinnerNPnovo.adapter = SimpleCursorAdapter(
+            requireContext(),
+            android.R.layout.simple_list_item_1,
+            data,
+            arrayOf(TabelaPaciente.CAMPO_NOME),
+            intArrayOf(android.R.id.text1),
+            0
+        )
+    }
+*/
     companion object {
         const val ID_LOADER_MANAGER_LAB = 0
+        //const val ID_LOADER_MANAGER_NOMEPAC = 1
+
     }
 
 }
