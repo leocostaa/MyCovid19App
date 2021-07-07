@@ -50,14 +50,11 @@ class FragmentInicioPage : Fragment() {
     fun navegaInicioCancela(){
         findNavController().navigate(R.id.action_fragmentInicioPage_to_fragmentLogin)
     }
-    fun info(){
-        Toast.makeText(requireContext(),"APP ",Toast.LENGTH_LONG)
 
-    }
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_login -> navegaInicioCancela()
-            R.id.action_info -> info()
+            R.id.action_info -> Toast.makeText(requireContext(),"App desenvolvida para a UC de Programação Avançada por Leonardo Costa com o tema de Covid19",Toast.LENGTH_LONG).show()
             else -> return false
         }
         return true
