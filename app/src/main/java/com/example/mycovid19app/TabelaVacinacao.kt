@@ -68,9 +68,7 @@ class TabelaVacinacao (db : SQLiteDatabase){
             }
         }
 
-        val tabelas = "$NOME_TABELA INNER JOIN ${TabelaPaciente.NOME_TABELA} ON ${TabelaPaciente.NOME_TABELA}.${BaseColumns._ID}=$CAMPO_ID_PACIENTE " +
-                                   "INNER JOIN ${TabelaLocal.NOME_TABELA} ON ${TabelaLocal.NOME_TABELA}.${BaseColumns._ID}=$CAMPO_ID_LOCAL " +
-                                   "INNER JOIN ${TabelaVacina.NOME_TABELA} ON ${TabelaVacina.NOME_TABELA}.${BaseColumns._ID}=$CAMPO_ID_VACINA"
+        val tabelas = "$NOME_TABELA INNER JOIN ${TabelaPaciente.NOME_TABELA} ON ${TabelaPaciente.NOME_TABELA}.${BaseColumns._ID}=$CAMPO_ID_PACIENTE INNER JOIN ${TabelaLocal.NOME_TABELA} ON ${TabelaLocal.NOME_TABELA}.${BaseColumns._ID}=$CAMPO_ID_LOCAL INNER JOIN ${TabelaVacina.NOME_TABELA} ON ${TabelaVacina.NOME_TABELA}.${BaseColumns._ID}=$CAMPO_ID_VACINA"
 
         var sql = "SELECT $colunas FROM $tabelas"
 
@@ -84,12 +82,6 @@ class TabelaVacinacao (db : SQLiteDatabase){
         if (orderBy != null) sql += " ORDER BY $orderBy"
 
         return db.rawQuery(sql, selectionArgs)
-
-
-
-
-
-
 
     }
 
@@ -105,7 +97,6 @@ class TabelaVacinacao (db : SQLiteDatabase){
 
 
 
-        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_DATAVAC, CAMPO_ID_VACINA, CAMPO_ID_PACIENTE, CAMPO_ID_LOCAL,
-            CAMPO_EXTERNO_NOME_PACIENTE, CAMPO_EXTERNO_NOME_LOCAL, CAMPO_EXTERNO_ORIGEM)
+        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_DATAVAC, CAMPO_ID_VACINA, CAMPO_ID_PACIENTE, CAMPO_ID_LOCAL, CAMPO_EXTERNO_NOME_PACIENTE, CAMPO_EXTERNO_NOME_LOCAL, CAMPO_EXTERNO_ORIGEM)
     }
 }
