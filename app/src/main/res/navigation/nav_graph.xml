@@ -212,4 +212,9 @@
             android:id="@+id/action_fragmentLogin_to_fragmentInicioPage"
             app:destination="@id/fragmentInicioPage" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentEditaVacinacao"
+        android:name="com.example.mycovid19app.FragmentEditaVacinacao"
+        android:label="fragment_edita_vacinacao"
+        tools:layout="@layout/fragment_edita_vacinacao" />
 </navigation>

@@ -31,10 +31,13 @@ class FragmentLogin : Fragment() {
 
 
         binding.loginButton.setOnClickListener {
-            findNavController().navigate(R.id.action_fragmentLogin_to_fragmentInicioPage)
-        }
+            navegaHome()
+        } 
 
 
+    }
+    fun navegaHome() {
+        findNavController().navigate(R.id.action_fragmentLogin_to_fragmentInicioPage)
     }
 
 }
