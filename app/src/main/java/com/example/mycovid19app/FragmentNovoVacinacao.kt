@@ -1,5 +1,6 @@
 package com.example.mycovid19app
 
+import android.database.Cursor
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,14 +8,18 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CalendarView
+import android.widget.SimpleCursorAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.loader.app.LoaderManager
+import androidx.loader.content.CursorLoader
+import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import com.example.mycovid19app.databinding.FragmentNovoVacinacaoBinding
 
 
 
-class FragmentNovoVacinacao : Fragment() {
+class FragmentNovoVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     private var _binding: FragmentNovoVacinacaoBinding? = null
 
@@ -44,6 +49,9 @@ class FragmentNovoVacinacao : Fragment() {
         spinnerNPnovo = view.findViewById(R.id.spinnerNPnovo)
         spinnerLAnovo = view.findViewById(R.id.spinnerLAnovo)
         CalendarViewDataVac = view.findViewById(R.id.calendarViewDataVac)
+ 
+        LoaderManager.getInstance(this)
+            .initLoader(ID_LOADER_MANAGER_LAB, null, this)
 
     }
     override fun onDestroyView() {
@@ -74,6 +82,38 @@ class FragmentNovoVacinacao : Fragment() {
         }
 
         return true
+    }
+
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
+        return CursorLoader(
+            requireContext(),
+            ContentProviderApp.ENDERECO_VACINA,
+            TabelaVacina.TODAS_COLUNAS,
+            null, null,
+            TabelaVacina.CAMPO_ORIGEM
+        )
+    }
+
+    override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
+        atualizaSpinnerLab(data)
+    }
+
+    override fun onLoaderReset(loader: Loader<Cursor>) {
+        atualizaSpinnerLab(null)
+    }
+    private fun atualizaSpinnerLab(data: Cursor?) {
+        spinnerLOnovo.adapter = SimpleCursorAdapter(
+            requireContext(),
+            android.R.layout.simple_list_item_1,
+            data,
+            arrayOf(TabelaVacina.CAMPO_ORIGEM),
+            intArrayOf(android.R.id.text1),
+            0
+        )
+    }
+
+    companion object {
+        const val ID_LOADER_MANAGER_LAB = 0
     }
 
 }
