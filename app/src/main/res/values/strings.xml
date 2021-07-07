@@ -47,4 +47,10 @@
     <string name="cancelar3">cancelar</string>
     <string name="cancelar4">cancelar</string>
     <string name="guardar2">guardar</string>
+    <string name="senha">Senha</string>
+    <string name="vers_o_1_0">Versão: 1.0</string>
+    <string name="bem_vindo">Bem Vindo</string>
+    <string name="registrar">Registrar</string>
+    <string name="entrar">Entrar</string>
+    <string name="e_mail">E-mail</string>
 </resources>

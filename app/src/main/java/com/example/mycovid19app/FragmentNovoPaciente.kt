@@ -72,7 +72,7 @@ class FragmentNovoPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     fun guardar() {
 
-        val Sexo = spinnerSexo.selectedItemId
+        val Sexo = spinnerSexo.toString()
 
         val nome = editTextNome.text.toString()
         if (nome.isEmpty()) {
@@ -93,7 +93,7 @@ class FragmentNovoPaciente : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
 
 
-        val paciente = Paciente(nome = nome, DataNascimento = date, sexo = Sexo.toString())
+        val paciente = Paciente(nome = nome, DataNascimento = date, sexo = Sexo)
 
         val uri = activity?.contentResolver?.insert(
             ContentProviderApp.ENDERECO_PACIENTE,

@@ -16,7 +16,9 @@ import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import com.example.mycovid19app.databinding.FragmentNovoVacinacaoBinding
-
+import com.google.android.material.snackbar.Snackbar
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class FragmentNovoVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
@@ -50,9 +52,9 @@ class FragmentNovoVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
         spinnerLAnovo = view.findViewById(R.id.spinnerLAnovo)
         CalendarViewDataVac = view.findViewById(R.id.calendarViewDataVac)
 
-        LoaderManager.getInstance(this)
-            .initLoader(ID_LOADER_MANAGER_LAB, null, this)
-
+        LoaderManager.getInstance(this).initLoader(ID_LOADER_MANAGER_LAB, null, this)
+        LoaderManager.getInstance(this).initLoader(ID_LOADER_MANAGER_NOMEPAC, null, this)
+        LoaderManager.getInstance(this).initLoader(ID_LOADER_MANAGER_LOCALVAC, null, this)
     }
     override fun onDestroyView() {
         super.onDestroyView()
@@ -71,7 +73,7 @@ class FragmentNovoVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
 
     }
     fun guardar() {
-        // todo: guardar livro
+        
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
@@ -85,21 +87,49 @@ class FragmentNovoVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
     }
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
-        return CursorLoader(
-            requireContext(),
-            ContentProviderApp.ENDERECO_VACINA,
-            TabelaVacina.TODAS_COLUNAS,
-            null, null,
-            TabelaVacina.CAMPO_ORIGEM
-        )
+
+        when (id) {
+            ID_LOADER_MANAGER_LAB-> return CursorLoader(
+                requireContext(),
+                 ContentProviderApp.ENDERECO_VACINA,
+                 TabelaVacina.TODAS_COLUNAS,
+                null, null,
+                   TabelaVacina.CAMPO_ORIGEM
+            )
+            ID_LOADER_MANAGER_NOMEPAC-> return CursorLoader(
+                requireContext(),
+                ContentProviderApp.ENDERECO_PACIENTE,
+                TabelaPaciente.TODAS_COLUNAS,
+                null, null,
+                TabelaPaciente.CAMPO_NOME
+            )
+            ID_LOADER_MANAGER_LOCALVAC-> return CursorLoader(
+                requireContext(),
+                ContentProviderApp.ENDERECO_LOCAL,
+                TabelaLocal.TODAS_COLUNAS,
+                null, null,
+                TabelaLocal.CAMPO_LOCALADM
+            )
+        }
+        return CursorLoader(requireContext())
     }
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
-        atualizaSpinnerLab(data)
+
+        when(loader.id){
+            ID_LOADER_MANAGER_LAB ->atualizaSpinnerLab(data)
+            ID_LOADER_MANAGER_NOMEPAC ->atualizaSpinnerNomePaciente(data)
+            ID_LOADER_MANAGER_LOCALVAC ->atualizaSpinnerlocal(data)
+
+        }
+
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
         atualizaSpinnerLab(null)
+        atualizaSpinnerNomePaciente(null)
+        atualizaSpinnerlocal(null)
+
     }
     private fun atualizaSpinnerLab(data: Cursor?) {
         spinnerLOnovo.adapter = SimpleCursorAdapter(
@@ -111,7 +141,7 @@ class FragmentNovoVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
             0
         )
     }
-    /*private fun atualizaSpinnerNomePaciente(data: Cursor?) {
+    private fun atualizaSpinnerNomePaciente(data: Cursor?) {
         spinnerNPnovo.adapter = SimpleCursorAdapter(
             requireContext(),
             android.R.layout.simple_list_item_1,
@@ -121,10 +151,21 @@ class FragmentNovoVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
             0
         )
     }
-*/
+    private fun atualizaSpinnerlocal(data: Cursor?) {
+        spinnerLAnovo.adapter = SimpleCursorAdapter(
+            requireContext(),
+            android.R.layout.simple_list_item_1,
+            data,
+            arrayOf(TabelaLocal.CAMPO_LOCALADM),
+            intArrayOf(android.R.id.text1),
+            0
+        )
+    }
+
     companion object {
         const val ID_LOADER_MANAGER_LAB = 0
-        //const val ID_LOADER_MANAGER_NOMEPAC = 1
+        const val ID_LOADER_MANAGER_NOMEPAC = 1
+        const val ID_LOADER_MANAGER_LOCALVAC = 2
 
     }
 

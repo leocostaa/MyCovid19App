@@ -12,7 +12,7 @@
         android:layout_width="202dp"
         android:layout_height="71dp"
         android:layout_marginTop="16dp"
-        android:text="Bem Vindo"
+        android:text="@string/bem_vindo"
         android:textAppearance="@style/TextAppearance.Shrine.Title"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:hint="E-mail"
+        android:hint="@string/e_mail"
         app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -36,6 +36,7 @@
             android:id="@+id/email_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,13 +49,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email_text_input"
-        android:hint="Senha"
+        android:hint="@string/senha"
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -62,14 +64,15 @@
         android:id="@+id/login_button"
         android:layout_width="150dp"
         android:layout_height="55dp"
-        android:layout_marginTop="20dp"
-        android:text="Entrar"
+        android:layout_marginTop="12dp"
+        android:text="@string/entrar"
         android:textColor="#FFFDFD"
         android:textColorHighlight="#AC2828"
         android:textColorHint="#C12323"
         android:textColorLink="#A63A3A"
         app:backgroundTint="?attr/colorSecondaryVariant"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_text_input"
         app:rippleColor="@color/teal_700" />
@@ -79,10 +82,10 @@
         style="@style/Widget.Shrine.Button.TextButton"
         android:layout_width="150dp"
         android:layout_height="55dp"
-        android:layout_marginTop="20dp"
-        android:text="Registrar"
+        android:layout_marginTop="4dp"
+        android:text="@string/registrar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_button" />
 
@@ -90,7 +93,7 @@
         android:id="@+id/version_app"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Versão: 1.0"
+        android:text="@string/vers_o_1_0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
