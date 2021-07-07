@@ -40,4 +40,5 @@
     <string name="local_de_administrao_novo">Local de administração</string>
     <string name="sala_nova">Sala</string>
     <string name="data_no_formato_dd_mm_aaaa">Data no formato dd/mm/aaaa :</string>
+    <string name="validade_no_formato_dd_mm_aaaa">Validade no formato dd/mm/aaaa</string>
 </resources>

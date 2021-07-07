@@ -33,7 +33,8 @@
             android:id="@+id/editTextDataEdita"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp" />
+            android:layout_margin="8dp"
+            android:hint="@string/data_de_nascimento_paciente" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
