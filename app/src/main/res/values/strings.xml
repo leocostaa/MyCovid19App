@@ -45,4 +45,6 @@
     <string name="eliminar_vacina">eliminar_vacina</string>
     <string name="eliminar">eliminar</string>
     <string name="cancelar3">cancelar</string>
+    <string name="cancelar4">cancelar</string>
+    <string name="guardar2">guardar</string>
 </resources>
