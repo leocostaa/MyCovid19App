@@ -1,25 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">MyCovid19App</string>
-    <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
+    <string name="action_settings">Definições</string>
     <string name="first_fragment_label">Pacientes</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment" translatable="false">Hello first fragment</string>
-    <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
-    <string name="covid_19_vaccination_app">Covid 19 Vaccination App</string>
-    <string name="start">Start</string>
-    <string name="todo" translatable="false">TODO</string>
+    <string name="next">Próximo</string>
+    <string name="previous">Anterior</string>
+    <string name="covid_19_vaccination_app">Aplicação de Vacinação Covid 19</string>
+    <string name="start">Começar</string>
     <string name="nome_paciente">Nome</string>
     <string name="data_de_nascimento_paciente">Data de Nascimento</string>
-    <string name="sexo_paciente">Sexo :</string>
-    <string name="data_da_vacina_o">Data da Vacinação :</string>
+    <string name="sexo_paciente">Sexo:</string>
+    <string name="data_da_vacina_o">Data da Vacinação:</string>
     <string name="laborat_rio_de_origem">Laboratório de origem :</string>
     <string name="nome_do_paciente">Nome do Paciente :</string>
     <string name="local_de_administra_o">Local de Administração :</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="cidade">Cidade</string>
     <string name="local_de_administra_o_Table">Local de Administração</string>
     <string name="sala_da_vacina_o">Sala da vacinação</string>
@@ -70,13 +63,13 @@
     <string name="pac_elim_succ">Paciente eliminado com sucesso</string>
     <string name="vac_elim_err">Erro Eliminar Vacina</string>
     <string name="vac_elim_succ">Vacina Eliminada com sucesso</string>
-    <string name="loc_ins_err">\"Erro ao inserir local \"</string>
+    <string name="loc_ins_err">"Erro ao inserir local "</string>
     <string name="loc_ins_succ">Local gravado com sucesso</string>
-    <string name="pac_ins_err">\"Erro ao inserir paciente \"</string>
+    <string name="pac_ins_err">"Erro ao inserir paciente "</string>
     <string name="pac_ins_succ">Paciente gravado com sucesso</string>
     <string name="vac_ins_err">Erro ao inserir vacina</string>
     <string name="vac_ins_succ">Vacina guardada com sucesso</string>
     <string name="vacc_ins_err">Erro ao inserir vacinação</string>
-    <string name="vacc_ins_succ">Vacinação criada com sucesso</string>
+    <string name="vacc_ins_succ">Vacinação guardada com sucesso</string>
     <string name="login">Login</string>
 </resources>
