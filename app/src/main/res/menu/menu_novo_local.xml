@@ -10,6 +10,6 @@
     <item
         android:id="@+id/action_cancelar_novo_local"
         android:icon="@android:drawable/ic_menu_close_clear_cancel"
-        android:title="@string/cancelar"
+        android:title="cancelar"
         app:showAsAction="ifRoom" />
 </menu>
