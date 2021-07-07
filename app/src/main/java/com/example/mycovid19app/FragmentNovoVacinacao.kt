@@ -73,7 +73,37 @@ class FragmentNovoVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
 
     }
     fun guardar() {
-        
+        val origemnovo = spinnerLOnovo.selectedItemId
+
+        val nomenovo = spinnerNPnovo.selectedItemId
+
+        val localnovo = spinnerLAnovo.selectedItemId
+
+        val dataval = CalendarViewDataVac.date
+
+
+        val vacinacao = Vacinacao( idVacina= origemnovo, idPaciente  = nomenovo, idLocal = localnovo, data_vac = Date(dataval))
+
+        val uri = activity?.contentResolver?.insert(
+            ContentProviderApp.ENDERECO_VACINACAO,
+            vacinacao.toContentValues()
+        )
+
+        if (uri == null) {
+            Snackbar.make(
+                spinnerLOnovo,
+                "Erro ao inserir",
+                Snackbar.LENGTH_LONG
+            ).show()
+            return
+        }
+        Toast.makeText(
+            requireContext(),
+            "Vacinação criado com sucesso",
+            Toast.LENGTH_LONG
+        ).show()
+
+        navegaInicio()
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
