@@ -61,6 +61,9 @@ class FragmentVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
 
     }
+    fun navegaNovoVacincao() {
+        findNavController().navigate(R.id.action_FragmentVacinacao_to_fragmentNovoVacinacao)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
