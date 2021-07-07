@@ -27,16 +27,30 @@ class FragmentNovoVacinacao : Fragment() {
         _binding = FragmentNovoVacinacaoBinding.inflate(inflater, container, false)
         return binding.root
     }
-    fun processaOpcaoMenu(item: MenuItem): Boolean {
 
-        return false
-    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+    fun navegaInicio() {
+        // todo: navegar para a lista de livros
+    }
+
+    fun guardar() {
+        // todo: guardar livro
+    }
+
+    fun processaOpcaoMenu(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_guardar_novo_vacinacao -> guardar()
+            R.id.action_cancelar_novo_vacinacao -> navegaInicio()
+            else -> return false
+        }
+
+        return true
     }
 
 }
