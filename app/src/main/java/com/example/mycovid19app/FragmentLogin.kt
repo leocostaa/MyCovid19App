@@ -32,7 +32,7 @@ class FragmentLogin : Fragment() {
 
         binding.loginButton.setOnClickListener {
             navegaHome()
-        } 
+        }
 
 
     }
