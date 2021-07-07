@@ -30,7 +30,7 @@
     <string name="novo_paciente">Novo Paciente</string>
     <string name="eliminar_paciente">Eliminar Paciente</string>
     <string name="sexo">Sexo :</string>
-    <string name="cancelar">cancelar</string>
+    <string name="cancelar1">cancelar</string>
     <string name="guardar">guardar</string>
     <string name="versao">MyCovid19App v. 1.0</string>
     <string name="eliminar_local">eliminar_local</string>
@@ -41,4 +41,8 @@
     <string name="sala_nova">Sala</string>
     <string name="data_no_formato_dd_mm_aaaa">Data no formato dd/mm/aaaa :</string>
     <string name="validade_no_formato_dd_mm_aaaa">Validade no formato dd/mm/aaaa</string>
+    <string name="cancelar2">cancelar</string>
+    <string name="eliminar_vacina">eliminar_vacina</string>
+    <string name="eliminar">eliminar</string>
+    <string name="cancelar3">cancelar</string>
 </resources>
