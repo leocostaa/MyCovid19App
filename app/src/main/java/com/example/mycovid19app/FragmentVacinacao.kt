@@ -32,7 +32,8 @@ class FragmentVacinacao : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         savedInstanceState: Bundle?
     ): View? {
 
-
+        DadosApp.fragment = this
+        (activity as MainActivity).menuAtual = R.menu.menu_vacinacao
 
 
 
