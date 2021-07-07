@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CalendarView
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.mycovid19app.databinding.FragmentNovoVacinacaoBinding
@@ -15,6 +17,11 @@ import com.example.mycovid19app.databinding.FragmentNovoVacinacaoBinding
 class FragmentNovoVacinacao : Fragment() {
 
     private var _binding: FragmentNovoVacinacaoBinding? = null
+
+    private lateinit var spinnerLOnovo: Spinner
+    private lateinit var spinnerNPnovo: Spinner
+    private lateinit var spinnerLAnovo: Spinner
+    private lateinit var CalendarViewDataVac: CalendarView
 
     private val binding get() = _binding!!
 
@@ -31,6 +38,13 @@ class FragmentNovoVacinacao : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        spinnerLOnovo = view.findViewById(R.id.spinnerLOnovo)
+        spinnerNPnovo = view.findViewById(R.id.spinnerNPnovo)
+        spinnerLAnovo = view.findViewById(R.id.spinnerLAnovo)
+        CalendarViewDataVac = view.findViewById(R.id.calendarViewDataVac)
+
     }
     override fun onDestroyView() {
         super.onDestroyView()

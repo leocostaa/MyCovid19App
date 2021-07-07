@@ -7,7 +7,7 @@
     tools:context=".FragmentNovoVacinacao">
 
     <CalendarView
-        android:id="@+id/calendarView"
+        android:id="@+id/calendarViewDataVac"
         android:layout_width="407dp"
         android:layout_height="336dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -16,7 +16,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerLOnovo"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        app:layout_constraintTop_toBottomOf="@+id/calendarViewDataVac" />
 
     <TextView
         android:id="@+id/textView22"
@@ -49,10 +49,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerLOnovo" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/spinnerNPnovo"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -71,10 +71,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerNPnovo" />
 
     <Spinner
-        android:id="@+id/spinner3"
+        android:id="@+id/spinnerLAnovo"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
