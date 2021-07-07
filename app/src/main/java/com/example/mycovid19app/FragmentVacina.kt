@@ -56,7 +56,8 @@ class FragmentVacina : Fragment(),LoaderManager.LoaderCallbacks<Cursor>{
         findNavController().navigate(R.id.action_FragmentVacina_to_fragmentNovoVacina)
     }
     fun navegaAlterarVacina() {
-        //todo: navegar para o fragmento da edição de um livro
+        findNavController().navigate(R.id.action_FragmentVacina_to_fragmentEditaVacina)
+
     }
 
     fun navegaEliminarVacina() {

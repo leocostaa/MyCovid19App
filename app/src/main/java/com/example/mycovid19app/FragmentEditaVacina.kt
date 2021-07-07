@@ -1,62 +1,129 @@
 package com.example.mycovid19app
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.Spinner
+import android.widget.Toast
+import androidx.loader.app.LoaderManager
+import androidx.navigation.fragment.findNavController
+import java.text.SimpleDateFormat
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FragmentEditaVacina.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FragmentEditaVacina : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var editTextOrigemEdita: EditText
+    private lateinit var editTextQuantidadeEdita: EditText
+    private lateinit var editTextValidadeEdita : EditText
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        DadosApp.fragment = this
+        (activity as MainActivity).menuAtual = R.menu.menu_edita_vacina
+
         return inflater.inflate(R.layout.fragment_edita_vacina, container, false)
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        editTextOrigemEdita = view.findViewById(R.id.editTextOrigemEdita)
+        editTextQuantidadeEdita = view.findViewById(R.id.editTextQuantidadeEdita)
+        editTextValidadeEdita = view.findViewById(R.id.editTextValidadeEdita)
+
+        editTextOrigemEdita.setText(DadosApp.vacinaSelecionado!!.origem)
+        editTextQuantidadeEdita.setText(DadosApp.vacinaSelecionado!!.quantidade.toString())
+        editTextValidadeEdita.setText(DadosApp.vacinaSelecionado!!.validade.toString())
+
+
+    }
+    fun navegaInicio() {
+        findNavController().navigate(R.id.action_fragmentEditaVacina_to_fragmentInicioPage)
+    }
+    fun guardar() {
+
+        val origem = editTextOrigemEdita.text.toString()
+        if (origem.isEmpty()) {
+            editTextOrigemEdita.setError("Preencha")
+            editTextOrigemEdita.requestFocus()
+            return
+        }
+
+        val quantidade = editTextQuantidadeEdita.text.toString()
+        val qnt = Integer.parseInt(quantidade)
+        if (quantidade.isEmpty()) {
+            editTextQuantidadeEdita.setError("Preencha")
+            editTextQuantidadeEdita.requestFocus()
+            return
+        }
+        val validade = editTextValidadeEdita.text.toString()
+        val simpleDateFormat  = SimpleDateFormat("dd/MM/yyyy")
+        val date = simpleDateFormat.parse(validade)
+        if (validade.isEmpty()) {
+            editTextValidadeEdita.setError("Preencha ")
+            editTextValidadeEdita.requestFocus()
+            return
+        }
+
+
+
+        val vacina = DadosApp.vacinaSelecionado!!
+        vacina.origem = origem
+        vacina.quantidade = qnt
+        vacina.validade = date
+
+        val uriVacina = Uri.withAppendedPath(
+            ContentProviderApp.ENDERECO_VACINA,
+            vacina.id.toString()
+        )
+
+        val registos = activity?.contentResolver?.update(
+            uriVacina,
+            vacina.toContentValues(),
+            null,
+            null
+        )
+
+        if (registos != 1) {
+            Toast.makeText(
+                requireContext(),
+                "Erro a alterar vacina",
+                Toast.LENGTH_LONG
+            ).show()
+            return
+        }
+
+        Toast.makeText(
+            requireContext(),
+            "Vacina guardada com sucesso",
+            Toast.LENGTH_LONG
+        ).show()
+        navegaInicio()
+    }
+
     fun processaOpcaoMenu(item: MenuItem): Boolean {
-        return false
+        when (item.itemId) {
+            R.id.action_guardar_edita_vacina -> guardar()
+            R.id.action_cancelar_edita_vacina -> navegaInicio()
+            else -> return false
+        }
+
+        return true
     }
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentEditaVacina.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FragmentEditaVacina().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
+
+
+
+
+
+
+
+
+
 }

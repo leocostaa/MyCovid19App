@@ -164,7 +164,7 @@
     <fragment
         android:id="@+id/fragmentEditaVacina"
         android:name="com.example.mycovid19app.FragmentEditaVacina"
-        android:label="fragment_edita_vacina"
+        android:label="Edita!"
         tools:layout="@layout/fragment_edita_vacina" >
         <action
             android:id="@+id/action_fragmentEditaVacina_to_FragmentVacina"

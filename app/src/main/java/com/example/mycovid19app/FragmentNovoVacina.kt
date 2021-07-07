@@ -77,6 +77,7 @@ class FragmentNovoVacina : Fragment() {
 
         if (quantidade.isEmpty()) {
             editTextQuantidade.setError("Preencha este campo")
+            editTextQuantidade.requestFocus()
             return
         }
 
