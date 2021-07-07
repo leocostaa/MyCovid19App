@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.mycovid19app.databinding.FragmentNovoVacinacaoBinding
 
@@ -35,10 +36,18 @@ class FragmentNovoVacinacao : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-    fun navegaInicio() {
-        // todo: navegar para a lista de livros
+    fun navegaInicioCancela() {
+        findNavController().navigate(R.id.action_fragmentNovoVacinacao_to_fragmentInicioPage)
+        Toast.makeText(
+            requireContext(),
+            "Cancelado com sucesso",
+            Toast.LENGTH_LONG
+        ).show()
     }
+    fun navegaInicio() {
+        findNavController().navigate(R.id.action_fragmentNovoVacinacao_to_fragmentInicioPage)
 
+    }
     fun guardar() {
         // todo: guardar livro
     }
@@ -46,7 +55,7 @@ class FragmentNovoVacinacao : Fragment() {
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_guardar_novo_vacinacao -> guardar()
-            R.id.action_cancelar_novo_vacinacao -> navegaInicio()
+            R.id.action_cancelar_novo_vacinacao -> navegaInicioCancela()
             else -> return false
         }
 
