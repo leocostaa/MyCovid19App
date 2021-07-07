@@ -58,7 +58,32 @@ class FragmentEliminaVacinacao : Fragment() {
     }
 
     fun elimina() {
-       
+        val uriVacinacao = Uri.withAppendedPath(
+            ContentProviderApp.ENDERECO_VACINACAO,
+            DadosApp.vacinacaoSelecionado!!.id.toString()
+        )
+
+        val registos = activity?.contentResolver?.delete(
+            uriVacinacao,
+            null,
+            null
+        )
+
+        if (registos != 1) {
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.Vaccelierro),
+                Toast.LENGTH_LONG
+            ).show()
+            return
+        }
+
+        Toast.makeText(
+            requireContext(),
+            getString(R.string.Vacceli),
+            Toast.LENGTH_LONG
+        ).show()
+        navegaInicio()
     }
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         when (item.itemId) {
